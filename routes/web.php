@@ -17,13 +17,13 @@ Route::get('/', function () {
 });
 */
 Route::get('/','inicioController@index');
-//Route::get('admin/permiso','Admin\PermisoController@index')->name('permiso');
+//Route::get('admin/permiso','Admin\PermissionsController@index')->name('permiso');
 
 Route::group(['prefix'=>'admin','namespace' => 'Admin'], function() {
     // Rutas de los controladores dentro del Namespace "App\Http\Controllers\Admin"
-    Route::get('permiso', 'PermisoController@index')->name('permiso');
-    Route::get('permiso/create', 'PermisoController@create')->name('crear');
-    Route::get('permiso/edit', 'PermisoController@edit')->name('editar');
-    Route::get('permiso/form', 'PermisoController@form')->name('formlario');
+    Route::get('permiso', 'PermissionsController@index')->name('permiso');
+    Route::get('permiso/crear', 'PermissionsController@create')->name('crear');
+    Route::get('permiso/editar', 'PermissionsController@edit')->name('editar');
+    Route::get('permiso/formulario', 'PermissionsController@form')->name('formlario');
 
 });

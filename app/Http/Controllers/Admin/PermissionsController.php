@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB;
-use App\Models\Admin\Permiso;
+use App\Models\Admin\permission;
 
-class PermisoController extends Controller
+class PermissionsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,14 +15,12 @@ class PermisoController extends Controller
      */
     public function index()
     {
-     //$permisos = DB::table('permisos')->get();
-    //$permisos = Permiso::get();
-$permisos = Permiso::all();
-     //$permisos = 'esto es un valor';
-    //$permisos =json_encode(['id' => '1','name' => 'permiso1']);    
-    // $permisos = ['id'=>'1','name'=>'permisoarr1'];
-     // return View('admin.permiso.index',compact('permisos'));
-    return View('admin.permiso.index',compact('permisos'));
+        
+       // $permissions = DB::table('permissions')->get();
+        //$permissions = Permission::all();
+         $permissions = Permission::orderBy('id')->get(['id','name']);
+        return View('admin.permiso.index',compact('permissions'));
+
     }
 
     /**
@@ -33,7 +30,7 @@ $permisos = Permiso::all();
      */
     public function create()
     {
-        //
+        
     }
 
     /**
