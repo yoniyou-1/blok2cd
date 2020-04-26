@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\permission;
-
+use Illuminate\Support\Facades\Cache;
 class PermissionsController extends Controller
 {
     /**
@@ -15,11 +15,13 @@ class PermissionsController extends Controller
      */
     public function index()
     {
-        
+        //Cache::put('pkch','holasoycache2');
+        //dd(Cache::get('pkch'));
+       
        // $permissions = DB::table('permissions')->get();
         //$permissions = Permission::all();
-         $permissions = Permission::orderBy('id')->get(['id','name']);
-        return View('admin.permiso.index',compact('permissions'));
+     $permissions = Permission::orderBy('id')->get(['id','name']);
+      return View('admin.permiso.index',compact('permissions'));
 
     }
 
