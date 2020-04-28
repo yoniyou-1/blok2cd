@@ -15,8 +15,8 @@ class PermissionsController extends Controller
      */
     public function index()
     {
-        //Cache::put('pkch','holasoycache2');
-        //dd(Cache::get('pkch'));
+        Cache::put('llave1','esto es un valor en cache de redis realizado por yoni');
+        dd(Cache::get('llave1'));
        
        // $permissions = DB::table('permissions')->get();
         //$permissions = Permission::all();
