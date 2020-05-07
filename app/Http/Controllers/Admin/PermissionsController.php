@@ -15,12 +15,12 @@ class PermissionsController extends Controller
      */
     public function index()
     {
-        Cache::put('llave1','esto es un valor en cache de redis realizado por yoni');
-        dd(Cache::get('llave1'));
+        //Cache::put('llave1','esto es un valor en cache de redis realizado por yoni');
+        //dd(Cache::get('llave1'));
        
        // $permissions = DB::table('permissions')->get();
         //$permissions = Permission::all();
-     $permissions = Permission::orderBy('id')->get(['id','name']);
+     $permissions = Permission::orderBy('id')->get(['id','name', 'slug']);
       return View('admin.permiso.index',compact('permissions'));
 
     }
@@ -32,7 +32,7 @@ class PermissionsController extends Controller
      */
     public function create()
     {
-        
+        return View('admin.permiso.crear');
     }
 
     /**
