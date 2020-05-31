@@ -25,7 +25,7 @@ Permisos
 								<td>{{$permission->id }}</td>
 								<td>{{$permission->name }}</td>
 								<td>{{$permission->slug }}</td>
-								<td>otro</td>
+								<td>Editar/eliminar</td>
 							</tr>
 							@endforeach
 						</tbody>

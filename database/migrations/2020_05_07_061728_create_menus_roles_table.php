@@ -38,3 +38,4 @@ class CreateMenusRolesTable extends Migration
         Schema::dropIfExists('menus_roles');
     }
 }
+    
