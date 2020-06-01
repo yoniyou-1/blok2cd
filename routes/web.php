@@ -25,5 +25,12 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'], function() {
     Route::get('permiso/crear', 'PermissionsController@create')->name('crear');
     Route::get('permiso/editar', 'PermissionsController@edit')->name('editar');
     Route::get('permiso/formulario', 'PermissionsController@form')->name('formlario');
+    //Menu
+    Route::get('menu', 'MenusController@index')->name('menu');
+    Route::get('menu/crear', 'MenusController@create')->name('crear_menu');
+    Route::post('menu', 'MenusController@store')->name('guardar_menu');
+    Route::get('menu/editar', 'MenusController@edit')->name('editar');
+    Route::get('menu/formulario', 'MenusController@form')->name('formlario');
 
 });
+
