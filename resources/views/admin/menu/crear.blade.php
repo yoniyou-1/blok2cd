@@ -7,6 +7,7 @@ Menus
 <div class="row">
 	<div class="col-md-12">
 		@include('includes.form-error')
+		@include('includes.mensaje')
 		<div class="card card-primary card-info">
 			<div class="card-header">
 				<h3 class="card-title"> Crear Menu</h3>
