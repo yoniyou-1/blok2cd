@@ -18,6 +18,6 @@
 		<input type="text"  name="icon" id="icon" class="form-control" value="{{ old('icon') }}" >
 	</div>
 	<div class="col-lg-1">
-        <span id="mostrar-icono" class="fa fa-fw {{old("icono")}}"></span>
+        <span id="mostrar-icono" class="fa fa-fw {{old("icon")}}"></span>
     </div>
 </div>
