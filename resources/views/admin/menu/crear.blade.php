@@ -5,7 +5,7 @@ Menus
 
 
 @section('scripts')
-<script src='{{asset("assets/pages/scripts/admin/crear.js")}}' type='text/javascript'></script>
+<script src='{{asset("assets/pages/scripts/admin/menu/crear.js")}}' type='text/javascript'></script>
 @endsection
 
 @section('contenido')
@@ -21,7 +21,7 @@ Menus
 			</div>
 			  <!-- /.card-header -->
               <!-- form start -->
-		<form action="{{ route('guardar_menu') }}"class="form-horizontal" id="form-general" method="POST">
+		<form action="{{ route('guardar_menu') }}"class="form-horizontal" id="form-general" method="POST" autocomplete="off">
 			@csrf
 			<div class="card-body ">
 				@include('admin.menu.formulario')
