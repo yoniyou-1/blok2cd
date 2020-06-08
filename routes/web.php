@@ -31,6 +31,7 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'], function() {
     Route::post('menu', 'MenusController@store')->name('guardar_menu');
     Route::get('menu/editar', 'MenusController@edit')->name('editar');
     Route::get('menu/formulario', 'MenusController@form')->name('formlario');
+    Route::post('menu/guardar-orden', 'MenusController@saveOrden')->name('guardar_orden');
 
 });
 

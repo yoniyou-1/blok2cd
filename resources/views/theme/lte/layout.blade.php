@@ -14,12 +14,13 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/adminlte.min.css")}}">
     <!-- My Theme style -->
+      @yield('styles')
   <link rel="stylesheet" href="{{asset("assets/css/custom.css")}}">
 
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-  @yield('styles')
+
 
 </head>
 
@@ -64,6 +65,8 @@
   <script src="{{asset("assets/$theme/dist/js/adminlte.min.js")}}"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="{{asset("assets/$theme/dist/js/demo.js")}}"></script>
+  <!-- Jquery Plugins -->
+  @yield('scriptsPlugins')
   <!-- Jquery validation -->
   <script src="{{asset("assets/js/jquery-validation/jquery.validate.min.js")}}"></script>
     <script src="{{asset("assets/js/jquery-validation/localization/messages_es.min.js")}}"></script>

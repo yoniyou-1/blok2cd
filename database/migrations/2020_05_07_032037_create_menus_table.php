@@ -25,11 +25,11 @@ class CreateMenusTable extends Migration
              $table->text('icon')->nullable();
            
             
-            //$table->foreign('menu_id')->references('id')->on('menus');
-                $table->foreignId('menu_id') // UNSIGNED BIG INT
-        ->nullable()//->default(0) // <-- IMPORTANTE: LA COLUMNA DEBE ACEPTAR NULL COMO VALOR VALIDO
-        ->constrained()  // <-- DEFINE LA RESTRICCION DE LLAVE FORANEA
-        ->onDelete('SET NULL'); // <-- AL ELIMINAR UN USUARIO SUS POSTS QUEDARAN SIN AUTOR
+            //$table->foreign o foreignId('menu_id')->references('id')->on('menus');
+                $table->integer('menu_id')->default(0); // UNSIGNED BIG INT
+        //->nullable()->default(0)//->default(0) // <-- IMPORTANTE: LA COLUMNA DEBE ACEPTAR NULL COMO VALOR VALIDO
+        //->constrained()  // <-- DEFINE LA RESTRICCION DE LLAVE FORANEA
+        //->onDelete('SET NULL'); // <-- AL ELIMINAR UN USUARIO SUS POSTS QUEDARAN SIN AUTOR
          $table->timestamps();
         $table->charset='utf8mb4';
             $table->collation= 'utf8mb4_spanish_ci' ;

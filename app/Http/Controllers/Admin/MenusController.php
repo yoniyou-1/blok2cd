@@ -15,7 +15,8 @@ class MenusController extends Controller
      */
     public function index()
     {
-        //
+        $menus = Menu::getMenu();
+        return view('admin.menu.index', compact('menus'));
     }
 
     /**
@@ -83,5 +84,16 @@ class MenusController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function saveOrden(Request $request)
+    {
+        if ($request->ajax()) {
+            $menu = new Menu;
+            $menu->saveOrden($request->menu);
+            return response()->json(['response' => 'ok']);
+        } else {
+            abort(404);
+        }
     }
 }

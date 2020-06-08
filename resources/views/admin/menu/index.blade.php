@@ -35,13 +35,13 @@ Menus
 				<!-- /.card-body -->
 				<div class="dd" id="nestable">
 					<ol Class="dd-list">
-						@foreach($menu as $key => $item)
+						@foreach($menus as $key => $item)
 							@if($item["menu_id"] != 0)
 								@break;
 							@endif
-							@include('admin.menu-item',['title'=> $item])
+							@include('admin.menu.menu-item',['title'=> $item])
 						@endforeach
-						<ol/>
+					<ol/>
 					</div>
 				</div>
 				<!-- /.card-footer -->
