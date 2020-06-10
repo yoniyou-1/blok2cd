@@ -12,15 +12,16 @@
     <div class="col-lg-12">
         @include('includes.form-error')
         @include('includes.mensaje')
-        <div class="card card-danger">
+        <div class="card card-danger card-info">
             <div class="card-header with-border">
                 <h3 class="card-title">Editar Rol</h3>
+            </div>
                 <div class="card-tools pull-right">
                     <a href="{{route('rol')}}" class="btn btn-block btn-info btn-sm">
                         <i class="fa fa-fw fa-reply-all"></i> Volver al listado
                     </a>
                 </div>
-            </div>
+
             <form action="{{route('actualizar_rol', ['id' => $data->id])}}" id="form-general" class="form-horizontal" method="POST" autocomplete="off">
                 @csrf @method("put")
                 <div class="card-body">

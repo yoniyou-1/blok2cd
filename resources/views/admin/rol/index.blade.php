@@ -14,7 +14,7 @@ Menus
 		@include('includes.mensaje')
 		<div class="card card-primary card-info">
 			<div class="card-header with-border">
-				<h3 class="card-title"> Crear Roles</h3>
+				<h3 class="card-title">Roles</h3>
 			</div>
 			 <div class="card-tools pull-right">
                     <a href="{{route('crear_rol')}}" class="btn btn-block btn-success btn-sm">
