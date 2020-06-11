@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Admin\Rol;
+use App\Models\Admin\Menu;
 
-class MenusRolescontroller extends Controller
+class MenusRolesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,18 +16,14 @@ class MenusRolescontroller extends Controller
      */
     public function index()
     {
-        //
+        $rols = Rol::orderBy('id')->pluck('name', 'id')->toArray();
+        $menus = Menu::getMenu();
+        
+        $menusRols = Menu::with('rolesf')->get()->pluck('rolesf', 'id')->toArray();
+         //dd($menusRols);
+        return view('admin.menu-rol.index', compact('rols', 'menus', 'menusRols'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,51 +33,18 @@ class MenusRolescontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+         if ($request->ajax()) {
+            $menus = new Menu();
+            if ($request->input('estado') == 1) {
+                $menus->find($request->input('menu_id'))->rolesf()->attach($request->input('rol_id'));
+                return response()->json(['respuesta' => 'El rol se asigno correctamente']);
+            } else {
+                $menus->find($request->input('menu_id'))->rolesf()->detach($request->input('rol_id'));
+                return response()->json(['respuesta' => 'El rol se elimino correctamente']);
+            }
+        } else {
+            abort(404);
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

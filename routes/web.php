@@ -39,6 +39,9 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'], function() {
     Route::get('rol/{id}/editar', 'RolesController@edit')->name('editar_rol');
     Route::put('rol/{id}', 'RolesController@update')->name('actualizar_rol');
     Route::delete('rol/{id}', 'RolesController@destroy')->name('eliminar_rol');
+        /*RUTAS MENU_ROL*/
+    Route::get('menu-rol', 'MenusRolesController@index')->name('menu_rol');
+    Route::post('menu-rol', 'MenusRolesController@store')->name('guardar_menu_rol');
 
 });
 
