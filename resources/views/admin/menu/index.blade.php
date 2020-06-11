@@ -26,10 +26,13 @@ Menus
 		<div class="card card-primary card-info">
 			<div class="card-header">
 				<h3 class="card-title"> Crear Menu</h3>
-
 			</div>
+						 <div class="card-tools pull-right">
+                    <a href="{{route('crear_menu')}}" class="btn btn-block btn-success btn-sm">
+                        <i class="fa fa-fw fa-plus-circle"></i> Nuevo registro
+                    </a>
+              </div>
 			<!-- /.card-header -->
-			
 			<div class="card-body ">
 				@csrf
 				<!-- /.card-body -->

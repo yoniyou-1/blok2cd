@@ -17,8 +17,12 @@ Menus
 		<div class="card card-primary card-info">
 			<div class="card-header">
 				<h3 class="card-title"> Crear Menu</h3>
-
 			</div>
+			<div class="card-tools pull-right">
+                    <a href="{{route('menu')}}" class="btn btn-block btn-info btn-sm">
+                        <i class="fa fa-fw fa-reply-all"></i> Volver al listado
+                    </a>
+            </div>
 			  <!-- /.card-header -->
               <!-- form start -->
 		<form action="{{ route('guardar_menu') }}"class="form-horizontal" id="form-general" method="POST" autocomplete="off">

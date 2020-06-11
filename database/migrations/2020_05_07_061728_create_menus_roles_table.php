@@ -21,7 +21,7 @@ class CreateMenusRolesTable extends Migration
 
             $table->foreignId('menu_id','fk_menurol_menus')->nullable()->references('id')->on('menus')->onDelete(
                 'restrict')->onUpdate('restrict');
-            $table->boolean('state');
+            //$table->boolean('state');
             $table->timestamps();
             $table->charset='utf8mb4';
             $table->collation= 'utf8mb4_spanish_ci' ;
