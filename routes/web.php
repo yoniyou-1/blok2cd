@@ -16,10 +16,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
-Route::get('/','inicioController@index');
+Route::get('/', 'InicioController@index')->name('inicio');
+Route::get('seguridad/login', 'Security\LoginController@index')->name('login');
+Route::post('seguridad/login', 'Security\LoginController@login')->name('login_post');
+Route::get('seguridad/logout', 'Security\LoginController@logout')->name('logout');
 //Route::get('admin/permiso','Admin\PermissionsController@index')->name('permiso');
 
-Route::group(['prefix'=>'admin','namespace' => 'Admin'], function() {
+Route::group(['prefix'=>'admin','namespace' => 'Admin', 'middleware' => 'auth'], function() {
+    // rutas de logueo
+    Route::get('', 'AdminController@index');
+
     // Rutas de los controladores dentro del Namespace "App\Http\Controllers\Admin"
     Route::get('permiso', 'PermissionsController@index')->name('permiso');
     Route::get('permiso/crear', 'PermissionsController@create')->name('crear');
