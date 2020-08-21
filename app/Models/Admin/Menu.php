@@ -11,7 +11,7 @@ class Menu extends Model
 	protected $guarded = ['id'];
 	 //public $timestemps = false;
 
-    public function rolesf()
+    public function roles()
     {
         return $this->belongsToMany(Rol::class, 'menus_roles');
     }
@@ -32,7 +32,8 @@ class Menu extends Model
         if ($front) {
             return $this->whereHas('roles', function ($query) {
                 $query->where('rol_id', session()->get('rol_id'))->orderby('menu_id');
-            })->where('estado', 1)
+            })
+            ->where('estado', 1)
                 ->orderby('menu_id')
                 ->orderby('orden')
                 ->get()

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ValidacionRol;
 use App\Models\Admin\Rol;
 
-class Rolescontroller extends Controller
+class RolesController extends Controller
 {
     /**
      * Display a listing of the resource.
