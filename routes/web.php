@@ -22,7 +22,8 @@ Route::post('seguridad/login', 'Security\LoginController@login')->name('login_po
 Route::get('seguridad/logout', 'Security\LoginController@logout')->name('logout');
 //Route::get('admin/permiso','Admin\PermissionsController@index')->name('permiso');
 
-Route::group(['prefix'=>'admin','namespace' => 'Admin', 'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'mdsuperadmin']], function () {
+//Route::group(['prefix'=>'admin','namespace' => 'Admin', 'middleware' => 'auth'], function() {
     // rutas de logueo
     Route::get('', 'AdminController@index');
 
