@@ -10,7 +10,7 @@ class LoginController extends Controller
 {
 
     use AuthenticatesUsers;
-    protected $redirectTo = '/Admin';
+    protected $redirectTo = '/';
 
    public function __construct()
     {
@@ -25,6 +25,21 @@ class LoginController extends Controller
     {
         return view('seguridad.index');
     }
+
+
+     protected function authenticated(Request $request, $user)
+    {
+        $roles = $user->roles()->where('state', 1)->get();
+        if ($roles->isNotEmpty()) {
+            $user->setSession($roles->toArray());
+
+        } else {
+            $this->guard()->logout();
+            $request->session()->invalidate();
+            return redirect('seguridad/login')->withErrors(['error' => 'Este usuario no tiene un rol activo']);
+        }
+    }
+
 
         public function username()
     {

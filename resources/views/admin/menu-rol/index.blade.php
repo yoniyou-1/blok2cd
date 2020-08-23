@@ -20,7 +20,7 @@ Menú - Rol
                 <table class="table table-striped table-bordered table-hover" id="tabla-data">
                     <thead>
                         <tr>
-                            <th>Menú</th>
+                            <th>Menús / Roles</th>
                             @foreach ($rols as $id => $name)
                             <th class="text-center">{{$name}}</th>
                             @endforeach

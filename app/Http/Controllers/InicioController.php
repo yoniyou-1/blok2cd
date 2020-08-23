@@ -14,6 +14,9 @@ class InicioController extends Controller
     public function index()
     {
         //
+        //dd(session()->all());
+        //dd(auth()->user());
+        //dd(auth()->user()->name);
         return View('inicio');
     }
 

@@ -5,6 +5,6 @@ Administracion
 
 @section('contenido')
 <div class="row">
-    <div class="col-lg-12">Bievenidos</div>
+    <div class="col-lg-12">Bievenido al Panel Admin</div>
 </div>
 @endsection 

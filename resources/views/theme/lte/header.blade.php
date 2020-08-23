@@ -13,9 +13,13 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
-     
+      
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Cerrar Sesion</a>
+        <a href="#" class="nav-link"><font style="vertical-align: inherit;"><span class="hidden-xs">Hola, {{session()->get('usuario_name') ?? 'Invitado'}}</span></font></a>
+      </li>     
+      
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{route('logout')}}" class="nav-link" >Cerrar Sesion</a>
       </li>
     </ul>
   </nav>
