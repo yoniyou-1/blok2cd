@@ -16,4 +16,6 @@ $(document).ready(function () {
         html: true,
         container: 'body'
     });
+
+    $('ul.nav-sidebar').find('li.active').parents('li').addClass('menu-open'); 
 });

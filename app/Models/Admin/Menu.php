@@ -33,7 +33,7 @@ class Menu extends Model
             return $this->whereHas('roles', function ($query) {
                 $query->where('rol_id', session()->get('rol_id'))->orderby('menu_id');
             })
-            ->where('estado', 1)
+            //->where('estado', 1)
                 ->orderby('menu_id')
                 ->orderby('orden')
                 ->get()

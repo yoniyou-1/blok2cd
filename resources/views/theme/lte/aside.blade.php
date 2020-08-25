@@ -27,62 +27,18 @@
         <ul class="nav nav-pills nav-sidebar flex-column sidebar-menu" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link ">
-              <i class="nav-icon fas fa-wrench"></i>
-              <p>
-                ADMIN
-                <i class="right fas fa-cog"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../../index2.html" class="nav-link ">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Menu</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../../index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Permisos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../../index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Roles</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+          
+              @foreach ($menusComposer as $key => $item)
+                  @if ($item["menu_id"] != 0)
+                      @break
+                  @endif
+                  @include("theme.$theme.menu-item", ["item" => $item])
+              @endforeach
 
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user-friends"></i>
-              <p>
-                Usuarios
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../charts/chartjs.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Listar</p>
-                </a>
-              </li>
-            </ul>
-          <li class="nav-item">
-            <a href="#" class="nav-link" >
-              <i class="nav-icon far fa-circle text-info"></i>
-              <p>Informacion</p>
-            </a>
-          </li>
                     <!-- Menu Footer-->
           <li class="nav-item">
             <a href="{{route('logout')}}" class="nav-link" >
-              <i class="nav-icon fas fa-sign-out-alt text-info"></i>
+              <i class="nav-icon fas fa-sign-out-alt "></i>
 
           <p>Salir</p>
             </a>
