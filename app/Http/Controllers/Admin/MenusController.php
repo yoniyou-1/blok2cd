@@ -60,7 +60,8 @@ class MenusController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Menu::findOrFail($id);
+        return view('admin.menu.editar', compact('data'));
     }
 
     /**
@@ -70,9 +71,10 @@ class MenusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionMenu $request, $id)
     {
-        //
+        Menu::findOrFail($id)->update($request->all());
+        return redirect('admin/menu')->with('mensaje', 'Menú actualizado con exito');
     }
 
     /**
@@ -83,7 +85,9 @@ class MenusController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Menu::destroy($id);
+        return redirect('admin/menu')->with('mensaje', 'Menú eliminado con exito');
+
     }
 
     public function saveOrden(Request $request)

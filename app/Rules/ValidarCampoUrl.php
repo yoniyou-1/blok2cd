@@ -28,7 +28,7 @@ class ValidarCampoUrl implements Rule
     {
         if($value != '#')
         {
-             $menu = Menu::Where($attribute, $value)->get();
+             $menu = Menu::Where($attribute, $value)->where('id', '!=', request()->route('id'))->get();
              return $menu->IsEmpty();
         }
         return true;
