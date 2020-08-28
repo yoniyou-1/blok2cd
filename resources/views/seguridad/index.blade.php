@@ -48,7 +48,7 @@
       <form action="{{route('login_post')}}" method="POST" autocomplete="off">
         @csrf
         <div class="input-group mb-3">
-          <input type="text" name="user" class="form-control" value="{{old('user')}}" placeholder="Usuario">
+          <input type="text" name="user" class="form-control" value="{{old('user')}}" placeholder="Usuario" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))" >
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -56,7 +56,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" class="form-control" placeholder="Password" onkeypress="return ((event.charCode != 39) && (event.charCode != 34) )">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
