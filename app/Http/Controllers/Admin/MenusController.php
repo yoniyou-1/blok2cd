@@ -85,8 +85,19 @@ class MenusController extends Controller
      */
     public function destroy($id)
     {
-        Menu::destroy($id);
+        
+        try {
+
+        //tu código
+            Menu::destroy($id);
         return redirect('admin/menu')->with('mensaje', 'Menú eliminado con exito');
+
+        }catch (\Illuminate\Database\QueryException $e){
+        //tu código
+        return redirect('admin/menu')->with('mensaje', 'El registro no pudo ser eliminado, hay recursos usandolo, SAIR, error');
+        }
+
+
 
     }
 

@@ -32,7 +32,7 @@ $(document).ready(function () {
 
             },
             error: function () {
-
+                Biblioteca.notificaciones('El registro no pudo ser eliminado, hay recursos usandolo.', 'SAIR', 'error');
             }
         });
     }
