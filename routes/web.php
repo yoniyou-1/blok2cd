@@ -29,9 +29,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 
     // Rutas de los controladores dentro del Namespace "App\Http\Controllers\Admin"
     Route::get('permiso', 'PermissionsController@index')->name('permiso');
-    Route::get('permiso/crear', 'PermissionsController@create')->name('crear');
-    Route::get('permiso/editar', 'PermissionsController@edit')->name('editar');
-    Route::get('permiso/formulario', 'PermissionsController@form')->name('formlario');
+    Route::get('permiso/crear', 'PermissionsController@create')->name('crear_permiso');
+
+    Route::post('permiso', 'PermissionsController@store')->name('guardar_permiso');
+
+    Route::get('permiso/{id}/editar', 'PermissionsController@edit')->name('editar_permiso');
+
+    Route::put('permiso/{id}', 'PermissionsController@update')->name('actualizar_permiso');
+    Route::delete('permiso/{id}', 'PermissionsController@destroy')->name('eliminar_permiso');
+
+    //Route::get('permiso/formulario', 'PermissionsController@form')->name('formlario_permiso');
      /*MENUS*/
     Route::get('menu', 'MenusController@index')->name('menu');
     Route::get('menu/crear', 'MenusController@create')->name('crear_menu');
