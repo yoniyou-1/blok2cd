@@ -21,7 +21,7 @@ class CreatePermissionsRolesTable extends Migration
 
             $table->foreignId('permission_id','fk_permissionrol_permissions')->nullable()->references('id')->on('permissions')->onDelete(
                 'restrict')->onUpdate('restrict');
-            $table->boolean('state');
+            //$table->boolean('state');
             $table->timestamps();
             $table->charset='utf8mb4';
             $table->collation= 'utf8mb4_spanish_ci' ;

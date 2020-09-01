@@ -60,6 +60,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
         /*RUTAS MENU_ROL*/
     Route::get('menu-rol', 'MenusRolesController@index')->name('menu_rol');
     Route::post('menu-rol', 'MenusRolesController@store')->name('guardar_menu_rol');
+        /*RUTAS PERMISO_ROL*/
+    Route::get('permiso-rol', 'PermissionsRolesController@index')->name('permiso_rol');
+    Route::post('permiso-rol', 'PermissionsRolesController@store')->name('guardar_permiso_rol');
 
 });
 
