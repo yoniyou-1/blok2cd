@@ -33,7 +33,7 @@ Menus
                     </a>
               </div>
 			<!-- /.card-header -->
-			<div class="card-body ">
+			<div class="card-body table-responsive no-padding">
 				@csrf
 				<!-- /.card-body -->
 				<div class="dd" id="nestable">

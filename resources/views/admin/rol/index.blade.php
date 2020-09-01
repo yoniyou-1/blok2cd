@@ -23,7 +23,7 @@ Menus
               </div>
 			<!-- /.card-header -->
 			
-			<div class="card-body ">
+			<div class="card-body table-responsive no-padding">
 				<!-- /.card-body -->
 				<table class="table table-striped table-bordered table-hover" id="tabla-data">
                     <thead>

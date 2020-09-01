@@ -26,7 +26,7 @@ Menus
               </div>
 			<!-- /.card-header -->
 			
-			<div class="card-body ">
+			<div class="card-body table-responsive no-padding">
 				<!-- /.card-body -->
 				<table class="table table-striped table-bordered table-hover" id="tabla-data">
                     <thead>
@@ -34,7 +34,7 @@ Menus
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Slug</th>
-                            <th>Acciones</th>
+                            <th class="width70"></th>
                             
                         </tr>
                     </thead>
