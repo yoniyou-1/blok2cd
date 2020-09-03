@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Documento;
-
+//use Illuminate\Support\Facades\Cache;
 class DocumentosController extends Controller
 {
     /**
@@ -14,6 +14,11 @@ class DocumentosController extends Controller
      */
     public function index()
     {
+        //dd(cache()->tags('Permiso')->get('Permiso.rolid.2'));
+        //cache::tags(['Permiso'])->flush();
+        //cache()->tags('Permiso')->flush();
+        //dd(cache()->tags('Permiso')->get('Permiso.rolid.2'));
+        can('listar-doumento');
         $datas = Documento::orderBy('id')->get();
         return view('documento.index', compact('datas'));
     }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Permission;
 use App\Models\Admin\Rol;
+//use Illuminate\Support\Facades\Cache;
 
 class PermissionsRolesController extends Controller
 {
@@ -42,7 +43,8 @@ class PermissionsRolesController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //cache::tags(['Permiso'])->flush();
+        cache()->tags('Permiso')->flush();
         if ($request->ajax()) {
             $permissions = new Permission();
             if ($request->input('estado') == 1) {

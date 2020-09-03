@@ -16,8 +16,10 @@ class TablePermissionsRolesSeeder extends Seeder
         $now = Carbon::now()->toDateTimeString();
         $permissionsRoles = [
         	array('id' => '1','rol_id' => '1','permission_id' => '1','created_at' => $now,'updated_at' => $now),
-  			array('id' => '2','rol_id' => '1','permission_id' => '2','created_at' => $now,'updated_at' => $now),
-  			array('id' => '3','rol_id' => '1','permission_id' => '3','created_at' => $now,'updated_at' => $now)
+            array('id' => '2','rol_id' => '1','permission_id' => '2','created_at' => $now,'updated_at' => $now),
+  			array('id' => '3','rol_id' => '1','permission_id' => '3','created_at' => $now,'updated_at' => $now),
+  			array('id' => '4','rol_id' => '1','permission_id' => '4','created_at' => $now,'updated_at' => $now),
+            array('id' => '5','rol_id' => '2','permission_id' => '1','created_at' => $now,'updated_at' => $now)
         ];
         DB::table('permissions_roles')->insert($permissionsRoles);  
     }

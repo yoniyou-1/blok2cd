@@ -4,7 +4,7 @@ Documento
 @endsection
 
 @section("scripts")
-<script src="{{asset("assets/pages/scripts/documentos/index.js")}}" type="text/javascript"></script>
+<script src="{{asset("assets/pages/scripts/documento/index.js")}}" type="text/javascript"></script>
 @endsection
 
 @section('contenido')
