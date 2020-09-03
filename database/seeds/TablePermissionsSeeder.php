@@ -15,8 +15,9 @@ class TablePermissionsSeeder extends Seeder
     {
         $now = Carbon::now()->toDateTimeString();
         $permisos = [
-            array('id' => '1', 'name' => 'Crear Sisco', 'slug' => 'crear-sisco', 'created_at' => $now, 'updated_at' => $now),
-            array('id' => '2', 'name' => 'Asignar sisco', 'slug' => 'prestar-sisco', 'created_at' => $now, 'updated_at' => $now)
+            array('id' => '1', 'name' => 'Crear doumento', 'slug' => 'crear-doumento', 'created_at' => $now, 'updated_at' => $now),
+            array('id' => '2', 'name' => 'editar doumento', 'slug' => 'editar-doumento', 'created_at' => $now, 'updated_at' => $now),
+            array('id' => '3', 'name' => 'eliminar doumento', 'slug' => 'eliminar-doumento', 'created_at' => $now, 'updated_at' => $now)
         ];
         DB::table('permissions')->insert($permisos);
     }

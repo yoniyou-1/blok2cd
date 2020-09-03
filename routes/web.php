@@ -66,3 +66,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 
 });
 
+ /*RUTAS Documentos*/
+    Route::get('documento', 'DocumentosController@index')->name('documento');
+    Route::get('documento/crear', 'DocumentosController@create')->name('crear_documento');
+    Route::post('documento', 'DocumentosController@store')->name('guardar_documento');
+    Route::get('documento/{id}/editar', 'DocumentosController@edit')->name('editar_documento');
+    Route::put('documento/{id}', 'DocumentosController@update')->name('actualizar_documento');
+    Route::delete('documento/{id}', 'DocumentosController@destroy')->name('eliminar_documento');

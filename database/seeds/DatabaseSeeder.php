@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             'usuarios',
             'usuarios_roles',
             'menus',
-            'menus_roles'
+            'menus_roles',
+            'permissions_roles'
         ]);
         // $this->call(UsersTableSeeder::class);
         $this->call(TableRolesSeeder::class);
@@ -26,6 +27,9 @@ class DatabaseSeeder extends Seeder
         $this->call(UsuarioAdministradorSeeder::class);
         $this->call(TableMenusSeeder::class);
         $this->call(TableMenusRolesSeeder::class);
+        $this->call(TablePermissionsRolesSeeder::class);
+        
+
     }
 
     protected function truncateTablas(array $tablas)
