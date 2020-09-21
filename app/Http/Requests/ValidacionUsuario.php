@@ -23,15 +23,26 @@ class ValidacionUsuario extends FormRequest
      */
     public function rules()
     {
-        return [
-            'user' => 'required|max:50|unique:usuarios,user,' . $this->route('id'),
-            'name' => 'required|max:50',
-            //'surname' => 'required|max:50',
-            //'dni' => 'required|max:50'|'unique:dni,usuarios,',
-            //'email' => 'required|email|max:100|unique:usuario,email,' . $this->route('id'),
-            'password' => 'required|min:5',
-            're_password' => 'required|same:password',
-            'rol_id' => 'required|integer'
-        ];
+        if ($this->route('id')) {
+            return [
+                'user' => 'required|max:50|unique:usuarios,user,' . $this->route('id'),
+                'name' => 'required|max:50',
+                //'surname' => 'required|max:50',
+                //'dni' => 'required|max:50'|'unique:dni,usuarios,',
+                //'email' => 'required|email|max:100|unique:usuario,email,' . $this->route('id'),
+                'password' => 'nullable|min:5',
+                're_password' => 'nullable|required_with:password|min:5|same:password',
+                'rol_id' => 'required|integer'
+            ];
+        } else {
+            return [
+                'user' => 'required|max:50|unique:usuarios,user,' . $this->route('id'),
+                'name' => 'required|max:50',
+                //'email' => 'required|email|max:100|unique:usuario,email,' . $this->route('id'),
+                'password' => 'required|min:5',
+                're_password' => 'required|min:5|same:password',
+                'rol_id' => 'required|integer'
+            ];
+        }    
     }
 }

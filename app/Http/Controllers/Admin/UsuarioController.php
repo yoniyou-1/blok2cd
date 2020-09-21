@@ -38,7 +38,7 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionUsuario $request)
     {
 
         $usuario = Usuario::create($request->all());
@@ -78,9 +78,9 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionUsuario $request, $id)
     {
-        Usuario::findOrFail($id)->update($request->all());
+        Usuario::findOrFail($id)->update(array_filter($request->all()));
         return redirect('admin/usuario')->with('mensaje', 'Usuario actualizado con exito');
     }
 
