@@ -95,6 +95,13 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if ($request->ajax()) {
+            $usuario = Usuario::findOrFail($id);
+            $usuario->roles()->detach();
+            $usuario->delete();
+            return response()->json(['mensaje' => 'ok']);
+         } else {
+            abort(404);
+        }
     }
 }
