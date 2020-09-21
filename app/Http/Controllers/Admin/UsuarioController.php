@@ -40,7 +40,7 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $usuario = Usuario::create($request->all());
 
         $usuario->roles()->attach($request->rol_id);
@@ -66,7 +66,9 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-        //
+        $rols = Rol::orderBy('id')->pluck('name', 'id')->toArray();
+        $data = Usuario::with('roles')->findOrFail($id);
+        return view('admin.usuario.editar', compact('data', 'rols'));
     }
 
     /**
@@ -78,7 +80,8 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Usuario::findOrFail($id)->update($request->all());
+        return redirect('admin/usuario')->with('mensaje', 'Usuario actualizado con exito');
     }
 
     /**

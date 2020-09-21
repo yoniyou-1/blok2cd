@@ -24,7 +24,7 @@ class ValidacionUsuario extends FormRequest
     public function rules()
     {
         return [
-            'user' => 'required|max:50|unique:user,usuarios,' . $this->route('id'),
+            'user' => 'required|max:50|unique:usuarios,user,' . $this->route('id'),
             'name' => 'required|max:50',
             //'surname' => 'required|max:50',
             //'dni' => 'required|max:50'|'unique:dni,usuarios,',
