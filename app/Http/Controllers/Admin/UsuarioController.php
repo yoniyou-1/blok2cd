@@ -17,7 +17,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $datas = Usuario::orderBy('id')->get();
+        $datas = Usuario::with('roles')->orderBy('id')->get();
         return view('admin.usuario.index', compact('datas'));
     }
 
@@ -80,7 +80,10 @@ class UsuarioController extends Controller
      */
     public function update(ValidacionUsuario $request, $id)
     {
-        Usuario::findOrFail($id)->update(array_filter($request->all()));
+        //Usuario::findOrFail($id)->update(array_filter($request->all()));
+        $usuario = Usuario::findOrFail($id);
+        $usuario->update(array_filter($request->all()));
+        $usuario->roles()->sync($request->rol_id);
         return redirect('admin/usuario')->with('mensaje', 'Usuario actualizado con exito');
     }
 
