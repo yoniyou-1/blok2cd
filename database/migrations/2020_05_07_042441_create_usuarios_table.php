@@ -15,9 +15,11 @@ class CreateUsuariosTable extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-             $table->string('user',50);
-              $table->string('password',100);
-               $table->string('name',50);
+            $table->string('user',50);
+            $table->string('dni',50);
+            $table->string('password',100);
+            $table->string('name',50);
+            $table->string('lastname',50);
             $table->timestamps();
             $table->charset='utf8mb4';
             $table->collation= 'utf8mb4_spanish_ci' ;

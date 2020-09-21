@@ -18,7 +18,7 @@ class TableMenusSeeder extends Seeder
         $menu = [
   array('id' => '1','name' => 'Amin','url' => 'admin','orden' => '2','icon' => 'fa-wrench','menu_id' => '0','created_at' => $now,'updated_at' => $now),
   array('id' => '2','name' => 'listar menus','url' => 'admin/menu','orden' => '1','icon' => 'fa-circle','menu_id' => '6','created_at' => $now,'updated_at' => $now),
-  array('id' => '3','name' => 'Usuarios','url' => 'usuario','orden' => '3','icon' => 'fa-circle','menu_id' => '0','created_at' => $now,'updated_at' => $now),
+  array('id' => '3','name' => 'Usuarios','url' => 'admin/usuario','orden' => '6','icon' => 'fa-circle','menu_id' => '6','created_at' => $now,'updated_at' => $now),
   array('id' => '4','name' => 'rol','url' => 'admin/rol','orden' => '2','icon' => 'fa-circle','menu_id' => '6','created_at' => $now,'updated_at' => $now),
   array('id' => '5','name' => 'menu-rol','url' => 'admin/menu-rol','orden' => '3','icon' => 'fa-circle','menu_id' => '6','created_at' => $now,'updated_at' => $now),
   array('id' => '6','name' => 'Menú','url' => '#','orden' => '1','icon' => 'fa-bars','menu_id' => '1','created_at' => $now,'updated_at' => $now),

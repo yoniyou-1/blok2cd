@@ -21,7 +21,7 @@ class CreateUsuariosRolesTable extends Migration
 
             $table->foreignId('usuario_id','fk_usuariorol_usuarios')->nullable()->references('id')->on('usuarios')->onDelete(
                 'restrict')->onUpdate('restrict');
-            $table->boolean('state');
+            $table->boolean('state')->default(1);
             $table->timestamps();
             $table->charset='utf8mb4';
             $table->collation= 'utf8mb4_spanish_ci' ;

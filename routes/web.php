@@ -63,7 +63,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
         /*RUTAS PERMISO_ROL*/
     Route::get('permiso-rol', 'PermissionsRolesController@index')->name('permiso_rol');
     Route::post('permiso-rol', 'PermissionsRolesController@store')->name('guardar_permiso_rol');
-
+    /*RUTAS DE USUARIO*/
+    Route::get('usuario', 'UsuarioController@index')->name('usuario');
+    Route::get('usuario/crear', 'UsuarioController@create')->name('crear_usuario');
+    Route::post('usuario', 'UsuarioController@store')->name('guardar_usuario');
+    Route::get('usuario/{id}/editar', 'UsuarioController@edit')->name('editar_usuario');
+    Route::put('usuario/{id}', 'UsuarioController@update')->name('actualizar_usuario');
+    Route::delete('usuario/{id}', 'UsuarioController@destroy')->name('eliminar_usuario');
 });
 
  /*RUTAS Documentos*/

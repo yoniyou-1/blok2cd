@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class MenuRol extends Model
 {
     protected $table = 'menus_roles';
-    public $timestamp = false;
+    //public $timestamp = false;
 }

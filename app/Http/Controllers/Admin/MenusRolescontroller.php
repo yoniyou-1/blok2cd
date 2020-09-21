@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Rol;
 use App\Models\Admin\Menu;
+use App\Models\Admin\MenuRol;
 
 class MenusRolesController extends Controller
 {

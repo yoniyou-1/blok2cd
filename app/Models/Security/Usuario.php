@@ -6,6 +6,8 @@ namespace App\Models\Security;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Admin\Rol;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
+
 
 class Usuario extends Authenticatable
 {
@@ -13,12 +15,12 @@ class Usuario extends Authenticatable
 
     protected $remember_token = false;
     protected $table = 'usuarios';
-    protected $fillable = ['user', 'name', 'password'];
+    protected $fillable = ['user', 'name', 'password','dni','lastname'];
     protected $guarded = ['id'];
 
     public function roles()
     {
-        return $this->belongsToMany(Rol::class, 'usuarios_roles');
+        return $this->belongsToMany(Rol::class, 'usuarios_roles')->withTimestamps();
     }
 
     public function setSession($roles)
@@ -34,6 +36,12 @@ class Usuario extends Authenticatable
                 ]
             );
         }
+    }
+
+    
+    public function setPasswordAttribute($pass)
+    {
+        $this->attributes['password'] = Hash::make($pass);
     }
 
 }
