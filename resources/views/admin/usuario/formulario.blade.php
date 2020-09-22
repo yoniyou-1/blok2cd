@@ -8,7 +8,7 @@
 <div class="form-group row">
 	<label for="dni" class="col-lg-3 col-form-label requerido">Cedula</label>
 	<div class="col-lg-8">
-		<input type="text"  name="dni" id="dni" class="form-control" value="{{ old('dni', $data->dni ?? '') }}" required/>
+		<input type="number"  name="dni" id="dni" class="form-control" value="{{ old('dni', $data->dni ?? '') }}" />
 	</div>
 </div>
 <div class="form-group row">
@@ -26,14 +26,14 @@
 <div class="form-group row">
     <label for="password" class="col-lg-3 control-label {{!isset($data) ? 'requerido' : ''}}">Contraseña</label>
     <div class="col-lg-8">
-        <input type="password" name="password" id="password" class="form-control" value="" {{!isset($data) ? 'required' : ''}} minlength="5"/>
+        <input type="password" name="password" id="password" class="form-control" value="" {{!isset($data) ? 'required' : ''}} minlength="6"/>
     </div>
 </div>
 
 <div class="form-group row">
     <label for="re_password" class="col-lg-3 control-label {{!isset($data) ? 'requerido' : ''}}">Repita Contraseña</label>
     <div class="col-lg-8">
-        <input type="password" name="re_password" id="re_password" class="form-control" value="" {{!isset($data) ? 'required' : ''}} minlength="5"/>
+        <input type="password" name="re_password" id="re_password" class="form-control" value="" {{!isset($data) ? 'required' : ''}} minlength="6"/>
     </div>
 </div>
 
