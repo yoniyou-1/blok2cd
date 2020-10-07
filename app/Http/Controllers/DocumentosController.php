@@ -18,7 +18,7 @@ class DocumentosController extends Controller
         //cache::tags(['Permiso'])->flush();
         //cache()->tags('Permiso')->flush();
         //dd(cache()->tags('Permiso')->get('Permiso.rolid.2'));
-        can('listar-doumento');
+        can('listar-documento');
         $datas = Documento::orderBy('id')->get();
         return view('documento.index', compact('datas'));
     }
@@ -30,7 +30,9 @@ class DocumentosController extends Controller
      */
     public function create()
     {
-        //
+        //dd(cache()->tags('Permiso')->get('Permiso.rolid.2'));
+        can('crear-documento');
+        return view('documento.crear');
     }
 
     /**

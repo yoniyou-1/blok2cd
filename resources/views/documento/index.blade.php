@@ -1,6 +1,6 @@
 @extends("theme.$theme.layout")
 @section('titulo')
-Documento
+Documentos
 @endsection
 
 @section("scripts")

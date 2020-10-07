@@ -28,14 +28,15 @@ if (!function_exists('canUser')) {
                     $query->where('rol_id', session()->get('rol_id'));
                 })->get()->pluck('slug')->toArray();
             });
+            //dd($permisos);
             if (!in_array($permiso, $permisos)) {
-                if ($redirect) {
-                    if (!request()->ajax())
-                        return redirect()->route('inicio')->with('mensaje', 'No tienes permisos para entrar en este modulo')->send();
-                    abort(403, 'No tiene permiso');
-                } else {
-                    return false;
-                }
+                 if ($redirect) {
+                     if (!request()->ajax())
+                         return redirect()->route('inicio')->with('mensaje', 'No tienes permisos para entrar en este modulo')->send();
+                     abort(403, 'No tiene permiso');
+                 } else {
+                     return false;
+                 }
             }
             return true;
         }
