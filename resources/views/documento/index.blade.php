@@ -35,7 +35,7 @@ Documentos
                     <tbody>
                         @foreach ($datas as $data)
                         <tr>
-                            <td>{{$data->name}}</td>
+                            <td>{{$data->title}}</td>
                             <td>
                                 <a href="{{route('editar_documento', ['id' => $data->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
                                     <i class="fa fa-fw fa-circle"></i>

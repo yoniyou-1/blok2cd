@@ -15,12 +15,12 @@ class CreateDocumentosTable extends Migration
     {
         Schema::create('documentos', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('tipo');
+            $table->tinyInteger('tipo_document_id');
             $table->string('identificador', 30);
             //$table->unique( array('tipo','identificador') );
             $table->string('ncontrol', 30)->nullable();
             $table->string('title', 100);
-            $table->tinyInteger('tiposolicitud')->nullable();
+            $table->tinyInteger('tipo_solicitud')->nullable();
             $table->string('observation', 100)->nullable();
             $table->tinyInteger('estado')->nullable();
             $table->string('foto', 100)->nullable();

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Documento;
 //use Illuminate\Support\Facades\Cache;
+//use App\Http\Requests\ValidacionDocumento;
 class DocumentosController extends Controller
 {
     /**
@@ -43,7 +44,11 @@ class DocumentosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $documento = Documento::create($request->all());
+        if ($foto = Documento::setCaratula($request->foto_up))
+           $request->request->add(['foto' => $foto]);
+         return redirect('documento')->with('mensaje', 'documento creado con exito');
     }
 
     /**
