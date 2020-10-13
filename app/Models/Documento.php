@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-//use Intervention\Image\Facades\Image;
-use Intervention\Image\Facades\Image as Image;
+use Intervention\Image\Facades\Image;
+//use Intervention\Image\Facades\Image as Image;
 
 class Documento extends Model
 {
