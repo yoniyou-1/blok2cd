@@ -11,6 +11,7 @@ Documentos
 
 <div class="row">
 	<div class="col-md-12">
+        @csrf
 		@include('includes.mensaje')
 		<div class="card card-primary card-info">
 			<div class="card-header with-border">
@@ -29,12 +30,14 @@ Documentos
                     <thead>
                         <tr>
                             <th>Titulo</th>
+                            <th>Titulo</th>
                             <th class="width70"></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($datas as $data)
                         <tr>
+                            <td><a href="{{route('ver_documento', $data)}}" class="ver-documento">{{$data->title}}</a></td>
                             <td>{{$data->title}}</td>
                             <td>
                                 <a href="{{route('editar_documento', ['id' => $data->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
@@ -58,7 +61,23 @@ Documentos
 			</div>
 		</div>
 	</div>
-
+<!-- /.Modal -->
+<div class="modal fade" id="modal-ver-documento" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                 <h4 class="modal-title">Documento</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
 	@endsection
 
 

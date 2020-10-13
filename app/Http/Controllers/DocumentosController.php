@@ -48,6 +48,8 @@ class DocumentosController extends Controller
         //$documento = Documento::create($request->all());
         if ($foto = Documento::setCaratula($request->foto_up))
            $request->request->add(['foto' => $foto]);
+        //dd($request->all());
+        Documento::create($request->all());
          return redirect('documento')->with('mensaje', 'documento creado con exito');
     }
 
@@ -57,9 +59,10 @@ class DocumentosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Documento $documento)
     {
-        //
+        //dd($documento);
+        return view('documento.ver', compact('documento'));
     }
 
     /**
