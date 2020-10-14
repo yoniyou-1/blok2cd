@@ -73,7 +73,8 @@ class DocumentosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Documento::findOrFail($id);
+        return view('documento.editar', compact('data'));
     }
 
     /**
@@ -85,7 +86,12 @@ class DocumentosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+          $documento = Documento::findOrFail($id);
+          //dd($documento->foto);
+        if ($foto = Documento::setCaratula($request->foto_up, $documento->foto))
+            $request->request->add(['foto' => $foto]);
+        $documento->update($request->all());
+        return redirect()->route('documento')->with('mensaje', 'El documento se actualizó correctamente');
     }
 
     /**
