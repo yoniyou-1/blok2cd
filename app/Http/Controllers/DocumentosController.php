@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Documento;
 //use Illuminate\Support\Facades\Cache;
 //use App\Http\Requests\ValidacionDocumento;
+use Illuminate\Support\Facades\Storage;
 class DocumentosController extends Controller
 {
     /**
@@ -100,8 +101,18 @@ class DocumentosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            $documento = Documento::findOrFail($id);
+            if (Documento::destroy($id)) {
+                Storage::disk('public')->delete("imagenes/caratulas/$documento->foto");
+                return response()->json(['mensaje' => 'ok']);
+            } else {
+                return response()->json(['mensaje' => 'ng']);
+            }
+        } else {
+            abort(404);
+        }
     }
 }
