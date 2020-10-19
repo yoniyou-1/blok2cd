@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Documento;
 //use Illuminate\Support\Facades\Cache;
-//use App\Http\Requests\ValidacionDocumento;
+use App\Http\Requests\ValidacionDocumento;
 use Illuminate\Support\Facades\Storage;
 class DocumentosController extends Controller
 {
@@ -43,7 +43,7 @@ class DocumentosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionDocumento $request)
     {
         //dd($request->all());
         //$documento = Documento::create($request->all());
@@ -85,7 +85,7 @@ class DocumentosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionDocumento $request, $id)
     {
           $documento = Documento::findOrFail($id);
           //dd($documento->foto);
