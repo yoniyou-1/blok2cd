@@ -1,6 +1,6 @@
 @extends("theme.$theme.layout")
 @section('titulo')
-Rol
+Tipo Documento
 @endsection
 
 
@@ -16,16 +16,16 @@ Rol
 		@include('includes.mensaje')
 		<div class="card card-primary card-info">
 			<div class="card-header">
-				<h3 class="card-title"> Crear Rol</h3>
+				<h3 class="card-title"> Crear Tipo de Documento</h3>
 			</div>
 			<div class="card-tools pull-right">
-                    <a href="{{route('rol')}}" class="btn btn-block btn-info btn-sm">
+                    <a href="{{route('tipodoc')}}" class="btn btn-block btn-info btn-sm">
                         <i class="fa fa-fw fa-reply-all"></i> Volver al listado
                     </a>
              </div>
 			  <!-- /.card-header -->
               <!-- form start -->
-		<form action="{{route('guardar_rol')}}" id="form-general" class="form-horizontal" method="POST" autocomplete="off">
+		<form action="{{route('guardar_tipodoc')}}" id="form-general" class="form-horizontal" method="POST" autocomplete="off">
 			@csrf
 			<div class="card-body ">
 				@include('admin.rol.formulario')

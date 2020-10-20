@@ -70,6 +70,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('usuario/{id}/editar', 'UsuarioController@edit')->name('editar_usuario');
     Route::put('usuario/{id}', 'UsuarioController@update')->name('actualizar_usuario');
     Route::delete('usuario/{id}', 'UsuarioController@destroy')->name('eliminar_usuario');
+     /*RUTAS TIPODOCUMENTOS*/
+    Route::get('tipodoc', 'TipodocsController@index')->name('tipodoc');
+    Route::get('tipodoc/crear', 'TipodocsController@create')->name('crear_tipodoc');
+    Route::post('tipodoc', 'TipodocsController@store')->name('guardar_tipodoc');
+    Route::get('tipodoc/{id}/editar', 'TipodocsController@edit')->name('editar_tipodoc');
+    Route::put('tipodoc/{id}', 'TipodocsController@update')->name('actualizar_tipodoc');
+    Route::delete('tipodoc/{id}', 'TipodocsController@destroy')->name('eliminar_tipodoc');
 });
 
  /*RUTAS Documentos*/
