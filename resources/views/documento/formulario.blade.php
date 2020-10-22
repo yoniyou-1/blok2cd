@@ -1,3 +1,15 @@
+<div class="form-group ">
+    <label for="tipodoc_id" class="col-lg-3 control-label requerido">Tipo</label>
+    <div class="col-lg-8">
+        <select name="tipodoc_id" id="tipodoc_id" class="form-control" required>
+            <option value="">Seleccione el rol</option>
+            @foreach($tipodocs as $id => $name)
+                <option value="{{$id}}" {{old("tipodoc_id", $data->tipodocs[0]->id ?? "") == $id ? "selected" : ""}}>{{$name}}</option>
+            @endforeach
+        </select>
+    </div>
+</div>
+
 <div class="form-group">
     <label for="tipo_document_id" class="col-lg-3 control-label">Tipo</label>
     <div class="col-lg-8">

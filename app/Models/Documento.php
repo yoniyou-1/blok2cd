@@ -7,12 +7,19 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 //use Intervention\Image\Facades\Image as Image;
+//pongo esto
+use App\Models\Admin\Tipodoc;
 
 class Documento extends Model
 {
     protected $table = "documentos";
     protected $fillable = ['tipo_document_id','identificador','title','ncontrol','tipo_solicitud','observation','estado','foto'];
     protected $guarded = ['id'];
+
+        public function tipodocs()
+    {
+        return $this->belongsToMany(Tipodoc::class, 'documentos_tipodocs')->withTimestamps();
+    }
 
     public static function setCaratula($foto, $actual = false){
         if ($foto) {

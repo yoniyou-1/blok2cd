@@ -31,6 +31,7 @@ Documentos
                         <tr>
                             <th>Titulo</th>
                             <th>Titulo</th>
+                            <th>tipo</th>
                             <th class="width70"></th>
                         </tr>
                     </thead>
@@ -39,6 +40,11 @@ Documentos
                         <tr>
                             <td><a href="{{route('ver_documento', $data)}}" class="ver-documento">{{$data->title}}</a></td>
                             <td>{{$data->title}}</td>
+                            <td>
+                                @foreach ($data->tipodocs as $tipodoc)
+                                    {{$loop->last ? $tipodoc->name : $tipodoc->name . ', '}}
+                                @endforeach
+                            </td>
                             <td>
                                 <a href="{{route('editar_documento', ['id' => $data->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
                                     <i class="fa fa-fw fa-circle"></i>
