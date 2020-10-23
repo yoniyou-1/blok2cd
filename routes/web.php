@@ -16,7 +16,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
-Route::get('/', 'InicioController@index')->name('inicio');
+Route::get('/', 'InicioController@index')->middleware('auth')->name('inicio');
 Route::get('seguridad/login', 'Security\LoginController@index')->name('login');
 Route::post('seguridad/login', 'Security\LoginController@login')->name('login_post');
 Route::get('seguridad/logout', 'Security\LoginController@logout')->name('logout');
@@ -82,8 +82,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
  /*RUTAS Documentos*/
     Route::get('documento', 'DocumentosController@index')->middleware('auth')->name('documento');
     Route::get('documento/crear', 'DocumentosController@create')->middleware('auth')->name('crear_documento');
-    Route::post('documento', 'DocumentosController@store')->name('guardar_documento');
-    Route::post('documento/{documento}', 'DocumentosController@show')->name('ver_documento');
+    Route::post('documento', 'DocumentosController@store')->middleware('auth')->name('guardar_documento');
+    Route::post('documento/{documento}', 'DocumentosController@show')->middleware('auth')->name('ver_documento');
     Route::get('documento/{id}/editar', 'DocumentosController@edit')->middleware('auth')->name('editar_documento');
     Route::put('documento/{id}', 'DocumentosController@update')->middleware('auth')->name('actualizar_documento');
     Route::delete('documento/{id}', 'DocumentosController@destroy')->middleware('auth')->name('eliminar_documento');

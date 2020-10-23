@@ -13,7 +13,7 @@ use App\Models\Admin\Tipodoc;
 class Documento extends Model
 {
     protected $table = "documentos";
-    protected $fillable = ['tipo_document_id','identificador','title','ncontrol','tipo_solicitud','observation','estado','foto'];
+    protected $fillable = ['identificador','title','ncontrol','tipo_solicitud','observation','estado','foto'];
     protected $guarded = ['id'];
 
         public function tipodocs()

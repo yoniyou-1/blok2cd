@@ -11,12 +11,6 @@
 </div>
 
 <div class="form-group">
-    <label for="tipo_document_id" class="col-lg-3 control-label">Tipo</label>
-    <div class="col-lg-8">
-    <input type="text" name="tipo_document_id" id="tipo_document_id" class="form-control" value="{{old('tipo_document_id', $data->tipo_document_id ?? '')}}"/>
-    </div>
-</div>
-<div class="form-group">
     <label for="identificador" class="col-lg-3 control-label requerido">Identificador</label>
     <div class="col-lg-8">
     <input type="text" name="identificador" id="identificador" class="form-control" value="{{old('identificador', $data->identificador ?? '')}}" required/>

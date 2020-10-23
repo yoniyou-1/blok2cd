@@ -19,7 +19,7 @@ class UsuarioAdministradorSeeder extends Seeder
             'dni' => '20147042',
             'name' => 'JohnnyAdmin',
             'lastname' => 'Delgado',
-            'password' => bcrypt('admin1234'),
+            'password' => bcrypt('adm1234'),
             'created_at' => $now,
             'updated_at' => $now
         ]);

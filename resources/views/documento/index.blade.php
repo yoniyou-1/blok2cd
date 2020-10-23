@@ -30,8 +30,9 @@ Documentos
                     <thead>
                         <tr>
                             <th>Titulo</th>
-                            <th>Titulo</th>
-                            <th>tipo</th>
+                            <th>Tipo</th>
+                            <th>Identificador</th>
+                            <th>N-Control</th>
                             <th class="width70"></th>
                         </tr>
                     </thead>
@@ -39,12 +40,13 @@ Documentos
                         @foreach ($datas as $data)
                         <tr>
                             <td><a href="{{route('ver_documento', $data)}}" class="ver-documento">{{$data->title}}</a></td>
-                            <td>{{$data->title}}</td>
                             <td>
                                 @foreach ($data->tipodocs as $tipodoc)
                                     {{$loop->last ? $tipodoc->name : $tipodoc->name . ', '}}
                                 @endforeach
                             </td>
+                            <td>{{$data->identificador}}</td>
+                            <td>{{$data->ncontrol}}</td>
                             <td>
                                 <a href="{{route('editar_documento', ['id' => $data->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
                                     <i class="fa fa-fw fa-circle"></i>

@@ -95,6 +95,7 @@ class DocumentosController extends Controller
      */
     public function edit($id)
     {   
+        can('editar-documento');
         //quito este
         //$data = Documento::findOrFail($id);
         //return view('documento.editar', compact('data'));
@@ -155,7 +156,8 @@ class DocumentosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, $id)
-    {
+    {   
+        can('eliminar-documento');
         //quito este
         // if ($request->ajax()) {
         //     $documento = Documento::findOrFail($id);

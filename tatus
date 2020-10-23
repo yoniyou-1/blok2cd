@@ -1,0 +1,353 @@
+[33mcommit 77f8c7308710d1ea796c93662b509a399959cc97[m[33m ([m[1;36mHEAD -> [m[1;32mrama27[m[33m, [m[1;32mrama26[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Johnny E. Delgado Rangel <jedelgado@bod.com.ve>
+Date:   Thu Oct 22 12:42:49 2020 -0400
+
+    ya funciona la validacion UniqueCompuesto del selector tipodoc_id en el modulo de documento falta retirar el campo tipo_document_id ya remplazado por el selector
+
+[33mcommit d699bb1b1a5f58ea16763a74b98f3b1c31e54052[m[33m ([m[1;32mrama25[m[33m)[m
+Author: Johnny E. Delgado Rangel <jedelgado@bod.com.ve>
+Date:   Tue Oct 20 16:43:11 2020 -0400
+
+    creado el modulo tipo documento
+
+[33mcommit ae2251ffb809f5208d9f5896590d03ca8965d0a7[m[33m ([m[1;32mrama24[m[33m)[m
+Author: Johnny E. Delgado Rangel <jedelgado@bod.com.ve>
+Date:   Mon Oct 19 16:27:07 2020 -0400
+
+    quitar la libreria no tulizada para campos compuesto ya funciona campos comuestos unicos documento
+
+[33mcommit 40fadb0eee2b82b06d2a2fed1fecd02c1fcf03ae[m[33m ([m[1;32mrama23[m[33m)[m
+Author: Johnny E. Delgado Rangel <jedelgado@bod.com.ve>
+Date:   Thu Oct 15 11:23:05 2020 -0400
+
+    ya elimina funcion ajax elminar y facade iluminate storage faltan validaciones selectores e impt texts dinamics
+
+[33mcommit c48a1ee70a8d798de3691e5aaff5006261e70529[m
+Author: Johnny E. Delgado Rangel <jedelgado@bod.com.ve>
+Date:   Wed Oct 14 14:28:19 2020 -0400
+
+    ya edita documento asi como ya edita imagen falta aliminar registro
+
+[33mcommit 85338454ed15a8064535637cba2ecec08ed1276a[m
+Author: Johnny E. Delgado Rangel <jedelgado@bod.com.ve>
+Date:   Tue Oct 13 13:58:05 2020 -0400
+
+    modar ver documento sigueindo con el tratamiento de imagenes luego de acoplar intervention image falta aplicar el artisan storage aun no elimina filas del index ni edita
+
+[33mcommit be02eef5325e95ef2fc6d20bb326f9707067051d[m[33m ([m[1;32mrama22[m[33m)[m
+Author: Johnny E. Delgado Rangel <jedelgado@bod.com.ve>
+Date:   Tue Oct 13 08:40:32 2020 -0400
+
+    instalado el paquete intervention image nada mas
+
+[33mcommit d2f8717a73758f1269efa8b176e5936224e23be7[m[33m ([m[1;32mrama21[m[33m)[m
+Author: Johnny E. Delgado Rangel <jedelgado@bod.com.ve>
+Date:   Thu Oct 8 14:06:25 2020 -0400
+
+    ya inserta basicos imputs en la db falta la imagen e instalar la libreria intervention image para la carga de imagenes archivos afectadosDocC Mdoc MigrateDoc vistas crear form y rutas agragdo libreria de bootstraofileimput ya se ven del aldo del cliente la previsuaalizacion de la imagen falta que guarde la imagen en el disco local y almacene la ruta en la db de la img
+
+[33mcommit e7edb2b8b50ede52decfde281d5dc0241d33e364[m[33m ([m[1;32mrama20[m[33m)[m
+Author: Johnny E. Delgado Rangel <jedelgado@bod.com.ve>
+Date:   Wed Oct 7 12:39:41 2020 -0400
+
+    agregando funciones en biblioteca de helpers nuevo documento controller mejora en los seeders permiso rol permiso nuevo js en documento agrgando middleware en las rutas de documentos y creando vistas de ducomentos crear index y formulario
+
+[33mcommit 3cdd39a8afdb5aa98529303d4fa8dee4b5b8e8de[m[33m ([m[1;32mrama19[m[33m)[m
+Author: Johnny E. Delgado Rangel <jedelgado@bod.com.ve>
+Date:   Tue Sep 22 15:44:34 2020 -0400
+
+    arreglos en validacion contrasena y la vista usuario index ahora muestra el rol
+
+[33mcommit 87c00560befaccf38055cbe1e0969ecb773becac[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mrama18[m[33m)[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Mon Sep 21 06:02:43 2020 -0400
+
+    aun falta recien colocando el ajax para eliminar usuario no found cierre y luego continuar
+
+[33mcommit 8ab89bb72887954487c9909fe911512ea8ce9c29[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Mon Sep 21 05:58:37 2020 -0400
+
+    ya actualiza el rol del usuario vt36
+
+[33mcommit 75177d0ee6215685ca430baf3fc553f76dcc91ef[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Mon Sep 21 05:42:16 2020 -0400
+
+    siguiendo con usuarios mejorando la validacion usuario falta el rol del usuario actualizado
+
+[33mcommit 5a01322db783d9caabb72ce50db7659f5c0a7a3c[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Mon Sep 21 04:39:19 2020 -0400
+
+    ya edita falta que edite con el selector de rol para el usuario
+
+[33mcommit 618a0cfd2a2fe70d6e7eb01175597d3353bc7b92[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Mon Sep 21 03:57:08 2020 -0400
+
+    ya guarda usuario falta validar unos campitos
+
+[33mcommit 04cbcb602e42565974dc203261d65879951c8501[m[33m ([m[1;32mrama17[m[33m)[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Thu Sep 3 12:46:16 2020 -0400
+
+    ya funciona hlepers can para documento y modificaciones en migraciones y seeders
+
+[33mcommit b37e1b7c0bd7e7eef6c8dcb02b54b12e91dc0e3c[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Thu Sep 3 05:26:29 2020 -0400
+
+    index de documentos y nuevas creaciones , modificaciones en migraciones , seeders y rutas
+
+[33mcommit bdf75f677b2b349205c71987a3158fee3a47d2a5[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Thu Sep 3 01:17:25 2020 -0400
+
+    arreglos visuales a permiso-rol
+
+[33mcommit 8c9426799689ba4987c7be331aeb0f3ac47d8a75[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Tue Sep 1 17:15:35 2020 -0400
+
+    creado y ya funciona el belongsToMany para permiso-rol faltan detalles visuales
+
+[33mcommit e3ac4d0b8df34133dc775701b844ca7bfac4886f[m[33m ([m[1;32mrama16[m[33m)[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Tue Sep 1 11:29:08 2020 -0400
+
+    solo responsive tablas index r16 t29
+
+[33mcommit f855c5d9cd50a5a15bf2bd01a13f42f430a93187[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Tue Sep 1 09:02:06 2020 -0400
+
+    CRUD de permiso vtt29 ram16 request validarPermiso script permisoCrearJS y modificacion en los necesarios para el crud
+
+[33mcommit 533a0c5e3a80951d116f5b9803694b1cd65cdb42[m[33m ([m[1;32mrama15[m[33m)[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Fri Aug 28 13:38:46 2020 -0400
+
+    sedders de tables menus y menusroles quitando doble comillas del index login
+
+[33mcommit 097fa5f19311333b8d2e7457b06325716d947dce[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Fri Aug 28 02:34:05 2020 -0400
+
+    ya muestra mensaje error por no poder eliminar en ajax y nomal ya que hay recursos usandolo try constrains forany key error DB
+
+[33mcommit e35c94ce8878eab84363f40bbe9885626160af1e[m[33m ([m[1;32mrama14[m[33m)[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Tue Aug 25 18:22:39 2020 -0400
+
+    editar y eliminar menu falta constrains con menu-rol capturar evento error y mostrar mensaje esta siendo usado
+
+[33mcommit cf584338d16b4a95f8d81682f7e0c3ac054119e5[m[33m ([m[1;32mrama13[m[33m)[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Tue Aug 25 07:46:56 2020 -0400
+
+    nuevas sentencias en el appserviceprovider if url active y menu-open js
+
+[33mcommit e203af0533fe7c6bc4d8bb960ec4b1c425a3c132[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Mon Aug 24 18:01:17 2020 -0400
+
+    probando funcionamiento del Helpers composer dump-autoload
+
+[33mcommit a53dcc5522c79f979be2766db8bb1471e73aae8c[m[33m ([m[1;32mrama12[m[33m)[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Sun Aug 23 18:55:08 2020 -0400
+
+    ya middleware superadmin y basico con usuarios roles
+
+[33mcommit f2d2bd32a6bfaefcfc8a21b396a6f9a6540290e9[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Sun Aug 23 18:33:22 2020 -0400
+
+    ya inicia sesion con middleware auth falta el mdd destinado a superamin mejorado el aside y ya tiene redirect a / incluido el mensaje en layout inicio
+
+[33mcommit c5baa6386ac4a054ec587d01db581b59b3d5f195[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Fri Aug 21 18:24:38 2020 -0400
+
+    ya aplicado los seeders funciona bien tt21 min21
+
+[33mcommit 96e8a31802a0a775df700774c469cb0e79009049[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Fri Aug 21 17:26:55 2020 -0400
+
+    vtt 2 falta tt21 y los sedder usuarios
+
+[33mcommit b4b3d8d5f335d6550d5da8e02bf52a3c46cd5c08[m[33m ([m[1;32mrama11[m[33m)[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Fri Aug 21 15:07:58 2020 -0400
+
+    ya instalarado  cps lrv / ui php artsn ui boopstrap npm install npm axios npm run dev
+
+[33mcommit ab2f0fea50ccbb5b8d27e3b6827f89bb6c7eaf6b[m[33m ([m[1;32mrama10[m[33m)[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Fri Aug 21 14:07:17 2020 -0400
+
+    ya no hay rolesf ahora es roles corregido letra minuscula mayuscula en los controllers Admin/MenusRolescontroller /Admin/Rolescontroller
+
+[33mcommit 513cc80296d40ae588883df027b6543972375ad1[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Tue Aug 18 01:15:47 2020 -0400
+
+    ahora el boton form editar dice reestablecer justo antes del auth
+
+[33mcommit 79af1c8434d6ac6a80851552fb57d8ab5243eced[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Thu Jun 11 15:19:51 2020 -0430
+
+    ya guarda los check de menus_roles el campo status de esa tabla es retirado de la migracion que impedia el registro
+
+[33mcommit c89fb892e55a9c83a3a938faf310b65ed704d7e4[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Thu Jun 11 12:05:40 2020 -0430
+
+    elimna relacion pero no guarda menus_roles
+
+[33mcommit 94afe6f738b6b688d8f5b6029a819d36152f81df[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Wed Jun 10 18:03:01 2020 -0430
+
+    ya quitada las url de scripts y css han sido colocados en archivos locales
+
+[33mcommit 9914ea9cf19bd7189359f8c3e59992a1db905798[m[33m ([m[1;32mrama9[m[33m)[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Tue Jun 9 10:35:35 2020 -0430
+
+    rol funciona falta quitarle enlaces externos de jss
+
+[33mcommit 19b3b253d953717d9412dcb6f3636e92e791327e[m[33m ([m[1;32mrama8[m[33m)[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Mon Jun 8 15:15:42 2020 -0430
+
+     el menu ya guarda modificacion de orden y padre
+
+[33mcommit c92cec28b49788fafc365e1a739b9a9437435d2b[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Sun Jun 7 18:24:18 2020 -0430
+
+     se fue la luz no mucho empesando el orden y movimiento de menu
+
+[33mcommit 365215dc9d4417d5930ccd7eaf7f59b7a6b57000[m[33m ([m[1;32mrama7[m[33m)[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Tue Jun 2 19:48:46 2020 -0430
+
+    ya funciona el icono y se muestra en un span y guarda bien el icono
+
+[33mcommit c0a6e0b14410a09a46a530275b7af133cb74fe15[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Tue Jun 2 15:51:49 2020 -0430
+
+    ahora listo validacion cliente junto a la validacion old del lado del servidor para el formulario crear menu
+
+[33mcommit 00b26f83a1fb1190629e9acc422457e33f6cef0d[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Tue Jun 2 07:36:40 2020 -0430
+
+    ya listo el crear menu con mensaje de ok
+
+[33mcommit fa6206fe28752d3af2077e96109156677885ee77[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Mon Jun 1 18:43:17 2020 -0430
+
+    ya valida nombre y url para insertar en tabla menus falta mensaje ok
+
+[33mcommit b29eeb0c1393b6288c95bed1f0518c1b43c07269[m[33m ([m[1;32mrama6[m[33m)[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Mon Jun 1 06:10:26 2020 -0430
+
+    ya guarda menu le falta validacion cliente
+
+[33mcommit 19fdb91c8fe8654e592cb6cc1f8fd5cc27f2c7ea[m[33m ([m[1;32mrama5[m[33m)[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Sun May 31 15:33:03 2020 -0430
+
+    cerrar y retomar solo cambio visual en resources/views/admin/permiso/index.blade.php
+
+[33mcommit a9e37c1bdd0a68a290dc456900a88b123f963a05[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Thu May 7 02:01:12 2020 -0430
+
+    migraciones y relaciones de las tablas
+
+[33mcommit 1b8f3b6add36002aa1e61f694099ad1905933c29[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Tue Apr 28 09:57:00 2020 -0430
+
+    arreglos visuales prueba de cache1
+
+[33mcommit 85697a92923f24c2a4a851914975dff568a09335[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Sun Apr 26 22:04:04 2020 -0430
+
+    link de cerrar sesion en el header
+
+[33mcommit 935eec866c237bceae297b0b01e9058ab43c95a2[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Sun Apr 26 19:13:43 2020 -0430
+
+    recien implementado redis conection predis
+
+[33mcommit b0f4853d864d56c37f2ae355731e190473d42371[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Sun Apr 26 14:55:58 2020 -0430
+
+    antes de predis
+
+[33mcommit 4e65da612ccc6a8f168e58f4cbedb92986c0d854[m[33m ([m[1;32mrama4[m[33m)[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Sat Apr 25 18:59:35 2020 -0430
+
+    guardado previo para instalar redis
+
+[33mcommit c18849caaa55a444220b55f0c61b42c8ecbe5158[m[33m ([m[1;32mrama3[m[33m)[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Sat Apr 25 15:19:12 2020 -0430
+
+    funcionando bien la primera tabla en ingles
+
+[33mcommit eba3efd1a24f71cb0e74ce750944c47cc339b977[m[33m ([m[1;32mrama2[m[33m)[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Sat Apr 25 12:09:58 2020 -0430
+
+    rama2 se arreglo llamar desde el modelo con eloquen
+
+[33mcommit ba4e1367f013b3941ae9b83e25e9f9041afe61de[m[33m ([m[1;32mrama1[m[33m)[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Fri Apr 24 06:38:22 2020 -0430
+
+    ahora con wordignore docx
+
+[33mcommit 6b39f703fa4b92ad051e87a14ce4828f4599ff59[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Tue Apr 21 19:41:24 2020 -0430
+
+    12t guardado corte electrico
+
+[33mcommit 164dfc8e452f5558b47faf25769494e952796d15[m[33m ([m[1;31morigin/rama1[m[33m)[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Tue Apr 21 09:43:23 2020 -0430
+
+    implementado el estilos lte con el blade
+
+[33mcommit 28ff476428c987c935a24cf8032a243abe29f73f[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Tue Apr 21 07:35:21 2020 -0430
+
+    antes del artisan incio controller
+
+[33mcommit 63cdf6224e196bbe5fbb59371a0cd16ca47d675f[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Fri Apr 17 04:30:57 2020 -0430
+
+    agregado el lenguaje es en rama1
+
+[33mcommit a0efcfd257dfaaf55987a995557f5dac9908ee3d[m
+Author: yoniyou-1 <youyoux1.5@gmail.com>
+Date:   Thu Apr 16 20:56:09 2020 -0430
+
+    recien instalado el proyecto

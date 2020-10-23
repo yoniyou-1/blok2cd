@@ -15,7 +15,7 @@ class CreateDocumentosTable extends Migration
     {
         Schema::create('documentos', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('tipo_document_id');
+            //$table->tinyInteger('tipo_document_id');
             $table->string('identificador', 30);
             //$table->unique( array('tipo','identificador') );
             $table->string('ncontrol', 30)->nullable();
