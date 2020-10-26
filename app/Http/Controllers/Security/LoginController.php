@@ -13,8 +13,11 @@ class LoginController extends Controller
     protected $redirectTo = '/';
 
    public function __construct()
-    {
+    {   
+        //dd(session()->all());
         $this->middleware('guest')->except('logout');
+        //dd('holaa');
+        //if($this->Auth('guest')){ dd('holak');}
     }
     /**
      * Display a listing of the resource.
@@ -22,7 +25,8 @@ class LoginController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        //dd(session()->all(),'hola');
         return view('seguridad.index');
     }
 
@@ -31,6 +35,7 @@ class LoginController extends Controller
     {
         $roles = $user->roles()->where('state', 1)->get();
         if ($roles->isNotEmpty()) {
+            //dd(session()->all(),'hola3');
             $user->setSession($roles->toArray());
 
         } else {

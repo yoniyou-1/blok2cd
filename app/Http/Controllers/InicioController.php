@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 class InicioController extends Controller
 {
     /**
@@ -17,6 +18,24 @@ class InicioController extends Controller
         //dd(session()->all());
         //dd(auth()->user());
         //dd(auth()->user()->name);
+        //dd(session()->user);
+
+
+        //return redirect('login')->with(Auth::logout());
+        //Auth::logout();
+
+        //session()->invalidate();
+        //dd(session()->all(),'hola2');
+
+        //if (Empty(auth()->user())) {
+            //if (auth()->user()->name==='guest') {
+                   //if (Auth::guest()){ 
+                        if (Empty(auth()->user()->name)){
+                            dd(session()->all(),'hola33');
+            session()->invalidate();
+            Auth::logout();
+        } 
+
         return View('inicio');
     }
 
