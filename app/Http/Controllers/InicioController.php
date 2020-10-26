@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+//use Illuminate\Support\Facades\Cache;
 class InicioController extends Controller
 {
     /**
@@ -31,7 +32,8 @@ class InicioController extends Controller
             //if (auth()->user()->name==='guest') {
                    //if (Auth::guest()){ 
                         if (Empty(auth()->user()->name)){
-                            dd(session()->all(),'hola33');
+                            //Cache::flush();
+                            //dd(session()->all(),'hola33');
             session()->invalidate();
             Auth::logout();
         } 
