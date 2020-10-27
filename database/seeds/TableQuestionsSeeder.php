@@ -15,10 +15,10 @@ class TableQuestionsSeeder extends Seeder
     {
         $now = Carbon::now()->toDateTimeString();
         $questions = [
-            array('id' => '1', 'name' => 'Listar documento', 'slug' => 'listar-documento', 'created_at' => $now, 'updated_at' => $now),
-            array('id' => '2', 'name' => 'Crear documento', 'slug' => 'crear-documento', 'created_at' => $now, 'updated_at' => $now),
-            array('id' => '3', 'name' => 'Editar documento', 'slug' => 'editar-documento', 'created_at' => $now, 'updated_at' => $now),
-            array('id' => '4', 'name' => 'Eliminar documento', 'slug' => 'eliminar-documento', 'created_at' => $now, 'updated_at' => $now)
+            array('id' => '1', 'name' => 'Los documentos adjuntos, se encuentra cargado en el Sisconsola', 'created_at' => $now, 'updated_at' => $now),
+            array('id' => '2', 'name' => 'El documento Pase a Produccion, se encuentra correctamente lleno', 'created_at' => $now, 'updated_at' => $now),
+            array('id' => '3', 'name' => 'El documento Analisis de Impacto, se encuentra correctamente lleno ', 'created_at' => $now, 'updated_at' => $now),
+            array('id' => '4', 'name' => 'La aplicacion cierra automaticamente', 'created_at' => $now, 'updated_at' => $now)
         ];
         DB::table('questions')->insert($questions);
     }

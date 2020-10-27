@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Admin\Question;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\ValidarPregunta;
 
 class QuestionsController extends Controller
 {
@@ -15,7 +16,7 @@ class QuestionsController extends Controller
      */
     public function index()
     {
-        $datas = Question::orderBy('id')->get(['id','name', 'slug']);
+        $datas = Question::orderBy('id')->get(['id','name']);
         return View('admin.pregunta.index',compact('datas'));
     }
 
@@ -35,7 +36,7 @@ class QuestionsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidarPregunta $request)
     {
         Question::create($request->all());
         return redirect('admin/pregunta/crear')->with('mensaje', 'Pregunta creado con exito');
@@ -71,7 +72,7 @@ class QuestionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidarPregunta $request, $id)
     {
         Question::findOrFail($id)->update($request->all());
         return redirect('admin/pregunta')->with('mensaje', 'Pregunta actualizada con exito');

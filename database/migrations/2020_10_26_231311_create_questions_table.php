@@ -16,7 +16,7 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->text('name');
-            $table->text('slug');
+            //$table->text('slug');
             $table->timestamps();
             $table->charset='utf8mb4';
             $table->collation= 'utf8mb4_spanish_ci' ;

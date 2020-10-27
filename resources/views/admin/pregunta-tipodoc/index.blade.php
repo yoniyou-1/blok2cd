@@ -20,7 +20,7 @@ Pregunta - Tipo de documento
                 <table class="table table-striped table-bordered table-hover" id="tabla-data">
                     <thead>
                         <tr>
-                            <th>Permiso</th>
+                            <th>Pregunta</th>
                             @foreach ($tipodocs as $id => $name)
                             <th class="text-center">{{$name}}</th>
                             @endforeach

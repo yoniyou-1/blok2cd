@@ -32,8 +32,8 @@ Menus
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Slug</th>
+                            <th>Pregunta</th>
+                            
                             <th class="width70"></th>
                             
                         </tr>
@@ -44,7 +44,7 @@ Menus
                             
                             <td>{{$data->id }}</td>
 							<td>{{$data->name }}</td>
-							<td>{{$data->slug }}</td>
+							
                             <td>
                                 <a href="{{route('editar_pregunta', ['id' => $data->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
                                     <i class="fa fa-fw fa-circle"></i>
