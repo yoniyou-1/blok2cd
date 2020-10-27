@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             'menus',
             'menus_roles',
             'permissions_roles',
-            'tipodocs'
+            'tipodocs',
+            'questions'
         ]);
         // $this->call(UsersTableSeeder::class);
         $this->call(TableRolesSeeder::class);
@@ -30,6 +31,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TableMenusRolesSeeder::class);
         $this->call(TablePermissionsRolesSeeder::class);
         $this->call(TableTipodocsSeeder::class);
+        $this->call(TableQuestionsSeeder::class);
         
 
     }

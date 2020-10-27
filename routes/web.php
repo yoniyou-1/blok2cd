@@ -77,6 +77,20 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('tipodoc/{id}/editar', 'TipodocsController@edit')->name('editar_tipodoc');
     Route::put('tipodoc/{id}', 'TipodocsController@update')->name('actualizar_tipodoc');
     Route::delete('tipodoc/{id}', 'TipodocsController@destroy')->name('eliminar_tipodoc');
+
+     /*RUTAS PREGUNTAS */
+    Route::get('pregunta', 'QuestionsController@index')->name('pregunta');
+    Route::get('pregunta/crear', 'QuestionsController@create')->name('crear_pregunta');
+    Route::post('pregunta', 'QuestionsController@store')->name('guardar_pregunta');
+    Route::get('pregunta/{id}/editar', 'QuestionsController@edit')->name('editar_pregunta');
+    Route::put('pregunta/{id}', 'QuestionsController@update')->name('actualizar_pregunta');
+    Route::delete('pregunta/{id}', 'QuestionsController@destroy')->name('eliminar_pregunta');
+            /*RUTAS PREGUNTA _ TIPO DE DOCUMENTO*/
+    Route::get('pregunta-tipodoc', 'QuestionsTipodocsController@index')->name('pregunta_tipodoc');
+    Route::post('pregunta-tipodoc', 'QuestionsTipodocsController@store')->name('guardar_pregunta_tipodoc');
+
+
+
 });
 
  /*RUTAS Documentos*/
