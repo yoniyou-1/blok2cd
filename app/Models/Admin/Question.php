@@ -12,7 +12,7 @@ class Question extends Model
 
     public function tipodocs()
     {
-        return $this->belongsToMany(Rol::class, 'questions_tipodocs', 'question_id', 'tipodoc_id');
+        return $this->belongsToMany(Tipodoc::class, 'questions_tipodocs', 'question_id', 'tipodoc_id');
     }
 
 }

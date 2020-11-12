@@ -1,3 +1,18 @@
+                <div class="card-body table-responsive">
+                
+                <table class="table table-striped table-bordered table-hover" id="tabla-data">
+                    <thead id="thead">
+
+                    </thead>
+                    <tbody id="tbody">
+
+                    </tbody>
+                </table>
+            </div>
+
+<p id="ur"></p>
+<p id="r"></p>
+<div class="cc"></div>
 <div class="form-group ">
     <label for="tipodoc_id" class="col-lg-3 control-label requerido">Tipo</label>
     <div class="col-lg-8">
@@ -17,7 +32,7 @@
     </div>
 </div>
 <div class="form-group">
-    <label for="ncontrol" class="col-lg-3 control-label requerido">Nro de Control</label>
+    <label for="ncontrol" class="col-lg-3 control-label requerido">Control de Cambio Nro</label>
     <div class="col-lg-8">
     <input type="text" name="ncontrol" id="ncontrol" class="form-control" value="{{old('ncontrol', $data->ncontrol ?? '')}}" required/>
     </div>
@@ -59,8 +74,16 @@
     </div>
 </div>
 <div class="form-group">
-    <label for="foto" class="col-lg-3 control-label">Foto</label>
+    <label for="foto" class="col-lg-3 control-label">Soporte</label>
     <div class="col-lg-5">
         <input type="file" name="foto_up" id="foto" data-initial-preview="{{isset($data->foto) ? Storage::url("imagenes/caratulas/$data->foto") : "http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=Caratula+Libro"}}" accept="image/*"/>
     </div>
 </div>
+
+
+
+
+
+
+
+

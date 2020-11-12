@@ -37,4 +37,10 @@ class Documento extends Model
             return false;
         }
     }
+
+    public function questions()
+    {
+        return $this->belongsToMany(Question::class, 'questions_tipodocs', 'question_id', 'tipodoc_id');
+    }
+
 }

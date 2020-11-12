@@ -19,7 +19,7 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            //return redirect(RouteServiceProvider::HOME);
+            //return redirect(RouteServiceProvider::HOME); quita / pongo coloque session inval y aht sin iluminate seguridad/login
             session()->invalidate();
             Auth::logout();
             return redirect('seguridad/login');
