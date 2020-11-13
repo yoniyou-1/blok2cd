@@ -16,25 +16,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
-Route::get('ajax', function()
-{
-    return View::make('index');
-});
 
-
-Route::post('gethint', function()
-{
-    $datos=DB::table('datos')->get();
-
-    $resultado =Input::get('valorCaja1') + Input::get('valorCaja2');
-    
-    return Response::json( array(
-        'resultado' => $resultado, 
-        'sms' => " Parametro AJAX y JSON", 
-        'datos' => $datos, 
-        ));
-
-});
 Route::get('/', 'InicioController@index')->middleware('auth')->name('inicio');
 Route::get('seguridad/login', 'Security\LoginController@index')->name('login');
 Route::post('seguridad/login', 'Security\LoginController@login')->name('login_post');
@@ -116,7 +98,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('documento', 'DocumentosController@index')->middleware('auth')->name('documento');
     Route::get('documento/crear', 'DocumentosController@create')->middleware('auth')->name('crear_documento');
     /*AJAX preguntas-tipo de documentos en: el documento*/
-    Route::post('documento/crear', 'DocumentosController@preguntadoc')->middleware('auth')->name('pregunta_documento');
+    Route::post('documento/crear', 'DocumentosController@createpreguntadocajax')->middleware('auth')->name('pregunta_documento');
 
     Route::post('documento', 'DocumentosController@store')->middleware('auth')->name('guardar_documento');
     Route::post('documento/{documento}', 'DocumentosController@show')->middleware('auth')->name('ver_documento');

@@ -11,13 +11,11 @@ $(document).ready(function () {
         theme: "fas",
     });
 
-            //var vectorPersonas = ['Elena', 'Isabel', 'Ana', 'Ana']; 
+            //var vectorPersonas = ['aa1', 'bb2', 'cc3', 'dd4']; 
 
             // $.each(vectorPersonas, function (ind, elem) { 
             //   console.log('¡Hola :'+elem+'!'); 
             // }); 
-
-
         $("#tipodoc_id").change(function(){
                 //console.log("mensaje stándard por la consola");
                 var tipodoc_id2 = $('select[id=tipodoc_id]').val();
@@ -29,7 +27,6 @@ $(document).ready(function () {
 
         var data = {
         tipodoc_id: tipodoc_id2,
-          //tipodoc_id2: 'valor123',
         _token: $('input[name=_token]').val()
         };
 
@@ -53,27 +50,24 @@ $(document).ready(function () {
                         $("#r").html("Procesando, espere por favor...");
                 },*/
             success: function (respuesta) {
-                alert(respuesta);
+                //alert(respuesta);
                 var pregunta = JSON.parse(respuesta);
                 //console.log(pregunta);
-/*var elmtTable = document.getElementById('#tbody');
-var tableRows = elmtTable.getElementsByTagName('tr');
-var rowCount = tableRows.length;*/
-/*var tableRows[] = $('#tbody tr');
-var rowCount = $('#tbody tr').length;
-for (var x=rowCount-1; x>0; x--) {
-      elmtTable.removeChild(tableRows[x]);
-}*/
 
- $(".filaPregunta").remove();
-
-                if(pregunta.length>0){
-                var thead = '<tr class="filaPregunta"><th>ID</th><th>Pregunta</th><th></th></tr>'
-                $('#thead').append(thead);
+                 $(".filaPregunta").remove();
+                 if(pregunta.length>0){
+                    var thead = '<tr class="filaPregunta"><th>ID</th><th>Pregunta</th><th></th></tr>'
+                    $('#thead').append(thead);
                 }
                 for (var i=0; i < pregunta.length;i++){
 
-                    var todo =  '<tr class="filaPregunta"><td>'+pregunta[i].question_id+'</td><td>'+pregunta[i].name+'</td><td></td></tr>'
+                    var todo = 
+  
+                    '<tr class="filaPregunta"><td>'
+                    +pregunta[i].question_id+'</td><td>'+pregunta[i].name+
+                    '</td><td></td>'
+                    +'<input class="form-control" id="quest'+pregunta[i].question_id+'" name="quest'+pregunta[i].question_id+'" type="hidden" value="'+pregunta[i].question_id+'">'+
+                    '</tr>'
                         $('#tbody').append(todo);
 
 

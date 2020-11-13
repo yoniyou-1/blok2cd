@@ -1,5 +1,5 @@
-                <div class="card-body table-responsive">
-                
+            <div class="card-body table-responsive">
+               <div class="form-group "> 
                 <table class="table table-striped table-bordered table-hover" id="tabla-data">
                     <thead id="thead">
 
@@ -8,6 +8,7 @@
 
                     </tbody>
                 </table>
+                </div>
             </div>
 
 <p id="ur"></p>
@@ -17,7 +18,7 @@
     <label for="tipodoc_id" class="col-lg-3 control-label requerido">Tipo</label>
     <div class="col-lg-8">
         <select name="tipodoc_id" id="tipodoc_id" class="form-control" required>
-            <option value="">Seleccione el rol</option>
+            <option value="">Seleccione el tipo de documento</option>
             @foreach($tipodocs as $id => $name)
                 <option value="{{$id}}" {{old("tipodoc_id", $data->tipodocs[0]->id ?? "") == $id ? "selected" : ""}}>{{$name}}</option>
             @endforeach

@@ -47,26 +47,9 @@ class DocumentosController extends Controller
         return view('documento.crear', compact('tipodocs'));
     }
         
-    public function preguntadoc(Request $request)
+    public function createpreguntadocajax(Request $request)
     {
-        //$questions = Question::orderBy('id')->get(['id','name'])->where('id', $request->tipodoc_id);
-        
         //$questions = Question::orderBy('id')->get(['id','name'])->where('id', $request->tipodoc_id)->first();
-
-        // $tipodocs = Tipodoc::orderBy('id')->pluck('name', 'id')->toArray();
-        // $questions = Question::get();
-        // $questionstipodocs = Question::with('tipodocs')->get()->pluck('tipodocs', 'id')->toArray();
-
-        // $tipodocs = Tipodoc::orderBy('id')->pluck('name', 'id')->where('id', $request->tipodoc_id)->toArray();
-        //  $questions = Question::get();
-        //  $questionstipodocs = Question::with('tipodocs')->get()->pluck('tipodocs', 'id')->toArray();
-       /* $a = 1;
-        $questionstipodocs = DB::table('questions')
-        ->join('questions_tipodocs', function ($join, $tipo = 2) {
-            $join->on('questions_tipodocs.question_id', '=', 'questions.id')
-            ->where('questions_tipodocs.tipodoc_id', '=',  $tipo);
-        })
-        ->get();*/
 
         $tipodoc_id=$request->tipodoc_id;
         $questionstipodocs = DB::table('questions')
@@ -74,21 +57,6 @@ class DocumentosController extends Controller
                 ->where('questions_tipodocs.tipodoc_id', '=',  $tipodoc_id)
                 ->get();
 
-
-/*        $results = DB::table('questions')
-                        ->distinct()
-                        ->leftJoin('questions_tipodocs', function($join)
-                            {
-                                $join->on('questions.id', '=', 'questions_tipodocs.room_type_id');
-                                $join->on('arrival','>=',DB::raw("'2012-05-01'"));
-                                $join->on('arrival','<=',DB::raw("'2012-05-10'"));
-                                $join->on('departure','>=',DB::raw("'2012-05-01'"));
-                                $join->on('departure','<=',DB::raw("'2012-05-10'"));
-                            })
-                        ->where('questions_tipodocs.room_type_id', '=', NULL)
-                        ->get();*/
-
-        //$a=$request->tipodoc_id;
         return response(Json_encode($questionstipodocs),200)->header('-Content-Type','text-plain');
     }
 
@@ -107,7 +75,7 @@ class DocumentosController extends Controller
         //ya listo $usuario->roles()->attach($request->rol_id);
         
 
-        //dd($request->all());
+        dd($request->all());
         //$documento = Documento::create($request->all());
         if ($foto = Documento::setCaratula($request->foto_up))
            $request->request->add(['foto' => $foto]);
