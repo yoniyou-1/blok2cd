@@ -9,6 +9,7 @@ use Intervention\Image\Facades\Image;
 //use Intervention\Image\Facades\Image as Image;
 //pongo esto
 use App\Models\Admin\Tipodoc;
+use App\Models\Admin\Question;
 
 class Documento extends Model
 {
@@ -38,9 +39,15 @@ class Documento extends Model
         }
     }
 
-    public function questions()
+/*    public function questions()
     {
         return $this->belongsToMany(Question::class, 'questions_tipodocs', 'question_id', 'tipodoc_id');
+    }*/
+
+    public function questions()
+    {
+        return $this->belongsToMany(Question::class, 'documentos_questions', 'documento_id', 'question_id');
     }
+
 
 }

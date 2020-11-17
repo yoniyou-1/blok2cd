@@ -56,9 +56,10 @@ $(document).ready(function () {
 
                  $(".filaPregunta").remove();
                  if(pregunta.length>0){
-                    var thead = '<tr class="filaPregunta"><th>ID</th><th>Pregunta</th><th></th></tr>'
+                    var thead = '<tr class="filaPregunta"><th>ID</th><th>Pregunta</th><th></th><th></th></tr>'
                     $('#thead').append(thead);
                 }
+                
                 for (var i=0; i < pregunta.length;i++){
 
                     var todo = 
@@ -66,11 +67,18 @@ $(document).ready(function () {
                     '<tr class="filaPregunta"><td>'
                     +pregunta[i].question_id+'</td><td>'+pregunta[i].name+
                     '</td><td></td>'
-                    +'<input class="form-control" id="quest'+pregunta[i].question_id+'" name="quest'+pregunta[i].question_id+'" type="hidden" value="'+pregunta[i].question_id+'">'+
+                    //+'<input class="form-control" id="quest'+pregunta[i].question_id+'" name="quest'+pregunta[i].question_id+'" type="hidden" value="'+pregunta[i].question_id+'">'+
+                    +'<input class="form-control" id="question_id[]" name="question_id[]" type="hidden" value="'+pregunta[i].question_id+'">'+                    
+                    +'<input class="form-control" id="state[]" name="state[]" type="hidden" value="'+pregunta[i].question_id+'">'+
+                    '<td class="text-center">'
+                    +
+                    '<input type="hidden" id="state['+i+']" name="state['+i+']" value="0"> <input type="checkbox" id="state['+i+']" name="state['+i+']" value="1">'
+                    +
+                    '</td>'
                     '</tr>'
                         $('#tbody').append(todo);
 
-
+                       
                             //$("#r").html("<strong> mira </strong>");
                 }
            
@@ -81,6 +89,19 @@ $(document).ready(function () {
     }
 
     //fin ajax <<
+
+
+/*$("#form-general").on('submit', function() {
+            // to each unchecked checkbox
+            alert('cambiando a true');
+            $(this + 'input[type=checkbox]:not(:checked)').each(function () {
+                // set value 0 and check it
+                $(this).attr('checked', true).val(5);
+            });
+        })
+*/
+
+
 
 });
 

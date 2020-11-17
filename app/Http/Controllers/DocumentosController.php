@@ -75,7 +75,7 @@ class DocumentosController extends Controller
         //ya listo $usuario->roles()->attach($request->rol_id);
         
 
-        dd($request->all());
+        //dd($request->all());
         //$documento = Documento::create($request->all());
         if ($foto = Documento::setCaratula($request->foto_up))
            $request->request->add(['foto' => $foto]);
@@ -86,6 +86,47 @@ class DocumentosController extends Controller
         //pongo este
          $documento = Documento::create($request->all());
          $documento->tipodocs()->attach($request->tipodoc_id);
+         
+         //$documento->questions()->attach(1);
+         //$documento->questions()->sync($request->question_id);
+         //$combination = array_combine($request->question_id, $request->state);
+         //dd($combination);
+         //$documento->questions()->sync($combination);
+
+         //dd($request->question_id);
+         //$documento->questions()->sync($request->question_id);
+
+/*         $array = [
+    ['question_id' => 1, 'state' => '3'],
+    ['question_id' => 2, 'state' => '4'],];*/
+
+$nroquestion_id = count ($request->question_id);
+$i=0;
+while($i < $nroquestion_id)
+{
+     $arrayquestions[] = ['question_id' => $request->question_id[$i] ,'state' =>  $request->state[$i],];
+    $i++;
+}
+ //$state = $request->state;
+        //dd($state);
+/*    $nroquestion_id = count ($request->question_id);
+    for($i=1 ; $i < $nroquestion_id; $i++){*/
+
+//$state = isset($request->state[$i]) ? $request->state[$i] : 0;
+        //$state = $request->state[$i];
+        //dd($state);
+        //if ($state == NULL) {$state = 0;} else {$state = 1;}
+
+       /* $arrayquestions[] = ['question_id' => $request->question_id[$i] ,'state' =>  $request->state[$i],];
+    
+
+    }*/
+
+   // $combination = array_combine($request->question_id,$request->state);
+         //dd($array);
+        // dd($array,$request->question_id,$request->state,$combination,$array2);
+        //dd($arrayquestions);
+        $documento->questions()->sync($arrayquestions);
 
 
          return redirect('documento')->with('mensaje', 'documento creado con exito');
