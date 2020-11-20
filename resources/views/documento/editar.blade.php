@@ -16,7 +16,7 @@ Documento
 @endsection
 
 @section('scripts')
-<script src='{{asset("assets/pages/scripts/documento/crear.js")}}' type='text/javascript'></script>
+<script src='{{asset("assets/pages/scripts/documento/editar.js")}}' type='text/javascript'></script>
 @endsection
 
 @section('contenido')
@@ -37,6 +37,9 @@ Documento
               <!-- /.card-header -->
               <!-- form start -->
         <form action="{{route('actualizar_documento', ['id' => $data->id])}}" id="form-general" class="form-horizontal" method="POST" autocomplete="off" enctype="multipart/form-data">
+            @php
+            $eseditar = 1;
+            @endphp
             @csrf @method("put")
             <div class="card-body ">
                 @include('documento.formulario')

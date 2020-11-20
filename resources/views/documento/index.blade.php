@@ -31,6 +31,7 @@ Documentos
                         <tr>
                             <th>Titulo</th>
                             <th>Tipo</th>
+                            <th>Preguntas</th>
                             <th>Identificador</th>
                             <th>N-Control</th>
                             <th class="width70"></th>
@@ -43,6 +44,11 @@ Documentos
                             <td>
                                 @foreach ($data->tipodocs as $tipodoc)
                                     {{$loop->last ? $tipodoc->name : $tipodoc->name . ', '}}
+                                @endforeach
+                            </td>
+                            <td>
+                                @foreach ($data->questions as $question)
+                                    {{$loop->last ? $question->id : $question->id . ', '}}
                                 @endforeach
                             </td>
                             <td>{{$data->identificador}}</td>

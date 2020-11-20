@@ -5,6 +5,7 @@ Documento
 
 @section('styles')
 <link href='{{asset("assets/js/bootstrap-fileinput/css/fileinput.min.css")}}' rel='stylesheet' type='text/css'/>
+<link rel='stylesheet' href='{{asset("assets/pages/scripts/documento/crear.css")}}'>
 @endsection
 
 
@@ -37,6 +38,9 @@ Documento
               <!-- /.card-header -->
               <!-- form start -->
         <form action="{{route('guardar_documento')}}" id="form-general" class="form-horizontal" method="POST" autocomplete="off" enctype="multipart/form-data">
+            @php
+            $escrear = 1;
+            @endphp
             @csrf
             <div class="card-body ">
                 @include('documento.formulario')

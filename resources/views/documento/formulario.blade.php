@@ -14,6 +14,22 @@
 <p id="ur"></p>
 <p id="r"></p>
 <div class="cc"></div>
+
+@isset($eseditar)    
+<div class="form-group ">
+    <label for="tipodoc_id" class="col-lg-3 control-label requerido">Tipo</label>
+    <div class="col-lg-8">
+        <select name="tipodoc_id" id="tipodoc_id" class="form-control" required>
+            @foreach($tipodocs as $id => $name)                
+                @if($id== $data->tipodocs[0]->id )
+                    <option value="{{$id}}" {{old("tipodoc_id", $data->tipodocs[0]->id ?? "") == $id ? "selected" : ""}}>{{$name}}</option>
+                @endif
+            @endforeach
+        </select>
+    </div>
+</div>
+@endisset
+@isset($escrear)
 <div class="form-group ">
     <label for="tipodoc_id" class="col-lg-3 control-label requerido">Tipo</label>
     <div class="col-lg-8">
@@ -25,7 +41,7 @@
         </select>
     </div>
 </div>
-
+@endisset
 <div class="form-group">
     <label for="identificador" class="col-lg-3 control-label requerido">Identificador</label>
     <div class="col-lg-8">

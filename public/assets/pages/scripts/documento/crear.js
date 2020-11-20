@@ -68,11 +68,16 @@ $(document).ready(function () {
                     +pregunta[i].question_id+'</td><td>'+pregunta[i].name+
                     '</td><td></td>'
                     //+'<input class="form-control" id="quest'+pregunta[i].question_id+'" name="quest'+pregunta[i].question_id+'" type="hidden" value="'+pregunta[i].question_id+'">'+
-                    +'<input class="form-control" id="question_id[]" name="question_id[]" type="hidden" value="'+pregunta[i].question_id+'">'+                    
-                    +'<input class="form-control" id="state[]" name="state[]" type="hidden" value="'+pregunta[i].question_id+'">'+
+                    +'<input class="form-control" id="question_id[]" name="question_id[]" type="hidden" value="'+pregunta[i].question_id+'">'                    
+                    //+'<input class="form-control" id="state[]" name="state[]" type="hidden" value="'+pregunta[i].question_id+'">'+
+                    
+                    
+                    //'<input type="hidden" id="state['+i+']" name="state['+i+']" value="0"> <input type="checkbox" id="state['+i+']" name="state['+i+']" value="1">'
+                    +
                     '<td class="text-center">'
                     +
-                    '<input type="hidden" id="state['+i+']" name="state['+i+']" value="0"> <input type="checkbox" id="state['+i+']" name="state['+i+']" value="1">'
+                    '<span class="checkbox"></span> <input type="hidden" id="state[]" name="state[]" value="0">'
+                    
                     +
                     '</td>'
                     '</tr>'
@@ -81,6 +86,24 @@ $(document).ready(function () {
                        
                             //$("#r").html("<strong> mira </strong>");
                 }
+
+                        $('.checkbox').click(function(){
+                      if ($(this).hasClass('positive')){
+                        $(this).removeClass('positive');
+                        $(this).addClass('negative');
+                        $(this).html('<svg id="i-close" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="10.9375%"><path d="M2 30 L30 2 M30 30 L2 2" /></svg>');
+                        $(this).next().val('2');
+                      } else if ($(this).hasClass('negative')){
+                        $(this).removeClass('negative');
+                        $(this).html('');
+                        $(this).next().val('0');
+                      } else {
+                        $(this).addClass('positive');
+                        $(this).html('<svg id="i-checkmark" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="10.9375%"><path d="M2 20 L12 28 30 4" /></svg>');
+                        $(this).next().val('1');
+                    
+                      }
+                    });
            
 
                 Biblioteca.notificaciones(respuesta.respuesta, 'SAIR', 'success');
@@ -91,15 +114,6 @@ $(document).ready(function () {
     //fin ajax <<
 
 
-/*$("#form-general").on('submit', function() {
-            // to each unchecked checkbox
-            alert('cambiando a true');
-            $(this + 'input[type=checkbox]:not(:checked)').each(function () {
-                // set value 0 and check it
-                $(this).attr('checked', true).val(5);
-            });
-        })
-*/
 
 
 

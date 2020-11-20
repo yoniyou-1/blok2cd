@@ -27,7 +27,11 @@ class DocumentosController extends Controller
         //quito este
         //$datas = Documento::orderBy('id')->get();
         //pongo este
-        $datas = Documento::with('tipodocs')->orderBy('id')->get();
+        //quito este2
+        //$datas = Documento::with('tipodocs')->orderBy('id')->get();
+        //pongo este2
+        $datas = Documento::with('tipodocs','questions')->orderBy('id')->get();
+        //dd($datas);
         return view('documento.index', compact('datas'));
     }
 
@@ -163,6 +167,7 @@ while($i < $nroquestion_id)
 
         $tipodocs = Tipodoc::orderBy('id')->pluck('name', 'id')->toArray();
         $data = Documento::with('tipodocs')->findOrFail($id);
+        //dd($tipodocs, $data);
         return view('documento.editar', compact('data', 'tipodocs'));
 
     }
