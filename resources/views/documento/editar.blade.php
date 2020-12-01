@@ -5,6 +5,7 @@ Documento
 
 @section('styles')
 <link href='{{asset("assets/js/bootstrap-fileinput/css/fileinput.min.css")}}' rel='stylesheet' type='text/css'/>
+<link rel='stylesheet' href='{{asset("assets/pages/scripts/documento/crear.css")}}'>
 @endsection
 
 

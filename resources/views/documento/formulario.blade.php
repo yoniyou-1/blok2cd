@@ -14,7 +14,50 @@
 <p id="ur"></p>
 <p id="r"></p>
 <div class="cc"></div>
+@isset($eseditar)    
+@php
+$questiona = 1;
+@endphp
+<input class="form-control" id="question_ida[]" name="question_ida[]" type="text" value="{{old('question_ida.0',$questiona)}}">
+<input class="form-control" id="question_ida[]" name="question_ida[]" type="text" value="{{old('question_ida.1',$questiona)}}">
+            <div class="card-body table-responsive">
+               <div class="form-group "> 
+                <table class="table table-striped table-bordered table-hover" id="tabla-data">
+                    <thead id="thead">
+                    <tr class="filaPregunta"><th>ID</th><th>Pregunta</th><th></th><th></th><th></th></tr>
+                    </thead>
+                    <tbody id="tbody">
 
+                                                  
+                                @foreach ($data->questions as $question)
+                                @php($i = $loop->iteration -1)
+                                <tr> 
+                                <td>
+                                    {{$loop->last ? $question->id : $question->id}}
+                                    <input class="form-control" id="question_id[]" name="question_id[]" type="hidden" value="{{$loop->last ? $question->id : $question->id}}">
+                                </td>
+                                <td>
+                                    {{$loop->last ? $question->name : $question->name}}
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    {{$loop->last ? $question->pivot->state : $question->pivot->state}}
+                                </td>
+                                <td class="text-center" >
+                                    
+                                    <span class="checkbox"></span> <input class="stateClass bb{{$i}}" type="hidden" id="state[{{$i}}]" name="state[{{$i}}]" value="{{old('state.'.$i.'', $loop->last ? $question->pivot->state : $question->pivot->state)}}">
+                                </td>
+                                </tr>
+                                @endforeach
+                        
+                        
+                    </tbody>
+                </table>
+                </div>
+            </div>
+@endisset
 @isset($eseditar)    
 <div class="form-group ">
     <label for="tipodoc_id" class="col-lg-3 control-label requerido">Tipo</label>
@@ -36,7 +79,7 @@
         <select name="tipodoc_id" id="tipodoc_id" class="form-control" required>
             <option value="">Seleccione el tipo de documento</option>
             @foreach($tipodocs as $id => $name)
-                <option value="{{$id}}" {{old("tipodoc_id", $data->tipodocs[0]->id ?? "") == $id ? "selected" : ""}}>{{$name}}</option>
+                <option value="{{$id}}" {{"tipodoc_id", $data->tipodocs[0]->id ?? "" == $id ? "selected" : ""}}>{{$name}}</option>
             @endforeach
         </select>
     </div>

@@ -46,7 +46,7 @@ class Documento extends Model
 
     public function questions()
     {
-        return $this->belongsToMany(Question::class, 'documentos_questions', 'documento_id', 'question_id');
+        return $this->belongsToMany(Question::class, 'documentos_questions', 'documento_id', 'question_id')->withPivot('state');
     }
 
 

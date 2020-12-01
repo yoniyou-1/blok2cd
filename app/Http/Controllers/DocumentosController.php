@@ -103,8 +103,13 @@ class DocumentosController extends Controller
 /*         $array = [
     ['question_id' => 1, 'state' => '3'],
     ['question_id' => 2, 'state' => '4'],];*/
-
+//si no vienen por POST preguntas asociadas
+if(!isset($request->question_id)){
+ return redirect('documento')->with('mensaje', 'documento creado con exito (sin matriz de preguntas asociadas)');
+}
+//fin si no vienen por POST preguntas asociadas
 $nroquestion_id = count ($request->question_id);
+
 $i=0;
 while($i < $nroquestion_id)
 {
@@ -164,9 +169,13 @@ while($i < $nroquestion_id)
         //ya listo $rols = Rol::orderBy('id')->pluck('name', 'id')->toArray();
         //ya listo $data = Usuario::with('roles')->findOrFail($id);
         //ya listo return view('admin.usuario.editar', compact('data', 'rols'));
+        //prueba con preguntas consulta del index
+        //$datas = Documento::with('tipodocs','questions')->orderBy('id')->get();
+        //dd($datas);
+        //return view('documento.index', compact('datas'));
 
         $tipodocs = Tipodoc::orderBy('id')->pluck('name', 'id')->toArray();
-        $data = Documento::with('tipodocs')->findOrFail($id);
+        $data = Documento::with('tipodocs','questions')->findOrFail($id);
         //dd($tipodocs, $data);
         return view('documento.editar', compact('data', 'tipodocs'));
 
@@ -181,7 +190,7 @@ while($i < $nroquestion_id)
      */
     public function update(ValidacionDocumento $request, $id)
     {
-
+        //dd($request->all());
         //quito este
         // $documento = Documento::findOrFail($id);
         // if ($foto = Documento::setCaratula($request->foto_up, $documento->foto))
@@ -204,10 +213,24 @@ while($i < $nroquestion_id)
         $documento->update(array_filter($request->all()));
         //$usuario->roles()->sync($request->rol_id);
         $documento->tipodocs()->sync($request->tipodoc_id);
-        //return redirect('admin/usuario')->with('mensaje', 'Usuario actualizado con exito');
+        //de aqui en adelante para preguntas
+        if(!isset($request->question_id)){
+         return redirect('documento')->with('mensaje', 'documento creado con exito (sin matriz de preguntas asociadas)');
+        }
+        //fin si no vienen por POST preguntas asociadas
+        $nroquestion_id = count ($request->question_id);
+
+        $i=0;
+        //dd($request->question_id);
+        while($i < $nroquestion_id)
+        {
+            $arrayquestions[] = ['question_id' => $request->question_id[$i] ,'state' =>  $request->state[$i],];
+            $i++;
+        }
+        //dd($arrayquestions);
+        $documento->questions()->detach();
+        $documento->questions()->sync($arrayquestions);
         return redirect()->route('documento')->with('mensaje', 'El documento se actualizó correctamente');
-
-
 
     }
 
@@ -238,6 +261,7 @@ while($i < $nroquestion_id)
         if ($request->ajax()) {
             $documento = Documento::findOrFail($id);
             $documento->tipodocs()->detach();
+            $documento->questions()->detach();
             if (Documento::destroy($id)) {
                 Storage::disk('public')->delete("imagenes/caratulas/$documento->foto");
                 return response()->json(['mensaje' => 'ok']);

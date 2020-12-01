@@ -48,7 +48,7 @@ Documentos
                             </td>
                             <td>
                                 @foreach ($data->questions as $question)
-                                    {{$loop->last ? $question->id : $question->id . ', '}}
+                                    {{$loop->last ? $question->pivot->state : $question->pivot->state . ', '}}
                                 @endforeach
                             </td>
                             <td>{{$data->identificador}}</td>
