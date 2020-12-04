@@ -1,3 +1,68 @@
+<div class="row showName" style="margin: 10px;">
+            <div class="col-4 offset-4">
+                <input type="button" name="addfecha" id="addfecha" class="btn btn-success btn-block addmore" value="Add Task" />
+            </div>
+        </div>
+
+ @if( old('date') )
+@php
+//dd(old('date'));
+@endphp
+    
+
+     @foreach( old('date') as $i => $field)
+     <div id="dynamicFields">
+ <!-- Start row -->
+                <div class="row removing{{$i}} mb-4">
+                    <div class="col-2">
+                        <div class="d-flex">
+                            <div class="p-1">
+                                <label class="showName p-2" for="date">Date</label>
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="col-4"> 
+                        <div class="d-flex">                    
+                            <div class="flex-fill p-2">
+                                <input class="form-control showName" 
+                                        type="datetime-local" 
+                                        name="date[{{$i}}]" value="{{old('date.'.$i.'')}}"
+                                >
+                            </div>
+                        </div> 
+                    </div>
+                </div> <!-- End row --> 
+                            <div class="row removing{{$i}} showName" style="margin: 10px;">
+              <div class="col-4 offset-4">
+              
+               <input type="button" class="btn btn-danger btn-block remove-fields delfecha" id="removing{{$i}}" name="delfecha{{$i}}"  value="remover fecha{{$i}}">
+            </div>
+          </div>
+
+            </div> <!-- End dynamicFields -->
+
+       
+ @php
+    if(empty($countarrayviejo)){
+        $countarrayviejo = 0;
+    }
+    if( $i > $countarrayviejo ){$countarrayviejo = $i;  }
+
+    //if($loop->last){$countarrayviejo = $i;  }
+    //$countarrayviejo = $loop->count;
+@endphp
+
+      @endforeach
+ @php
+echo $countarrayviejo ;
+@endphp
+<input type="hidden" id="countarrayviejo" name="countarrayviejo" value="{{$countarrayviejo}}" />
+@endif
+
+<div id="dynamicFields">
+</div>
+
+
             <div class="card-body table-responsive">
                <div class="form-group "> 
                 <table class="table table-striped table-bordered table-hover" id="tabla-data">
@@ -15,11 +80,6 @@
 <p id="r"></p>
 <div class="cc"></div>
 @isset($eseditar)    
-@php
-$questiona = 1;
-@endphp
-<input class="form-control" id="question_ida[]" name="question_ida[]" type="text" value="{{old('question_ida.0',$questiona)}}">
-<input class="form-control" id="question_ida[]" name="question_ida[]" type="text" value="{{old('question_ida.1',$questiona)}}">
             <div class="card-body table-responsive">
                <div class="form-group "> 
                 <table class="table table-striped table-bordered table-hover" id="tabla-data">
