@@ -50,7 +50,7 @@ class Documento extends Model
     }
     public function usuarios()
     {
-        return $this->belongsToMany(Usuario::class, 'documentos_usuarios', 'documento_id', 'usuario_id')->withPivot('state','fechaini');
+        return $this->belongsToMany(Usuario::class, 'documentos_usuarios', 'documento_id', 'usuario_id')->withPivot('state','fechaini','fechafin');
     }
 
 }

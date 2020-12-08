@@ -4,14 +4,14 @@
             </div>
         </div>
 
- @if( old('date') )
+ @if( old('fechaini') )
 @php
-//dd(old('date'));
+//dd(old('fechaini'));
 @endphp
     
 
-     @foreach( old('date') as $i => $field)
-     <div id="dynamicFields">
+     @foreach( old('fechaini') as $i => $field)
+     <div id="dynamicFieldsXX">
  <!-- Start row -->
                 <div class="row removing{{$i}} mb-4">
                     <div class="col-2">
@@ -26,7 +26,17 @@
                             <div class="flex-fill p-2">
                                 <input class="form-control showName" 
                                         type="datetime-local" 
-                                        name="date[{{$i}}]" value="{{old('date.'.$i.'')}}"
+                                        name="fechaini[{{$i}}]" value="{{old('fechaini.'.$i.'')}}"
+                                >
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="col-4"> 
+                        <div class="d-flex">                    
+                            <div class="flex-fill p-2">
+                                <input class="form-control showName" 
+                                        type="datetime-local" 
+                                        name="fechafin[{{$i}}]" value="{{old('fechafin.'.$i.'')}}"
                                 >
                             </div>
                         </div> 

@@ -77,16 +77,16 @@ class DocumentosController extends Controller
         
 /*$data = $request->session()->all();
 dd($data);*/
-/*    if(isset($request->date)){
-        $datetime = array_values($request->date);
+/*    if(isset($request->fechaini)){
+        $datetime = array_values($request->fechaini);
     dd($request->all(),$datetime);
-        }else{dd('ho hay array date');}*/
+        }else{dd('ho hay array fechaini');}*/
 
         // ya listo $usuario = Usuario::create($request->all());
 
         //ya listo $usuario->roles()->attach($request->rol_id);
         
-        //$datetime = array_values($request->date);
+        //$datetime = array_values($request->fechaini);
         
         //dd($request->all(),$datemie);
         //$documento = Documento::create($request->all());
@@ -114,35 +114,36 @@ dd($data);*/
     ['question_id' => 2, 'state' => '4'],];*/
     //si no vienen fechas de convocatorias
 
-/*    if(!isset($request->date)){
+/*    if(!isset($request->fechaini)){
     dd($request->all(),$datetime);
         }*/
-if(isset($request->date)){
+if(isset($request->fechaini)){
 $user_id = $request->session()->get('user_id');
-$nrofechaini = count ($request->date);
-$fechaini = array_values($request->date);
+$nrofechaini = count ($request->fechaini);
+$arrayfechaini = array_values($request->fechaini);
+$arrayfechafin = array_values($request->fechafin);
 if($nrofechaini>1){
-//$fechaini = array_values($request->date);
+//$arrayfechaini = array_values($request->fechaini);
     
     $i=0;
-    $fechamenor = $fechaini[0];
+    $fechamenor = $arrayfechaini[0];
     while($i < $nrofechaini)
     {   
-        if ($fechamenor < $fechaini[$i] )
+        if ($fechamenor < $arrayfechaini[$i] )
         {
         }else{
-         $fechamenor = $fechaini[$i];
+         $fechamenor = $arrayfechaini[$i];
         }
         $i++;
     }
     $i=0;
-    $fechamayor = $fechaini[0];
+    $fechamayor = $arrayfechafin[0];
     while($i < $nrofechaini)
     {   
-        if ($fechamayor > $fechaini[$i] )
+        if ($fechamayor > $arrayfechafin[$i] )
         {
         }else{
-         $fechamayor = $fechaini[$i];
+         $fechamayor = $arrayfechafin[$i];
         }
         $i++;
     }
@@ -151,27 +152,27 @@ if($nrofechaini>1){
     $i=0;
     while($i < $nrofechaini)
     {
-        if($fechamenor == $fechaini[$i]){$state = 1;}else{
-         if($fechamayor == $fechaini[$i]){$state = 3; }else{$state =0;}}
-         $arrayconvocatorias[] = ['fechaini' => $fechaini[$i] ,'state' =>  $state,'usuario_id' =>  $user_id,];
+        if($fechamenor == $arrayfechaini[$i]){$state = 1;}else{
+         if($fechamayor == $arrayfechafin[$i]){$state = 3; }else{$state =0;}}
+         $arrayconvocatorias[] = ['fechaini' => $arrayfechaini[$i] ,'fechafin' => $arrayfechafin[$i] ,'state' =>  $state,'usuario_id' =>  $user_id,];
         $i++;
     }
 }else{
-    //$fechaini = array_values($request->date);
+    //$arrayfechaini = array_values($request->fechaini);
     $i=0;
     while($i < $nrofechaini)
     {
-         $arrayconvocatorias[] = ['fechaini' => $fechaini[$i] ,'state' =>  1,'usuario_id' =>  $user_id,];
+         $arrayconvocatorias[] = ['fechaini' => $arrayfechaini[$i] ,'state' =>  1,'usuario_id' =>  $user_id,];
         $i++;
     }
 
 }
 
-/*$fechaini = array_values($request->date);
+/*$arrayfechaini = array_values($request->fechaini);
 $i=0;
 while($i < $nrofechaini)
 {
-     $arrayconvocatorias[] = ['fechaini' => $fechaini[$i] ,'state' =>  0,'usuario_id' =>  $user_id,];
+     $arrayconvocatorias[] = ['fechaini' => $arrayfechaini[$i] ,'state' =>  0,'usuario_id' =>  $user_id,];
     $i++;
 }*/
 $documento->usuarios()->sync($arrayconvocatorias);

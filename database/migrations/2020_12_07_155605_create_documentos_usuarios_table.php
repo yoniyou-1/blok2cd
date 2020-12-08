@@ -22,6 +22,7 @@ class CreateDocumentosUsuariosTable extends Migration
             $table->foreignId('documento_id','fk_documentousuario_documentos')->nullable()->references('id')->on('documentos')->onDelete(
                 'restrict')->onUpdate('restrict');
             $table->dateTime('fechaini')->nullable();
+            $table->dateTime('fechafin')->nullable();
             $table->boolean('state')->default(0);
             $table->timestamps();
             $table->charset='utf8mb4';

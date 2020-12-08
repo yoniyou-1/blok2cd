@@ -125,7 +125,10 @@ if(typeof(countarrayviejo) != "undefined" && countarrayviejo !== null) {
     $("#countarrayviejo").val(countarraynuevo);
     var i = parseInt(countarraynuevo);
 
-}else{var i = 0; alert(i);}
+}else{
+  var i = 0; 
+  alert(i);
+}
 
 
        // Start from 1
@@ -138,17 +141,22 @@ if(typeof(countarrayviejo) != "undefined" && countarrayviejo !== null) {
             $('#dynamicFields').append(
               '<div class="row removing'+i+'"><div class="col-2"><div class="d-flex"><div class="p-1">'
               +
-              '<label class="showName p-2" for="date"> Date</label>'
+              '<label class="showName p-2" for="date"> Fechas</label>'
               +
               '</div></div></div>'
               +
               '<div class="col-4"> <div class="d-flex"><div class="flex-fill p-2">'
               +
-              '<input class="form-control showName" type="datetime-local" name="date['+i+']">'
+              '<input class="form-control showName" type="datetime-local" name="fechaini['+i+']">'
               +
               '</div></div> </div>'
               +
-              
+              '<div class="col-4"> <div class="d-flex"><div class="flex-fill p-2">'
+              +
+              '<input class="form-control showName" type="datetime-local" name="fechafin['+i+']">'
+              +
+              '</div></div> </div>'
+              +
               '</div>'
               +
               '<div class="row removing'+i+' showName" style="margin: 10px;">'
