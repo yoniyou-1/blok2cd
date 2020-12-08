@@ -10,6 +10,7 @@ use App\Http\Requests\ValidacionDocumento;
 use Illuminate\Support\Facades\Storage;
 //pongo este
 use App\Models\Admin\Question;
+use App\Models\Security\Usuario;
 class DocumentosController extends Controller
 {
     /**
@@ -73,13 +74,21 @@ class DocumentosController extends Controller
      */
     public function store(ValidacionDocumento $request)
     {   
+        
+/*$data = $request->session()->all();
+dd($data);*/
+/*    if(isset($request->date)){
+        $datetime = array_values($request->date);
+    dd($request->all(),$datetime);
+        }else{dd('ho hay array date');}*/
 
         // ya listo $usuario = Usuario::create($request->all());
 
         //ya listo $usuario->roles()->attach($request->rol_id);
         
-
-        //dd($request->all());
+        //$datetime = array_values($request->date);
+        
+        //dd($request->all(),$datemie);
         //$documento = Documento::create($request->all());
         if ($foto = Documento::setCaratula($request->foto_up))
            $request->request->add(['foto' => $foto]);
@@ -103,6 +112,70 @@ class DocumentosController extends Controller
 /*         $array = [
     ['question_id' => 1, 'state' => '3'],
     ['question_id' => 2, 'state' => '4'],];*/
+    //si no vienen fechas de convocatorias
+
+/*    if(!isset($request->date)){
+    dd($request->all(),$datetime);
+        }*/
+if(isset($request->date)){
+$user_id = $request->session()->get('user_id');
+$nrofechaini = count ($request->date);
+$fechaini = array_values($request->date);
+if($nrofechaini>1){
+//$fechaini = array_values($request->date);
+    
+    $i=0;
+    $fechamenor = $fechaini[0];
+    while($i < $nrofechaini)
+    {   
+        if ($fechamenor < $fechaini[$i] )
+        {
+        }else{
+         $fechamenor = $fechaini[$i];
+        }
+        $i++;
+    }
+    $i=0;
+    $fechamayor = $fechaini[0];
+    while($i < $nrofechaini)
+    {   
+        if ($fechamayor > $fechaini[$i] )
+        {
+        }else{
+         $fechamayor = $fechaini[$i];
+        }
+        $i++;
+    }
+
+
+    $i=0;
+    while($i < $nrofechaini)
+    {
+        if($fechamenor == $fechaini[$i]){$state = 1;}else{
+         if($fechamayor == $fechaini[$i]){$state = 3; }else{$state =0;}}
+         $arrayconvocatorias[] = ['fechaini' => $fechaini[$i] ,'state' =>  $state,'usuario_id' =>  $user_id,];
+        $i++;
+    }
+}else{
+    //$fechaini = array_values($request->date);
+    $i=0;
+    while($i < $nrofechaini)
+    {
+         $arrayconvocatorias[] = ['fechaini' => $fechaini[$i] ,'state' =>  1,'usuario_id' =>  $user_id,];
+        $i++;
+    }
+
+}
+
+/*$fechaini = array_values($request->date);
+$i=0;
+while($i < $nrofechaini)
+{
+     $arrayconvocatorias[] = ['fechaini' => $fechaini[$i] ,'state' =>  0,'usuario_id' =>  $user_id,];
+    $i++;
+}*/
+$documento->usuarios()->sync($arrayconvocatorias);
+}
 //si no vienen por POST preguntas asociadas
 if(!isset($request->question_id)){
  return redirect('documento')->with('mensaje', 'documento creado con exito (sin matriz de preguntas asociadas)');

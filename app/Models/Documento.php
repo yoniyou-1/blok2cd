@@ -10,7 +10,7 @@ use Intervention\Image\Facades\Image;
 //pongo esto
 use App\Models\Admin\Tipodoc;
 use App\Models\Admin\Question;
-
+use App\Models\Security\Usuario;
 class Documento extends Model
 {
     protected $table = "documentos";
@@ -48,6 +48,9 @@ class Documento extends Model
     {
         return $this->belongsToMany(Question::class, 'documentos_questions', 'documento_id', 'question_id')->withPivot('state');
     }
-
+    public function usuarios()
+    {
+        return $this->belongsToMany(Usuario::class, 'documentos_usuarios', 'documento_id', 'usuario_id')->withPivot('state','fechaini');
+    }
 
 }
