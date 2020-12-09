@@ -102,13 +102,13 @@ i++;
               +
               '<div class="col-4"> <div class="d-flex"><div class="flex-fill p-2">'
               +
-              '<input class="form-control showName" type="datetime-local" name="fechaini['+i+']">'
+              '<input class="form-control showName" type="datetime-local" name="fechaini['+i+']" required>'
               +
               '</div></div> </div>'
               +
               '<div class="col-4"> <div class="d-flex"><div class="flex-fill p-2">'
               +
-              '<input class="form-control showName" type="datetime-local" name="fechafin['+i+']">'
+              '<input class="form-control showName" type="datetime-local" name="fechafin['+i+']" required>'
               +
               '</div></div> </div>'
               +
@@ -118,7 +118,7 @@ i++;
               +
               '<div class="col-4 offset-4">'
               +
-              '<input type="button" class="btn btn-danger btn-block remove-fields delfecha" id="removing'+i+'" name="delfecha'+i+'"  value="remover fecha'+i+'">'
+              '<input type="button" class="btn btn-danger btn-block remove-fields delfecha" id="removing'+i+'" name="delfecha'+i+'"  value="Remover Fecha">'
               
               +
               '</div>'

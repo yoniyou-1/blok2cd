@@ -57,6 +57,11 @@ Documentos
                                     {{$loop->last ? $usuario->pivot->state : $usuario->pivot->state . ', '}}
                                 @endforeach
                             </td>
+                            <td>
+                                @foreach ($data->usuarios as $usuario)
+                                    {{$loop->last ? $usuario->pivot->state : $usuario->pivot->state . ', '}}
+                                @endforeach
+                            </td>
                             <td>{{$data->identificador}}</td>
                             <td>{{$data->ncontrol}}</td>
                             <td>

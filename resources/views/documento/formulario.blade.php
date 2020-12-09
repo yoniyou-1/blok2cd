@@ -1,6 +1,6 @@
 <div class="row showName" style="margin: 10px;">
             <div class="col-4 offset-4">
-                <input type="button" name="addfecha" id="addfecha" class="btn btn-success btn-block addmore" value="Add Fecha" />
+                <input type="button" name="addfecha" id="addfecha" class="btn btn-success btn-block addmore" value="Agregar Fecha" />
             </div>
         </div>
 
@@ -17,7 +17,7 @@
                     <div class="col-2">
                         <div class="d-flex">
                             <div class="p-1">
-                                <label class="showName p-2" for="date">Date</label>
+                                <label class="showName p-2" for="date">Fechas</label>
                             </div> 
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                                 <input class="form-control showName" 
                                         type="datetime-local" 
                                         name="fechaini[{{$i}}]" value="{{old('fechaini.'.$i.'')}}"
-                                >
+                                required>
                             </div>
                         </div> 
                     </div>
@@ -37,15 +37,34 @@
                                 <input class="form-control showName" 
                                         type="datetime-local" 
                                         name="fechafin[{{$i}}]" value="{{old('fechafin.'.$i.'')}}"
+                                required>
+                            </div>
+                        </div> 
+                    </div>
+                    @isset($eseditar) 
+                    @if( old('usuario_id.'.$i.''))
+
+                    <div class="col-2"> 
+                        <div class="d-flex">                    
+                            <div class="flex-fill p-2">
+                                <input class="form-control showName" 
+                                        type="text" 
+                                        name="user_name[{{$i}}]" value="{{old('user_name.'.$i.'')}}"
+                                readonly required>
+                                <input class="form-control showName" 
+                                        type="hidden" 
+                                        name="usuario_id[{{$i}}]" value="{{old('usuario_id.'.$i.'')}}"
                                 >
                             </div>
                         </div> 
                     </div>
+                    @endif
+                    @endisset
                 </div> <!-- End row --> 
                             <div class="row removing{{$i}} showName" style="margin: 10px;">
               <div class="col-4 offset-4">
               
-               <input type="button" class="btn btn-danger btn-block remove-fields delfecha" id="removing{{$i}}" name="delfecha{{$i}}"  value="remover fecha{{$i}}">
+               <input type="button" class="btn btn-danger btn-block remove-fields delfecha" id="removing{{$i}}" name="delfecha{{$i}}"  value="Remover Fecha">
             </div>
           </div>
 
@@ -71,22 +90,6 @@ echo $countarrayviejo ;
 
 
 
-            <div class="card-body table-responsive">
-               <div class="form-group "> 
-                <table class="table table-striped table-bordered table-hover" id="tabla-data">
-                    <thead id="thead">
-
-                    </thead>
-                    <tbody id="tbody">
-
-                    </tbody>
-                </table>
-                </div>
-            </div>
-
-<p id="ur"></p>
-<p id="r"></p>
-<div class="cc"></div>
 <!-- Comienza empty es Editar fechas part1 -->
 @isset($eseditar) 
 @if(empty( old('fechaini') ))
@@ -102,7 +105,7 @@ $dt = '2020-12-08T15:36';
                     <div class="col-2">
                         <div class="d-flex">
                             <div class="p-1">
-                                <label class="showName p-2" for="date">Date</label>
+                                <label class="showName p-2" for="date">Fechas</label>
                             </div> 
                         </div>
                     </div>
@@ -112,7 +115,7 @@ $dt = '2020-12-08T15:36';
                                 <input class="form-control showName" 
                                         type="datetime-local" 
                                         name="fechaini[{{$i}}]" value="{{date('Y-m-d\TH:i', strtotime($usuario->pivot->fechaini))}}"
-                                >
+                                required>
                             </div>
                         </div> 
                     </div>
@@ -122,6 +125,20 @@ $dt = '2020-12-08T15:36';
                                 <input class="form-control showName" 
                                         type="datetime-local" 
                                         name="fechafin[{{$i}}]" value="{{date('Y-m-d\TH:i', strtotime($usuario->pivot->fechafin))}}"
+                                required>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="col-2"> 
+                        <div class="d-flex">                    
+                            <div class="flex-fill p-2">
+                                <input class="form-control showName" 
+                                        type="text" 
+                                        name="user_name[{{$i}}]" value="{{$usuario->name}}"
+                                readonly required>
+                                <input class="form-control showName" 
+                                        type="hidden" 
+                                        name="usuario_id[{{$i}}]" value="{{$usuario->pivot->usuario_id}}"
                                 >
                             </div>
                         </div> 
@@ -130,7 +147,7 @@ $dt = '2020-12-08T15:36';
                             <div class="row removing{{$i}} showName" style="margin: 10px;">
               <div class="col-4 offset-4">
               
-               <input type="button" class="btn btn-danger btn-block remove-fields delfecha" id="removing{{$i}}" name="delfecha{{$i}}"  value="remover fecha{{$i}}">
+               <input type="button" class="btn btn-danger btn-block remove-fields delfecha" id="removing{{$i}}" name="delfecha{{$i}}"  value="Remover Fecha">
             </div>
           </div>
 
@@ -161,6 +178,24 @@ $i++;
 <div id="dynamicFields">
 </div>
 
+
+
+            <div class="card-body table-responsive">
+               <div class="form-group "> 
+                <table class="table table-striped table-bordered table-hover" id="tabla-data">
+                    <thead id="thead">
+
+                    </thead>
+                    <tbody id="tbody">
+
+                    </tbody>
+                </table>
+                </div>
+            </div>
+
+<p id="ur"></p>
+<p id="r"></p>
+<div class="cc"></div>
 <!-- Comienza isset es Editar tabla-preguntas -->
 @isset($eseditar)    
             <div class="card-body table-responsive">

@@ -162,7 +162,7 @@ if($nrofechaini>1){
     $i=0;
     while($i < $nrofechaini)
     {
-         $arrayconvocatorias[] = ['fechaini' => $arrayfechaini[$i] ,'state' =>  1,'usuario_id' =>  $user_id,];
+         $arrayconvocatorias[] = ['fechaini' => $arrayfechaini[$i] ,'fechafin' => $arrayfechafin[$i],'state' =>  1,'usuario_id' =>  $user_id,];
         $i++;
     }
 
@@ -275,18 +275,88 @@ while($i < $nroquestion_id)
 
         //pongo este
 
-        //$usuario = Usuario::findOrFail($id);
+        //$usuario = Usuario::findOrFail($id);x
         $documento = Documento::findOrFail($id);
 
 
         if ($foto = Documento::setCaratula($request->foto_up, $documento->foto))
-            $request->request->add(['foto' => $foto]);
+           $request->request->add(['foto' => $foto]);
 
 
-        //$usuario->update(array_filter($request->all()));
+        //$usuario->update(array_filter($request->all()));x
         $documento->update(array_filter($request->all()));
-        //$usuario->roles()->sync($request->rol_id);
+        //$usuario->roles()->sync($request->rol_id);x
         $documento->tipodocs()->sync($request->tipodoc_id);
+
+
+
+
+        //de aqui if hay fechas
+if(isset($request->fechaini)){
+        $user_id = $request->session()->get('user_id');
+        $nrofechaini = count ($request->fechaini);
+        $arrayfechaini = array_values($request->fechaini);
+        $arrayfechafin = array_values($request->fechafin);
+        if(isset($request->usuario_id)){
+        $arrayusuario_id = array_values($request->usuario_id);
+        }
+    if($nrofechaini>1){
+        //$arrayfechaini = array_values($request->fechaini);
+    
+        $i=0;
+        $fechamenor = $arrayfechaini[0];
+        while($i < $nrofechaini)
+        {   
+            if ($fechamenor < $arrayfechaini[$i] )
+            {
+            }else{
+             $fechamenor = $arrayfechaini[$i];
+            }
+            $i++;
+        }
+        $i=0;
+        $fechamayor = $arrayfechafin[0];
+        while($i < $nrofechaini)
+        {   
+            if ($fechamayor > $arrayfechafin[$i] )
+            {
+            }else{
+             $fechamayor = $arrayfechafin[$i];
+            }
+            $i++;
+        }
+
+
+        $i=0;
+        while($i < $nrofechaini)
+        {
+            if($fechamenor == $arrayfechaini[$i]){$state = 1;}else{
+             if($fechamayor == $arrayfechafin[$i]){$state = 3; }else{$state =0;}}
+             $arrayconvocatorias[] = ['fechaini' => $arrayfechaini[$i] ,'fechafin' => $arrayfechafin[$i] ,'state' =>  $state,'usuario_id' =>  $arrayusuario_id[$i] ?? $user_id ,];
+            $i++;
+        }
+    }else{
+        //$arrayfechaini = array_values($request->fechaini);
+        $i=0;
+        while($i < $nrofechaini)
+        {
+             $arrayconvocatorias[] = ['fechaini' => $arrayfechaini[$i] ,'fechafin' => $arrayfechafin[$i] ,'state' =>  1,'usuario_id' =>  $arrayusuario_id[$i] ?? $user_id,];
+            $i++;
+        }
+
+    }
+//dd($arrayconvocatorias);
+//x
+    $documento->usuarios()->detach();
+    $documento->usuarios()->sync($arrayconvocatorias);
+}
+
+
+
+
+
+
+
         //de aqui en adelante para preguntas
         if(!isset($request->question_id)){
          return redirect('documento')->with('mensaje', 'documento creado con exito (sin matriz de preguntas asociadas)');
@@ -301,7 +371,7 @@ while($i < $nroquestion_id)
             $arrayquestions[] = ['question_id' => $request->question_id[$i] ,'state' =>  $request->state[$i],];
             $i++;
         }
-        //dd($arrayquestions);
+        //dd($arrayquestions);x
         $documento->questions()->detach();
         $documento->questions()->sync($arrayquestions);
         return redirect()->route('documento')->with('mensaje', 'El documento se actualizó correctamente');
@@ -335,6 +405,7 @@ while($i < $nroquestion_id)
         if ($request->ajax()) {
             $documento = Documento::findOrFail($id);
             $documento->tipodocs()->detach();
+            $documento->usuarios()->detach();
             $documento->questions()->detach();
             if (Documento::destroy($id)) {
                 Storage::disk('public')->delete("imagenes/caratulas/$documento->foto");
