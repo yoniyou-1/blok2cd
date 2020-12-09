@@ -71,6 +71,85 @@ i++;
                       }
                     });
 
+
+
+                        //fin de checkbox triple
+
+
+
+
+       // Start from 1
+       //alert(t);
+        //var i = 0;
+        // When button clicked
+        $('.addmore').click(function(){
+            //alert('esto es i : '+i);
+            var countarrayviejo = $('input#countarrayviejo').val();
+            //alert('addv'+countarrayviejo);
+            var countarraynuevo = parseInt(countarrayviejo)+1;
+            //alert('addn'+countarraynuevo);
+            $("#countarrayviejo").val(countarraynuevo);
+            
+            var i = parseInt(countarraynuevo);
+            
+            // add the following layout
+            $('#dynamicFields').append(
+              '<div class="row removing'+i+'"><div class="col-2"><div class="d-flex"><div class="p-1">'
+              +
+              '<label class="showName p-2" for="date"> Fechas</label>'
+              +
+              '</div></div></div>'
+              +
+              '<div class="col-4"> <div class="d-flex"><div class="flex-fill p-2">'
+              +
+              '<input class="form-control showName" type="datetime-local" name="fechaini['+i+']">'
+              +
+              '</div></div> </div>'
+              +
+              '<div class="col-4"> <div class="d-flex"><div class="flex-fill p-2">'
+              +
+              '<input class="form-control showName" type="datetime-local" name="fechafin['+i+']">'
+              +
+              '</div></div> </div>'
+              +
+              '</div>'
+              +
+              '<div class="row removing'+i+' showName" style="margin: 10px;">'
+              +
+              '<div class="col-4 offset-4">'
+              +
+              '<input type="button" class="btn btn-danger btn-block remove-fields delfecha" id="removing'+i+'" name="delfecha'+i+'"  value="remover fecha'+i+'">'
+              
+              +
+              '</div>'
+              +
+              '</div>');
+            //i++;
+
+            });
+        // Removing fields
+
+
+         //$(document).on('click', 'input[type="button"]', function(event) {
+        //$('input.delfecha').click(function(){
+            $(document).on('click', '.delfecha', function(){
+            let id = this.id;
+            console.log("Se presionó el Boton con Id :"+ id);
+            $('.'+id).remove();
+
+
+
+
+
+          });
+
+
+
+
+
+
+
+
 });
 
 

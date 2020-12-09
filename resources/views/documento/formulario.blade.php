@@ -1,6 +1,6 @@
 <div class="row showName" style="margin: 10px;">
             <div class="col-4 offset-4">
-                <input type="button" name="addfecha" id="addfecha" class="btn btn-success btn-block addmore" value="Add Task" />
+                <input type="button" name="addfecha" id="addfecha" class="btn btn-success btn-block addmore" value="Add Fecha" />
             </div>
         </div>
 
@@ -69,8 +69,6 @@ echo $countarrayviejo ;
 <input type="hidden" id="countarrayviejo" name="countarrayviejo" value="{{$countarrayviejo}}" />
 @endif
 
-<div id="dynamicFields">
-</div>
 
 
             <div class="card-body table-responsive">
@@ -89,6 +87,81 @@ echo $countarrayviejo ;
 <p id="ur"></p>
 <p id="r"></p>
 <div class="cc"></div>
+<!-- Comienza empty es Editar fechas part1 -->
+@isset($eseditar) 
+@if(empty( old('fechaini') ))
+@php
+//echo "holandaDDDD";
+$i = 0;
+$dt = '2020-12-08T15:36';
+@endphp
+@foreach( $data->usuarios as $usuario)
+     <div id="dynamicFieldsXXY">
+ <!-- Start row -->
+                <div class="row removing{{$i}} mb-4">
+                    <div class="col-2">
+                        <div class="d-flex">
+                            <div class="p-1">
+                                <label class="showName p-2" for="date">Date</label>
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="col-4"> 
+                        <div class="d-flex">                    
+                            <div class="flex-fill p-2">
+                                <input class="form-control showName" 
+                                        type="datetime-local" 
+                                        name="fechaini[{{$i}}]" value="{{date('Y-m-d\TH:i', strtotime($usuario->pivot->fechaini))}}"
+                                >
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="col-4"> 
+                        <div class="d-flex">                    
+                            <div class="flex-fill p-2">
+                                <input class="form-control showName" 
+                                        type="datetime-local" 
+                                        name="fechafin[{{$i}}]" value="{{date('Y-m-d\TH:i', strtotime($usuario->pivot->fechafin))}}"
+                                >
+                            </div>
+                        </div> 
+                    </div>
+                </div> <!-- End row --> 
+                            <div class="row removing{{$i}} showName" style="margin: 10px;">
+              <div class="col-4 offset-4">
+              
+               <input type="button" class="btn btn-danger btn-block remove-fields delfecha" id="removing{{$i}}" name="delfecha{{$i}}"  value="remover fecha{{$i}}">
+            </div>
+          </div>
+
+            </div> <!-- End dynamicFields -->
+
+       
+ @php
+    if(empty($countarrayviejo)){
+
+        $countarrayviejo = 0;
+    }
+    if( $i > $countarrayviejo ){$countarrayviejo = $i;  }
+
+    //if($loop->last){$countarrayviejo = $i;  }
+    //$countarrayviejo = $loop->count;
+@endphp
+@php
+$i++;
+@endphp
+      @endforeach
+ @php
+//echo $countarrayviejo ;
+@endphp
+<input type="hidden" id="countarrayviejo" name="countarrayviejo" value="{{$countarrayviejo ?? 0}}" />
+@endif   
+@endisset
+<!-- termina empty es Editar fechas part1-->
+<div id="dynamicFields">
+</div>
+
+<!-- Comienza isset es Editar tabla-preguntas -->
 @isset($eseditar)    
             <div class="card-body table-responsive">
                <div class="form-group "> 
@@ -128,6 +201,8 @@ echo $countarrayviejo ;
                 </div>
             </div>
 @endisset
+<!-- termina isset es Editar tabla-preguntas -->
+<!-- Inicia isset es Editar selector -->
 @isset($eseditar)    
 <div class="form-group ">
     <label for="tipodoc_id" class="col-lg-3 control-label requerido">Tipo</label>
@@ -142,6 +217,8 @@ echo $countarrayviejo ;
     </div>
 </div>
 @endisset
+<!-- termina isset es Editar selector -->
+<!-- Inicia isset es Crear selector -->
 @isset($escrear)
 <div class="form-group ">
     <label for="tipodoc_id" class="col-lg-3 control-label requerido">Tipo</label>
@@ -155,6 +232,7 @@ echo $countarrayviejo ;
     </div>
 </div>
 @endisset
+<!-- Termina isset es Crear selector -->
 <div class="form-group">
     <label for="identificador" class="col-lg-3 control-label requerido">Identificador</label>
     <div class="col-lg-8">

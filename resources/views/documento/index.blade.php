@@ -32,6 +32,7 @@ Documentos
                             <th>Titulo</th>
                             <th>Tipo</th>
                             <th>Preguntas</th>
+                            <th>Fechas</th>
                             <th>Identificador</th>
                             <th>N-Control</th>
                             <th class="width70"></th>
@@ -49,6 +50,11 @@ Documentos
                             <td>
                                 @foreach ($data->questions as $question)
                                     {{$loop->last ? $question->pivot->state : $question->pivot->state . ', '}}
+                                @endforeach
+                            </td>
+                             <td>
+                                @foreach ($data->usuarios as $usuario)
+                                    {{$loop->last ? $usuario->pivot->state : $usuario->pivot->state . ', '}}
                                 @endforeach
                             </td>
                             <td>{{$data->identificador}}</td>
