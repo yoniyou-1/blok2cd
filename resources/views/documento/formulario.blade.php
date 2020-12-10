@@ -181,6 +181,7 @@
                     <div class="row removing{{$i}} mb-4">
                     @else
                     <div class="row  mb-4">
+                    <input type="hidden"  value="{{$readonly = 'readonly'}}" />
                     @endif
                     @else
                     <div class="row removing{{$i}} mb-4">
@@ -202,7 +203,7 @@
                                 <input class="form-control showName" 
                                         type="datetime-local" 
                                         name="fechaini[{{$i}}]" value="{{old('fechaini.'.$i.'')}}"
-                                required>
+                                {{$readonly ?? ''}} required>
                             </div>
                         </div> 
                     </div>
@@ -212,7 +213,7 @@
                                 <input class="form-control showName" 
                                         type="datetime-local" 
                                         name="fechafin[{{$i}}]" value="{{old('fechafin.'.$i.'')}}"
-                                required>
+                               {{$readonly ?? ''}} required>
                             </div>
                         </div> 
                     </div>
@@ -234,6 +235,7 @@
                             </div>
                         </div> 
                     </div>
+                    @unset($readonly)
                     @endif
                     @endisset
                 </div> <!-- End row --> 
@@ -293,7 +295,12 @@
 @foreach( $data->usuarios as $usuario)
      <div id="dynamicFieldsXXY">
  <!-- Start row -->
+ @if($usuario->pivot->usuario_id == session()->get('user_id'))
                 <div class="row removing{{$i}} mb-4">
+ @else
+                <div class="row  mb-4">
+                <input type="hidden"  value="{{$readonly = 'readonly'}}" />
+ @endif
                     <div class="col-2">
                         <div class="d-flex">
                             <div class="p-1">
@@ -307,7 +314,7 @@
                                 <input class="form-control showName" 
                                         type="datetime-local" 
                                         name="fechaini[{{$i}}]" value="{{date('Y-m-d\TH:i', strtotime($usuario->pivot->fechaini))}}"
-                                required>
+                                {{$readonly ?? ''}} required>
                             </div>
                         </div> 
                     </div>
@@ -317,10 +324,11 @@
                                 <input class="form-control showName" 
                                         type="datetime-local" 
                                         name="fechafin[{{$i}}]" value="{{date('Y-m-d\TH:i', strtotime($usuario->pivot->fechafin))}}"
-                                required>
+                               {{$readonly ?? ''}} required>
                             </div>
                         </div> 
                     </div>
+                    @unset($readonly)
                     <div class="col-2"> 
                         <div class="d-flex">                    
                             <div class="flex-fill p-2">
