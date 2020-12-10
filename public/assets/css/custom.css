@@ -26,3 +26,9 @@ label.requerido:after{
 .pl-40{
     padding-left:40px !important;
 }
+
+.fondo_text {
+  text-align: center;
+  
+  background-color: #dee2e6;
+}

@@ -1,5 +1,8 @@
 
 
+
+
+
 <p id="ur"></p>
 <p id="r"></p>
 <div class="cc"></div>
@@ -107,6 +110,14 @@
             </div>
 <!-- Comienza isset es Editar tabla-preguntas -->
 @isset($eseditar)    
+
+            @foreach ($data->questions as $question)
+            @if(isset($question->pivot->state))
+            <input type="hidden"  value="{{$questionhay = 1}}" />
+            @endif
+            @endforeach
+            <input type="hidden"  value="{{ $questionhay ?? $questionhay = 0 }}" />
+            @if( $questionhay > 0  )
             <div class="card-body table-responsive">
                <div class="form-group "> 
                 <table class="table table-striped table-bordered table-hover" id="tabla-data">
@@ -144,6 +155,7 @@
                 </table>
                 </div>
             </div>
+            @endif  
 @endisset
 <!-- termina isset es Editar tabla-preguntas -->
 
@@ -163,7 +175,20 @@
      @foreach( old('fechaini') as $i => $field)
      <div id="dynamicFieldsXX">
  <!-- Start row -->
+                @isset($eseditar) 
+                    @if( old('usuario_id.'.$i.''))
+                    @if(old('usuario_id.'.$i.'') == session()->get('user_id'))
+                    <div class="row removing{{$i}} mb-4">
+                    @else
+                    <div class="row  mb-4">
+                    @endif
+                    @else
+                    <div class="row removing{{$i}} mb-4">
+                    @endif
+                @endisset
+                @isset($escrear)
                 <div class="row removing{{$i}} mb-4">
+                @endisset
                     <div class="col-2">
                         <div class="d-flex">
                             <div class="p-1">
@@ -198,9 +223,10 @@
                         <div class="d-flex">                    
                             <div class="flex-fill p-2">
                                 <input class="form-control showName" 
-                                        type="text" 
+                                        type="hidden" 
                                         name="user_name[{{$i}}]" value="{{old('user_name.'.$i.'')}}"
                                 readonly required>
+                                <i class="fondo_text">{{old('user_name.'.$i.'')}}</i>
                                 <input class="form-control showName" 
                                         type="hidden" 
                                         name="usuario_id[{{$i}}]" value="{{old('usuario_id.'.$i.'')}}"
@@ -211,12 +237,38 @@
                     @endif
                     @endisset
                 </div> <!-- End row --> 
-                            <div class="row removing{{$i}} showName" style="margin: 10px;">
-              <div class="col-4 offset-4">
+                <!-- inicio boton quitar fechas --> 
+                 @isset($eseditar) 
+                    @if( old('usuario_id.'.$i.''))
+                    @if(old('usuario_id.'.$i.'') == session()->get('user_id'))
+                    <div class="row removing{{$i}} showName" style="margin: 10px;">
+                    <div class="col-4 offset-4">
               
-               <input type="button" class="btn btn-danger btn-block remove-fields delfecha" id="removing{{$i}}" name="delfecha{{$i}}"  value="Remover Fecha">
-            </div>
-          </div>
+                    <input type="button" class="btn btn-danger btn-block remove-fields delfecha" id="removing{{$i}}" name="delfecha{{$i}}"  value="Remover Fecha">
+                     </div>
+                    </div>
+                    
+                    @endif
+                    @else
+                    <div class="row removing{{$i}} showName" style="margin: 10px;">
+                    <div class="col-4 offset-4">
+              
+                    <input type="button" class="btn btn-danger btn-block remove-fields delfecha" id="removing{{$i}}" name="delfecha{{$i}}"  value="Remover Fecha">
+                     </div>
+                    </div>
+                    @endif
+                @endisset
+                @isset($escrear)
+                <div class="row removing{{$i}} showName" style="margin: 10px;">
+                    <div class="col-4 offset-4">
+              
+                    <input type="button" class="btn btn-danger btn-block remove-fields delfecha" id="removing{{$i}}" name="delfecha{{$i}}"  value="Remover Fecha">
+                     </div>
+                 </div>
+                @endisset
+                 <!--fin boton quitar fechas --> 
+                
+
 
             </div> <!-- End dynamicFields -->
 
@@ -273,24 +325,27 @@
                         <div class="d-flex">                    
                             <div class="flex-fill p-2">
                                 <input class="form-control showName" 
-                                        type="text" 
+                                        type="hidden" 
                                         name="user_name[{{$i}}]" value="{{$usuario->name}}"
                                 readonly required>
+                                <i class="fondo_text">{{$usuario->name}}</i>
                                 <input class="form-control showName" 
                                         type="hidden" 
                                         name="usuario_id[{{$i}}]" value="{{$usuario->pivot->usuario_id}}"
                                 >
+
                             </div>
                         </div> 
                     </div>
                 </div> <!-- End row --> 
+                @if($usuario->pivot->usuario_id == session()->get('user_id'))
                             <div class="row removing{{$i}} showName" style="margin: 10px;">
               <div class="col-4 offset-4">
               
                <input type="button" class="btn btn-danger btn-block remove-fields delfecha" id="removing{{$i}}" name="delfecha{{$i}}"  value="Remover Fecha">
             </div>
           </div>
-
+            @endif
             </div> <!-- End dynamicFields -->
 
        

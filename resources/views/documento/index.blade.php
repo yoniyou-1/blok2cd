@@ -33,6 +33,7 @@ Documentos
                             <th>Tipo</th>
                             <th>Preguntas</th>
                             <th>Fechas</th>
+                            <th>Fechas</th>
                             <th>Identificador</th>
                             <th>N-Control</th>
                             <th class="width70"></th>
