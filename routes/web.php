@@ -90,6 +90,21 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('pregunta-tipodoc', 'QuestionsTipodocsController@index')->name('pregunta_tipodoc');
     Route::post('pregunta-tipodoc', 'QuestionsTipodocsController@store')->name('guardar_pregunta_tipodoc');
 
+    /*RUTAS TIPO DE SOLICITUD para los Documentos*/
+    Route::get('tiposolicitud', 'TiposolicitudesController@index')->name('tiposolicitud');
+    Route::get('tiposolicitud/crear', 'TiposolicitudesController@create')->name('crear_tiposolicitud');
+    Route::post('tiposolicitud', 'TiposolicitudesController@store')->name('guardar_tiposolicitud');
+    Route::get('tiposolicitud/{id}/editar', 'TiposolicitudesController@edit')->name('editar_tiposolicitud');
+    Route::put('tiposolicitud/{id}', 'TiposolicitudesController@update')->name('actualizar_tiposolicitud');
+    Route::delete('tiposolicitud/{id}', 'TiposolicitudesController@destroy')->name('eliminar_tiposolicitud');
+
+    /*RUTAS TIPO DE Estado para los Documentos*/
+    Route::get('tipoestado', 'TipoestadosController@index')->name('tipoestado');
+    Route::get('tipoestado/crear', 'TipoestadosController@create')->name('crear_tipoestado');
+    Route::post('tipoestado', 'TipoestadosController@store')->name('guardar_tipoestado');
+    Route::get('tipoestado/{id}/editar', 'TipoestadosController@edit')->name('editar_tipoestado');
+    Route::put('tipoestado/{id}', 'TipoestadosController@update')->name('actualizar_tipoestado');
+    Route::delete('tipoestado/{id}', 'TipoestadosController@destroy')->name('eliminar_tipoestado');
 
 
 });

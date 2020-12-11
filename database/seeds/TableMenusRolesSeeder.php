@@ -27,7 +27,9 @@ class TableMenusRolesSeeder extends Seeder
               array('id' => '10','rol_id' => '1','menu_id' => '3','created_at' => $now,'updated_at' => $now),
               array('id' => '11','rol_id' => '1','menu_id' => '10','created_at' => $now,'updated_at' => $now),
               array('id' => '12','rol_id' => '1','menu_id' => '11','created_at' => $now,'updated_at' => $now),
-              array('id' => '13','rol_id' => '1','menu_id' => '12','created_at' => $now,'updated_at' => $now)
+              array('id' => '13','rol_id' => '1','menu_id' => '12','created_at' => $now,'updated_at' => $now),
+              array('id' => '14','rol_id' => '1','menu_id' => '13','created_at' => $now,'updated_at' => $now),
+               array('id' => '15','rol_id' => '1','menu_id' => '14','created_at' => $now,'updated_at' => $now)
         ];
         DB::table('menus_roles')->insert($menusRoles);  
     }
