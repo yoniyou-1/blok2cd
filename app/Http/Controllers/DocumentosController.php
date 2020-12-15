@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 //pongo este
 use App\Models\Admin\Question;
 use App\Models\Security\Usuario;
+use App\Models\Admin\Tiposolicitud;
 class DocumentosController extends Controller
 {
     /**
@@ -31,7 +32,7 @@ class DocumentosController extends Controller
         //quito este2
         //$datas = Documento::with('tipodocs')->orderBy('id')->get();
         //pongo este2
-        $datas = Documento::with('tipodocs','questions','usuarios')->orderBy('id')->get();
+        $datas = Documento::with('tipodocs','questions','usuarios','tiposolicitud')->orderBy('id')->get();
         //dd($datas);
         return view('documento.index', compact('datas'));
     }
@@ -49,7 +50,8 @@ class DocumentosController extends Controller
         //return view('documento.crear');
         //pongo este
         $tipodocs = Tipodoc::orderBy('id')->pluck('name', 'id')->toArray();
-        return view('documento.crear', compact('tipodocs'));
+        $tiposolicituds = Tiposolicitud::orderBy('id')->pluck('name', 'id')->toArray();
+        return view('documento.crear', compact('tipodocs','tiposolicituds'));
     }
         
     public function createpreguntadocajax(Request $request)
@@ -249,9 +251,10 @@ while($i < $nroquestion_id)
         //return view('documento.index', compact('datas'));
 
         $tipodocs = Tipodoc::orderBy('id')->pluck('name', 'id')->toArray();
-        $data = Documento::with('tipodocs','questions','usuarios')->findOrFail($id);
-        //dd($tipodocs, $data);
-        return view('documento.editar', compact('data', 'tipodocs'));
+        $tiposolicituds = Tiposolicitud::orderBy('id')->pluck('name', 'id')->toArray();
+        $data = Documento::with('tipodocs','questions','usuarios','tiposolicitud')->findOrFail($id);
+        //dd($tiposolicituds, $tipodocs, $data);
+        return view('documento.editar', compact('data', 'tipodocs','tiposolicituds'));
 
     }
 
@@ -349,6 +352,8 @@ if(isset($request->fechaini)){
 //x
     $documento->usuarios()->detach();
     $documento->usuarios()->sync($arrayconvocatorias);
+}else{
+    $documento->usuarios()->detach();
 }
 
 

@@ -11,10 +11,12 @@ use Intervention\Image\Facades\Image;
 use App\Models\Admin\Tipodoc;
 use App\Models\Admin\Question;
 use App\Models\Security\Usuario;
+use App\Models\Admin\Tiposolicitud;
+
 class Documento extends Model
 {
     protected $table = "documentos";
-    protected $fillable = ['identificador','title','ncontrol','tipo_solicitud','observation','estado','foto'];
+    protected $fillable = ['identificador','title','ncontrol','tiposolicitud_id','observation','estado','foto'];
     protected $guarded = ['id'];
 
         public function tipodocs()
@@ -52,5 +54,12 @@ class Documento extends Model
     {
         return $this->belongsToMany(Usuario::class, 'documentos_usuarios', 'documento_id', 'usuario_id')->withPivot('state','fechaini','fechafin');
     }
+
+    public function tiposolicitud()
+    {
+        //return $this->hasMany(Tiposolicitud::class,  'tiposolicitud_id');
+        return $this->belongsTo(Tiposolicitud::class);
+    }
+
 
 }

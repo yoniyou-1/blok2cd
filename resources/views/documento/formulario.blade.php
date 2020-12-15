@@ -1,3 +1,8 @@
+<!-- Inicia isset es Editar selector -->
+
+
+   
+
 
 
 
@@ -56,12 +61,22 @@
     <input type="text" name="title" id="title" class="form-control" value="{{old('title', $data->title ?? '')}}" required/>
     </div>
 </div>
-<div class="form-group">
-    <label for="tipo_solicitud" class="col-lg-3 control-label requerido">Tipo de Solicitud</label>
+
+
+<div class="form-group ">
+    <label for="tiposolicitud_id" class="col-lg-3 control-label requerido">Tipo de Solicitud</label>
     <div class="col-lg-8">
-    <input type="text" name="tipo_solicitud" id="tipo_solicitud" class="form-control" value="{{old('tipo_solicitud', $data->tipo_solicitud ?? '')}}" required/>
+        <select name="tiposolicitud_id" id="tiposolicitud_id" class="form-control" required>
+           <option value="">Seleccione el Tipo de Solicitud</option>
+            @foreach($tiposolicituds as $id => $name)                
+                
+                    <option value="{{$id}}" {{old("tiposolicitud_id", $data->tiposolicitud_id ?? "") == $id ? "selected" : ""}}>{{$name}}</option>
+                
+            @endforeach
+        </select>
     </div>
 </div>
+
 <!--div class="form-group">
     <label for="cantidad" class="col-lg-3 control-label requerido">Cantidad</label>
     <div class="col-lg-8">
