@@ -39,7 +39,18 @@ class TipoestadosTipodocsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            $tipoestados = new Tipoestado();
+            if ($request->input('estado') == 1) {
+                $tipoestados->find($request->input('tipoestado_id'))->tipodocs()->attach($request->input('tipodoc_id'));
+                return response()->json(['respuesta' => 'El Estado se asigno correctamente al tipo de Documento']);
+            } else {
+                $tipoestados->find($request->input('tipoestado_id'))->tipodocs()->detach($request->input('tipodoc_id'));
+                return response()->json(['respuesta' => 'La pregunta se retiro correctamente al tipo de Documento']);
+            }
+        } else {
+            abort(404);
+        }
     }
 
     /**

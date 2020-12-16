@@ -36,7 +36,7 @@ Tipo de Estado - Tipo de documento
                                         type="checkbox"
                                         class="tipoestados_tipodocs"
                                         name="tipoestado_tipodocs[]"
-                                        data-preguntaid={{$tipoestado["id"]}}
+                                        data-tipoestadoid={{$tipoestado["id"]}}
                                         value="{{$id}}" {{in_array($id, array_column($tipoestadostipodocs[$tipoestado["id"]], "id"))? "checked" : ""}}>
                                     </td>
                                 @endforeach

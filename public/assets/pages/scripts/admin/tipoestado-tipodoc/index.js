@@ -1,6 +1,8 @@
-$('.questions_tipodocs').on('change', function () {
+
+$('.tipoestados_tipodocs').on('change', function () {
+
     var data = {
-        question_id: $(this).data('preguntaid'),
+        tipoestado_id: $(this).data('tipoestadoid'),
         tipodoc_id: $(this).val(),
         _token: $('input[name=_token]').val()
     };
@@ -9,7 +11,7 @@ $('.questions_tipodocs').on('change', function () {
     } else {
         data.estado = 0
     }
-    ajaxRequest('/admin/pregunta-tipodoc', data);
+    ajaxRequest('/admin/tipoestado-tipodoc', data);
 });
 
 function ajaxRequest (url, data) {
