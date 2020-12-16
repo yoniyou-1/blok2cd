@@ -105,7 +105,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('tipoestado/{id}/editar', 'TipoestadosController@edit')->name('editar_tipoestado');
     Route::put('tipoestado/{id}', 'TipoestadosController@update')->name('actualizar_tipoestado');
     Route::delete('tipoestado/{id}', 'TipoestadosController@destroy')->name('eliminar_tipoestado');
-
+            /*RUTAS TIPO DE Estado para los Documentos _ TIPO DE DOCUMENTO*/
+    Route::get('tipoestado-tipodoc', 'TipoestadosTipodocsController@index')->name('tipoestado_tipodoc');
+    Route::post('tipoestado-tipodoc', 'TipoestadosTipodocsController@store')->name('guardar_tipoestado_tipodoc');
 
 });
 

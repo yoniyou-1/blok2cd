@@ -1,12 +1,6 @@
 <!-- Inicia isset es Editar selector -->
 
 
-   
-
-
-
-
-
 
 <p id="ur"></p>
 <p id="r"></p>
