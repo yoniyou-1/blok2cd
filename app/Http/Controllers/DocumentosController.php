@@ -67,6 +67,21 @@ class DocumentosController extends Controller
         return response(Json_encode($questionstipodocs),200)->header('-Content-Type','text-plain');
     }
 
+    public function createpreguntadocajax2(Request $request)
+    {
+        //$questions = Question::orderBy('id')->get(['id','name'])->where('id', $request->tipodoc_id)->first();
+
+        $tipodoc_id=$request->tipodoc_id;
+        $tipoestadostipodocs = DB::table('tipoestados')
+                ->join('tipoestados_tipodocs', 'tipoestados_tipodocs.tipoestado_id', '=','tipoestados.id')
+                ->where('tipoestados_tipodocs.tipodoc_id', '=',  $tipodoc_id)
+                ->get();
+
+        return response(Json_encode($tipoestadostipodocs),200)->header('-Content-Type','text-plain');
+    }
+
+
+
 
     /**
      * Store a newly created resource in storage.

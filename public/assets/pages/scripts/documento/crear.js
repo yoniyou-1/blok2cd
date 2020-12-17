@@ -30,6 +30,7 @@ $(document).ready(function () {
         _token: $('input[name=_token]').val()
         };
 
+        ajaxRequest2('/documento/crear2', data);
         ajaxRequest('/documento/crear', data);
         });
 
@@ -111,9 +112,62 @@ $(document).ready(function () {
         });
     }
 
-    //fin ajax <<
+    //fin ajax 1<<
 
-     
+             
+        
+
+
+        function ajaxRequest2 (url, data) {
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: data,
+            success: function (respuesta) {
+                alert(respuesta);
+                var tipoestado = JSON.parse(respuesta);
+                console.log(tipoestado);
+
+                 $(".filaPregunta2").remove();
+                 if(tipoestado.length>0){
+            for (var i=0; i < tipoestado.length;i++){
+
+                    
+                    if(i==0){var a = '<option class="filaPregunta2" value="" >Seleccione el Tipo de Estado</option>'
+                      var todo = '<option class="filaPregunta2" value="'
+                    +tipoestado[i].tipoestado_id+'">'+tipoestado[i].name
+                    +'</option>'
+                    $('#tipoestado_id').append(a,todo);
+                    }else{ var todo = '<option class="filaPregunta2" value="'
+                    +tipoestado[i].tipoestado_id+'">'+tipoestado[i].name
+                    +'</option>'
+                    $('#tipoestado_id').append(todo);
+                    } 
+                    
+                 }
+
+
+
+
+
+
+
+
+
+                    
+                
+
+                }
+
+
+
+                Biblioteca.notificaciones(respuesta.respuesta, 'SAIR', 'success');
+            }
+        });
+    }
+
+    //fin ajax 2<<
     
 var countarrayviejo = $('input#countarrayviejo').val();
 if(typeof(countarrayviejo) != "undefined" && countarrayviejo !== null) {

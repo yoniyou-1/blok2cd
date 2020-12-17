@@ -1,6 +1,6 @@
 <!-- Inicia isset es Editar selector -->
 
-
+    
 
 <p id="ur"></p>
 <p id="r"></p>
@@ -89,6 +89,18 @@
     <input type="text" name="editorial" id="editorial" class="form-control" value="{{old('editorial', $data->editorial ?? '')}}"/>
     </div>
 </div-->
+
+
+<div class="form-group ">
+    <label for="    tipoestado_id" class="col-lg-3 control-label requerido">Tipo Estado</label>
+    <div class="col-lg-8">
+        <select name="  tipoestado_id" id = "tipoestado_id" class="form-control" required>
+        <option class="filaPregunta2" value="" >Seleccione el Tipo de Estado</option>
+        </select>
+    </div>
+</div>
+
+
 <div class="form-group">
     <label for="estado" class="col-lg-3 control-label requerido">Estado</label>
     <div class="col-lg-8">
@@ -101,6 +113,7 @@
         <input type="file" name="foto_up" id="foto" data-initial-preview="{{isset($data->foto) ? Storage::url("imagenes/caratulas/$data->foto") : "http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=Caratula+Libro"}}" accept="image/*"/>
     </div>
 </div>
+
 
 
 
