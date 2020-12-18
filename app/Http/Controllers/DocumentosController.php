@@ -273,9 +273,16 @@ while($i < $nroquestion_id)
 
         $tipodocs = Tipodoc::orderBy('id')->pluck('name', 'id')->toArray();
         $tiposolicituds = Tiposolicitud::orderBy('id')->pluck('name', 'id')->toArray();
-        $data = Documento::with('tipodocs','questions','usuarios','tiposolicitud')->findOrFail($id);
-        //dd($tiposolicituds, $tipodocs, $data);
-        return view('documento.editar', compact('data', 'tipodocs','tiposolicituds'));
+        //$tipoestads = Tipoestado::orderBy('id')->pluck('name', 'id')->toArray();
+        $info = Documento::with('tipodocs')->findOrFail($id);
+        $tipodoc_id = $info->tipodocs[0]->id;
+        $tipoestads = DB::table('tipoestados')
+                ->join('tipoestados_tipodocs', 'tipoestados_tipodocs.tipoestado_id', '=','tipoestados.id')
+                ->where('tipoestados_tipodocs.tipodoc_id', '=',  $tipodoc_id)
+                ->get()->pluck('name', 'tipoestado_id')->toArray();
+        $data = Documento::with('tipodocs','questions','usuarios','tiposolicitud','tipoestados')->findOrFail($id);
+        //dd($tiposolicituds, $tipodocs, $tipoestads, $data);
+        return view('documento.editar', compact('data', 'tipodocs','tiposolicituds','tipoestads'));
 
     }
 
@@ -311,6 +318,7 @@ while($i < $nroquestion_id)
         $documento->update(array_filter($request->all()));
         //$usuario->roles()->sync($request->rol_id);x
         $documento->tipodocs()->sync($request->tipodoc_id);
+        $documento->tipoestados()->sync($request->tipoestado_id);
 
 
 
@@ -433,6 +441,7 @@ if(isset($request->fechaini)){
             $documento->tipodocs()->detach();
             $documento->usuarios()->detach();
             $documento->questions()->detach();
+            $documento->tipoestados()->detach();
             if (Documento::destroy($id)) {
                 Storage::disk('public')->delete("imagenes/caratulas/$documento->foto");
                 return response()->json(['mensaje' => 'ok']);

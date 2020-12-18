@@ -15,7 +15,7 @@ class TiposolicitudesSeeder extends Seeder
     {
         $now = Carbon::now()->toDateTimeString();
         $tiposolicitudes = [
-            array('id' => '1', 'name' => 'Solicitud', 'created_at' => $now, 'updated_at' => $now),
+            array('id' => '1', 'name' => 'Incidencia', 'created_at' => $now, 'updated_at' => $now),
             array('id' => '2', 'name' => 'Requerimiento', 'created_at' => $now, 'updated_at' => $now)
             
         ];

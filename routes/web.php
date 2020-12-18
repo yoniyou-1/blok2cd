@@ -116,6 +116,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('documento/crear', 'DocumentosController@create')->middleware('auth')->name('crear_documento');
     /*AJAX preguntas-tipo de documentos en: el documento*/
     Route::post('documento/crear', 'DocumentosController@createpreguntadocajax')->middleware('auth')->name('pregunta_documento');
+    /*AJAX2 tipoestados-tipo de documentos en: el documento*/
     Route::post('documento/crear2', 'DocumentosController@createpreguntadocajax2')->middleware('auth')->name('pregunta_documento2');
 
     Route::post('documento', 'DocumentosController@store')->middleware('auth')->name('guardar_documento');

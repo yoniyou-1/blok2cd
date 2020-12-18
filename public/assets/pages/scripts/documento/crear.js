@@ -147,17 +147,10 @@ $(document).ready(function () {
                     
                  }
 
-
-
-
-
-
-
-
-
-                    
-                
-
+                }
+                else{
+                  var a = '<option class="filaPregunta2" value="" >Seleccione el Tipo de Estado. Nota:(Primero Seleccione el Tipo de Documento)</option>'
+                  $('#tipoestado_id').append(a);
                 }
 
 

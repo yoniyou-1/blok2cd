@@ -95,7 +95,15 @@
     <label for="    tipoestado_id" class="col-lg-3 control-label requerido">Tipo Estado</label>
     <div class="col-lg-8">
         <select name="  tipoestado_id" id = "tipoestado_id" class="form-control" required>
-        <option class="filaPregunta2" value="" >Seleccione el Tipo de Estado</option>
+        <option class="filaPregunta2" value="" >Seleccione el Tipo de Estado . Nota:(Primero Seleccione el Tipo de Documento)</option>
+            @isset($eseditar) 
+             @foreach($tipoestads as $id => $name)                
+                    
+                        
+                        <option value="{{$id}}" {{old("tipoestado_id", $data->tipoestados[0]->id ?? "") == $id ? "selected" : ""}}>{{$name}}</option>
+                    
+             @endforeach
+            @endisset 
         </select>
     </div>
 </div>
