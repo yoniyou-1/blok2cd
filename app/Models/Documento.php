@@ -12,6 +12,7 @@ use App\Models\Admin\Tipodoc;
 use App\Models\Admin\Question;
 use App\Models\Security\Usuario;
 use App\Models\Admin\Tiposolicitud;
+use App\Models\Admin\Tipoestado;
 
 class Documento extends Model
 {
@@ -21,7 +22,7 @@ class Documento extends Model
 
         public function tipodocs()
     {
-        return $this->belongsToMany(Tipodoc::class, 'documentos_tipodocs')->withTimestamps();
+        return $this->belongsToMany(Tipodoc::class, 'documentos_tipodocs', 'documento_id', 'tipodoc_id')->withTimestamps();
     }
 
     public static function setCaratula($foto, $actual = false){
@@ -60,6 +61,12 @@ class Documento extends Model
         //return $this->hasMany(Tiposolicitud::class,  'tiposolicitud_id');
         return $this->belongsTo(Tiposolicitud::class);
     }
+
+    public function tipoestados()
+    {
+        return $this->belongsToMany(Tipoestado::class, 'documentos_tipoestados', 'documento_id', 'tipoestado_id')->withTimestamps();
+    }
+
 
 
 }

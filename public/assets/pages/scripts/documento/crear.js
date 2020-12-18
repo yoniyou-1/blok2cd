@@ -125,9 +125,9 @@ $(document).ready(function () {
             type: 'POST',
             data: data,
             success: function (respuesta) {
-                alert(respuesta);
+                //alert(respuesta);
                 var tipoestado = JSON.parse(respuesta);
-                console.log(tipoestado);
+                //console.log(tipoestado);
 
                  $(".filaPregunta2").remove();
                  if(tipoestado.length>0){

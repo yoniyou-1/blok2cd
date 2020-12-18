@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Admin\Question;
 use App\Models\Security\Usuario;
 use App\Models\Admin\Tiposolicitud;
+use App\Models\Admin\Tipoestado;
 class DocumentosController extends Controller
 {
     /**
@@ -32,7 +33,7 @@ class DocumentosController extends Controller
         //quito este2
         //$datas = Documento::with('tipodocs')->orderBy('id')->get();
         //pongo este2
-        $datas = Documento::with('tipodocs','questions','usuarios','tiposolicitud')->orderBy('id')->get();
+        $datas = Documento::with('tipodocs','questions','usuarios','tiposolicitud','tipoestados')->orderBy('id')->get();
         //dd($datas);
         return view('documento.index', compact('datas'));
     }
@@ -116,7 +117,12 @@ dd($data);*/
         //pongo este
          $documento = Documento::create($request->all());
          $documento->tipodocs()->attach($request->tipodoc_id);
-         
+
+         //$documento_id = Documento::latest('id')->pluck('id')->first();
+         //dd($documento_id);
+         $documento->tipoestados()->attach($request->tipoestado_id);
+         //$documento->tipoestados()->attach($request->tipodoc_id);
+         //dd($documento->tipoestados('tipoestado_id'));
          //$documento->questions()->attach(1);
          //$documento->questions()->sync($request->question_id);
          //$combination = array_combine($request->question_id, $request->state);
