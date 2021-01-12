@@ -13,6 +13,7 @@ use App\Models\Admin\Question;
 use App\Models\Security\Usuario;
 use App\Models\Admin\Tiposolicitud;
 use App\Models\Admin\Tipoestado;
+use App\Models\File;
 class DocumentosController extends Controller
 {
     /**
@@ -33,7 +34,7 @@ class DocumentosController extends Controller
         //quito este2
         //$datas = Documento::with('tipodocs')->orderBy('id')->get();
         //pongo este2
-        $datas = Documento::with('tipodocs','questions','usuarios','tiposolicitud','tipoestados')->orderBy('id')->get();
+        $datas = Documento::with('tipodocs','questions','usuarios','tiposolicitud','tipoestados','files')->orderBy('id')->get();
         //dd($datas);
         return view('documento.index', compact('datas'));
     }
@@ -92,10 +93,15 @@ class DocumentosController extends Controller
      */
     public function store(ValidacionDocumento $request)
     {   
-        
-/*$data = $request->session()->all();
-dd($data);*/
-/*    if(isset($request->fechaini)){
+        $max_size = (int)ini_get('upload_max_filesize') * 10240;
+
+
+
+
+    //dd($request->all());        
+    /*$data = $request->session()->all();
+    dd($data);
+    /*    if(isset($request->fechaini)){
         $datetime = array_values($request->fechaini);
     dd($request->all(),$datetime);
         }else{dd('ho hay array fechaini');}*/
@@ -118,8 +124,34 @@ dd($data);*/
          $documento = Documento::create($request->all());
          $documento->tipodocs()->attach($request->tipodoc_id);
 
-         //$documento_id = Documento::latest('id')->pluck('id')->first();
+         $documento_id = Documento::latest('id')->pluck('id')->first();
          //dd($documento_id);
+         $files = $request->file('file_up');
+         //dd($files);
+         if($request->hasFile('file_up'))
+         {
+             foreach($files as $file)
+             {  
+                if (Storage::putFileAs('/public/archivos/'.$documento_id.'/', $file, $file->getClientOriginalName() ))
+                 {
+                    File::create([
+                    'name' => $file->getClientOriginalName(),
+                    'documento_id' => $documento_id,
+                    'extension' => $file->getClientOriginalExtension(),
+                    ]);
+                 }
+             }
+          }   
+         /*foreach($files as $file)
+         {
+             File::create([
+                'name' => $file->getClientOriginalName(),
+                'documento_id' => $documento_id
+             ]);
+         }*/
+
+
+
          $documento->tipoestados()->attach($request->tipoestado_id);
          //$documento->tipoestados()->attach($request->tipodoc_id);
          //dd($documento->tipoestados('tipoestado_id'));
@@ -273,6 +305,7 @@ while($i < $nroquestion_id)
 
         $tipodocs = Tipodoc::orderBy('id')->pluck('name', 'id')->toArray();
         $tiposolicituds = Tiposolicitud::orderBy('id')->pluck('name', 'id')->toArray();
+        //$files = File::orderBy('id')->pluck('name', 'id')->toArray();
         //$tipoestads = Tipoestado::orderBy('id')->pluck('name', 'id')->toArray();
         $info = Documento::with('tipodocs')->findOrFail($id);
         $tipodoc_id = $info->tipodocs[0]->id;
@@ -280,7 +313,7 @@ while($i < $nroquestion_id)
                 ->join('tipoestados_tipodocs', 'tipoestados_tipodocs.tipoestado_id', '=','tipoestados.id')
                 ->where('tipoestados_tipodocs.tipodoc_id', '=',  $tipodoc_id)
                 ->get()->pluck('name', 'tipoestado_id')->toArray();
-        $data = Documento::with('tipodocs','questions','usuarios','tiposolicitud','tipoestados')->findOrFail($id);
+        $data = Documento::with('tipodocs','questions','usuarios','tiposolicitud','tipoestados','files')->findOrFail($id);
         //dd($tiposolicituds, $tipodocs, $tipoestads, $data);
         return view('documento.editar', compact('data', 'tipodocs','tiposolicituds','tipoestads'));
 
@@ -295,6 +328,12 @@ while($i < $nroquestion_id)
      */
     public function update(ValidacionDocumento $request, $id)
     {
+
+        $max_size = (int)ini_get('upload_max_filesize') * 10240;
+        //$files = $request->file('file_up');
+         //dd($files);
+
+
         //dd($request->all());
         //quito este
         // $documento = Documento::findOrFail($id);
@@ -312,6 +351,24 @@ while($i < $nroquestion_id)
 
         if ($foto = Documento::setCaratula($request->foto_up, $documento->foto))
            $request->request->add(['foto' => $foto]);
+
+       //dd($documento_id);
+         $files = $request->file('file_up');
+         //dd($files);
+         if($request->hasFile('file_up'))
+         {
+             foreach($files as $file)
+             {  
+                if (Storage::putFileAs('/public/archivos/'.$id.'/', $file, $file->getClientOriginalName() ))
+                 {
+                    File::create([
+                    'name' => $file->getClientOriginalName(),
+                    'documento_id' => $id,
+                    'extension' => $file->getClientOriginalExtension(),
+                    ]);
+                 }
+             }
+          }   
 
 
         //$usuario->update(array_filter($request->all()));x
@@ -418,6 +475,44 @@ if(isset($request->fechaini)){
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     public function destroyfile(Request $request)
+    {   
+if ($request->ajax()) {
+
+    $file_id = $request->id;
+    $documento_id = $request->documentoajax;
+
+    $file_name = $request->name;
+
+    
+    if (File::destroy($file_id)) {
+                unlink(public_path('storage'.'/archivos/'.$documento_id.'/'.$file_name));
+                return response()->json(['mensaje' => 'ok']);
+            } else {
+                return response()->json(['mensaje' => 'ng']);
+            }
+    
+}
+        //$id=$request->id;
+        //$id= "holala";
+
+        /*return response(Json_encode($file_id),200)->header('-Content-Type','text-plain');*/
+
+        /*$documento_id = File::where("id","=",$id)->pluck('documento_id')->first();;
+        dd($documento_id);*/
+        /*
+        if (File::destroy($id)) {
+                unlink(public_path('storage'.'/archivos/2/bb.pdf'));
+                return response()->json(['mensaje' => 'ok']);
+            } else {
+                return response()->json(['mensaje' => 'ng']);
+            }
+        } else {
+            abort(404);
+        }
+        */
+    }
     public function destroy(Request $request, $id)
     {   
         can('eliminar-documento');
@@ -442,6 +537,29 @@ if(isset($request->fechaini)){
             $documento->usuarios()->detach();
             $documento->questions()->detach();
             $documento->tipoestados()->detach();
+            //$documento->files()->detach(); esta en cascada la eliminacion de files
+            //unlink(public_path('storage'.'/archivos/2/bb.pdf'));
+            //Storage::disk('public')->delete("imagenes/caratulas/$documento->foto");
+
+            //Eliminar archivos y carpetas
+            function deleteDirectory($dir) {
+            if(!$dh = @opendir($dir)) return;
+            while (false !== ($current = readdir($dh))) {
+                if($current != '.' && $current != '..') {
+                    //echo 'Se ha borrado el archivo '.$dir.'/'.$current.'<br/>';
+                    if (!@unlink($dir.'/'.$current)) 
+                        deleteDirectory($dir.'/'.$current);
+                }       
+            }
+            closedir($dh);
+            //echo 'Se ha borrado el directorio '.$dir.'<br/>';
+            @rmdir($dir);
+             }
+
+             $carpetadelete = public_path('storage'.'/archivos/'.$id);
+             deleteDirectory($carpetadelete);
+             //Fin Eliminar archivos y carpetas
+
             if (Documento::destroy($id)) {
                 Storage::disk('public')->delete("imagenes/caratulas/$documento->foto");
                 return response()->json(['mensaje' => 'ok']);

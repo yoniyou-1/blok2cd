@@ -145,7 +145,79 @@ i++;
 
 
 
+$('.botoneliminarfile').click(function(){
 
+              
+
+   /* var formdelte = ' <form action="{{route('eliminar_file', ['id' => 17])}}" class="d-inline form-eliminar"method="POST">@csrf @method("delete")<button type="submit" class="btn-accion-tabla del eliminar tooltipsC" title="Eliminar este registro"><i class="fa fa-fw fa-trash text-danger"></i></button></form>';
+    $('.crearformdelete').append(formdelte);*/
+        //alert('hola');
+
+
+
+event.preventDefault();
+        const form2 = $(this);
+        swal({
+            title: '¿ Está seguro de Eliminarlo Permanentemente?',
+            text: "Esta acción no se puede deshacer!",
+            icon: 'warning',
+            buttons: {
+                cancel: "Cancelar",
+                confirm: "Aceptar"
+            },
+        }).then((value) => {
+            if (value) {
+             
+
+      
+
+
+
+    let id2 = this.id;
+    console.log("Se presionó el Boton con Id :"+ id2);
+    var documentoajax2 = $('input#documentoajax').val();
+    let name2 = this.name;
+    var data = {
+
+        id: id2,
+        documentoajax: documentoajax2,
+        name: name2,
+        _token: $('input[name=_token]').val()
+        };
+
+        ajaxRequest3eliminafile('/file/delete', data);
+
+           
+
+
+
+
+        function ajaxRequest3eliminafile (url, data) {
+           
+        $.ajax({
+            url: url,
+            type: 'DELETE',
+            data: data,
+            success: function (respuesta) {
+                
+                /*var id = JSON.parse(respuesta);
+                console.log(id);*/
+                $('.remover'+id2).remove();
+
+
+
+
+                Biblioteca.notificaciones(respuesta.respuesta, 'SAIR', 'success');
+            }
+          
+        });
+    }
+/*fin ajax eliminar*/  
+      }
+        });
+/*fin desicion si o no*/
+});
+/*fin boton eliminar*/
 
 
 

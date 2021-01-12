@@ -31,3 +31,11 @@
   font-weight: bold;
   vertical-align: middle;
 }
+/*de fileimput ocultar fiel delete*/
+.kv-file-remove {
+   display:none;
+}
+
+/*Alinear al lado ya no se utiliza
+.caja { float:left;margin-left:5px; margin-top:15px}
+*/

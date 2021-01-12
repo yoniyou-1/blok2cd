@@ -1,3 +1,10 @@
+
+
+<!--label for="input-25">Planets and Satellites</label>
+<div class="file-loading">
+    <input id="input-25" name="input25[]" type="file" multiple>
+</div-->
+
 <!-- Inicia isset es Editar selector -->
 
     
@@ -40,19 +47,19 @@
 <div class="form-group">
     <label for="identificador" class="col-lg-3 control-label requerido">Identificador</label>
     <div class="col-lg-8">
-    <input type="text" name="identificador" id="identificador" class="form-control" value="{{old('identificador', $data->identificador ?? '')}}" required/>
+    <input type="text" name="identificador" id="identificador" class="form-control" value="{{old('identificador', $data->identificador ?? '')}}" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))" required/>
     </div>
 </div>
 <div class="form-group">
-    <label for="ncontrol" class="col-lg-3 control-label requerido">Control de Cambio Nro</label>
+    <label for="ncontrol" class="col-lg-3 control-label requerido">Nro, Control de Cambio</label>
     <div class="col-lg-8">
-    <input type="text" name="ncontrol" id="ncontrol" class="form-control" value="{{old('ncontrol', $data->ncontrol ?? '')}}" required/>
+    <input type="text" name="ncontrol" id="ncontrol" class="form-control" value="{{old('ncontrol', $data->ncontrol ?? '')}}" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))" required/>
     </div>
 </div>
 <div class="form-group">
     <label for="title" class="col-lg-3 control-label requerido">Título</label>
     <div class="col-lg-8">
-    <input type="text" name="title" id="title" class="form-control" value="{{old('title', $data->title ?? '')}}" required/>
+    <textarea  type="text" name="title" id="title" class="form-control"  required/>{{old('title', $data->title ?? '')}}</textarea>
     </div>
 </div>
 
@@ -80,7 +87,7 @@
 <div class="form-group">
     <label for="observation" class="col-lg-3 control-label requerido">Observacion</label>
     <div class="col-lg-8">
-    <input type="text" name="observation" id="observation" class="form-control" value="{{old('observation', $data->observation ?? '')}}" required/>
+    <textarea type="text" name="observation" id="observation" class="form-control" required/>{{old('observation', $data->observation ?? '')}}</textarea>
     </div>
 </div>
 <!--div class="form-group">
@@ -109,20 +116,61 @@
 </div>
 
 
-<div class="form-group">
+<!--div class="form-group">
     <label for="estado" class="col-lg-3 control-label requerido">Estado</label>
     <div class="col-lg-8">
     <input type="text" name="estado" id="estado" class="form-control" value="{{old('estado', $data->estado ?? '')}}" required/>
     </div>
-</div>
+</div-->
 <div class="form-group">
-    <label for="foto" class="col-lg-3 control-label">Soporte</label>
+    <label for="foto" class="col-lg-3 control-label">Soporte imagen</label>
     <div class="col-lg-5">
-        <input type="file" name="foto_up" id="foto" data-initial-preview="{{isset($data->foto) ? Storage::url("imagenes/caratulas/$data->foto") : "http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=Caratula+Libro"}}" accept="image/*"/>
+        <input type="file" name="foto_up" id="foto" data-initial-preview="{{isset($data->foto) ? Storage::url("imagenes/caratulas/$data->foto") : "http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=Archivo+a+subir"}}" accept="*/*"/ >
     </div>
 </div>
+@isset($escrear)
+<div class="form-group">
+    <label for="file" class="col-lg-3 control-label">Subir  Archivo(s)</label>
+    <div class="col-lg" >
+        <input type="file" name="file_up[]" id="file" data-initial-preview="{{isset($data->file) ? Storage::url("archivos/caratulas/$data->file") : "http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=Archivos+a+subir"}}" accept="*/*"/ multiple
+        >
+    </div>
+</div>
+@endisset
+@isset($eseditar)
+<input type="hidden" id="documentoajax" value="{{$data->id}}">
+<div class="form-group">
+<label for="file" class="col-lg-3 control-label">Subir Nuevo(s)  Archivo(s)</label>
+<div class="file-loading">
+    <input id="file" name="file_up[]" type="file" multiple>
+</div>
+</div>
+
+@foreach ($data->files as $file)
+@if($file)
+<label for="file" class="col-lg-6 control-label">Eliminación Permanente de Archivo(s)</label>
+<label for="file" class="col-lg-6 control-label">Precione para Eliminar Permanentemente un Archivo</label>
+@endif
+@break
+ @endforeach
+<table class="table table-striped table-bordered table-hover" id="tabla-data" >
+<div class="row showName " style="margin: 10px;  }">
+
+@foreach ($data->files as $file)
+    <tr class="remover{{$file->id}}"><td style="text-align: center;">{{$file->name}}</td></tr>
+    <tr class="remover{{$file->id}}"><td>
+            <div class="col-4 offset-4  remover{{$file->id}}">
+                <input type="button" name="{{$file->name}}" id="{{$file->id}}" class="btn btn-danger btn-block  botoneliminarfile" value="Eliminar" />
+            </div>
+    </td></tr>
 
 
+ @endforeach
+</div>
+</table>
+
+
+@endisset
 
 
 

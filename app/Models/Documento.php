@@ -17,7 +17,7 @@ use App\Models\Admin\Tipoestado;
 class Documento extends Model
 {
     protected $table = "documentos";
-    protected $fillable = ['identificador','title','ncontrol','tiposolicitud_id','observation','estado','foto'];
+    protected $fillable = ['identificador','title','ncontrol','tiposolicitud_id','observation','foto'];
     protected $guarded = ['id'];
 
         public function tipodocs()
@@ -25,7 +25,7 @@ class Documento extends Model
         return $this->belongsToMany(Tipodoc::class, 'documentos_tipodocs', 'documento_id', 'tipodoc_id')->withTimestamps();
     }
 
-    public static function setCaratula($foto, $actual = false){
+        public static function setCaratula($foto, $actual = false){
         if ($foto) {
             if ($actual) {
                 Storage::disk('public')->delete("imagenes/caratulas/$actual");
@@ -67,6 +67,10 @@ class Documento extends Model
         return $this->belongsToMany(Tipoestado::class, 'documentos_tipoestados', 'documento_id', 'tipoestado_id')->withTimestamps();
     }
 
-
+        public function files()
+    {
+        //return $this->hasMany(Tiposolicitud::class,  'tiposolicitud_id');
+        return $this->hasMany(File::class);
+    }
 
 }

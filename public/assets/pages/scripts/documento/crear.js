@@ -4,12 +4,49 @@ $(document).ready(function () {
         language: 'es',
         allowedFileExtensions: ['jpg', 'jpeg', 'png'],
         maxFileSize: 5000,
+        //maxFileCount: 5,
         showUpload: false,
         showClose: false,
         initialPreviewAsData: true,
         dropZoneEnabled: false,
         theme: "fas",
     });
+
+    $('#file').fileinput({
+        language: 'es',
+        //allowedFileExtensions: ['jpg', 'jpeg', 'png', 'pdf'],
+        //maxFileSize: 5000,
+        maxFileCount: 10,
+        showUpload: false,
+        showClose: false,
+        initialPreviewAsData: true,
+        dropZoneEnabled: false,
+        theme: "fas",
+    });
+
+         /*var url1 = 'http://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/631px-FullMoon2010.jpg',
+        url2 = 'http://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Earth_Eastern_Hemisphere.jpg/600px-Earth_Eastern_Hemisphere.jpg';
+    $("#input-25").fileinput({
+        initialPreview: [url1, url2],
+        initialPreviewAsData: true,
+        initialPreviewConfig: [
+            {caption: "Moon.jpg", downloadUrl: url1, size: 930321, width: "120px", key: 1},
+            {caption: "Earth.jpg", downloadUrl: url2, size: 1218822, width: "120px", key: 2}
+        ],
+        
+        overwriteInitial: false,
+        maxFileCount: 5,
+        showUpload: false,
+        showClose: false,
+        initialPreviewAsData: true,
+        dropZoneEnabled: false,
+        theme: "fas",
+    });*/
+
+
+
+
+
 
             //var vectorPersonas = ['aa1', 'bb2', 'cc3', 'dd4']; 
 

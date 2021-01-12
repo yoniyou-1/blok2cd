@@ -18,6 +18,121 @@ Documento
 
 @section('scripts')
 <script src='{{asset("assets/pages/scripts/documento/editar.js")}}' type='text/javascript'></script>
+
+
+
+
+    <script> var objetoFiles = [];
+            var urlfilearray = [];
+    </script>
+     @foreach ($data->files as $file)
+    <script>
+
+        urlfilearray.push( "{{Storage::url('archivos/'.$data->id.'/'.$file->name)}}",);
+        var urlfile = "{{Storage::url('archivos/'.$data->id.'/'.$file->name)}}";
+        var namefile = "{{$file->name}}";
+        var extensionfile = "{{$file->extension}}";
+        var idfile = "{{$file->id}}";
+        if(extensionfile == 'jpg' || extensionfile == 'png' || extensionfile == 'jpeg' ){
+             objetoFiles.push (  { caption: namefile, url: urlfile, key: idfile, downloadUrl: urlfile },);
+        }else{
+        objetoFiles.push (  {type: extensionfile,  caption: namefile, url: urlfile, key: idfile, downloadUrl: urlfile },);
+    }
+    //alert("{{$file->name}}");
+    </script>
+     @endforeach
+
+  <script>var urla = ["{{Storage::url('archivos/'.$data->id.'/aa.pdf')}}",
+                    "{{Storage::url('archivos/'.$data->id.'/bb.pdf')}}"];
+
+     /*console.log(urlfilearray);
+     console.log(urla);*/
+
+    /*var uraque = [{ url : "{{Storage::url('archivos/'.$data->id.'/aa.pdf')}}"},
+     {url : "{{Storage::url('archivos/'.$data->id.'/bb.pdf')}}"}];
+
+var myJsonString = JSON.parse(JSON.stringify(uraque));
+  console.log(myJsonString);*/
+    //console.log(urla);
+
+
+//console.log(objetoFiles);
+
+var hh = [
+            {type: "pdf", url: "{{Storage::url('archivos/'.$data->id.'/aa.pdf')}}", }, // disable download
+            {type: "pdf", url: "{{Storage::url('archivos/'.$data->id.'/bb.pdf')}}", },
+        ];
+  //console.log(hh);
+
+
+  </script>   
+
+
+<script> 
+
+   /* $('#file').fileinput({
+
+
+
+        language: 'es',
+        allowedFileExtensions: ['jpg', 'jpeg', 'png', 'pdf'],
+        //maxFileSize: 5000,
+        maxFileCount: 5,
+        showUpload: false,
+        showClose: false,
+        initialPreviewAsData: true,
+        dropZoneEnabled: false,
+        theme: "fas",
+    });*/
+
+               //'http://localhost:8000/storage/archivos/2/aa.pdf' otra buena "{{Storage::url('archivos/'.$data->id.'/aa.pdf')}}"
+    /*var url1 = "{{Storage::url('archivos/'.$data->id.'/aa.pdf')}}",
+        url2 = "http://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Earth_Eastern_Hemisphere.jpg/600px-Earth_Eastern_Hemisphere.jpg";*/
+        var url1 = "{{Storage::url('archivos/'.$data->id.'/aa.pdf')}}",
+            url2 = "{{Storage::url('archivos/'.$data->id.'/bb.pdf')}}";
+
+    $("#file").fileinput({
+         language: 'es',
+         //allowedFileExtensions: ['jpg', 'jpeg', 'png', 'pdf'],
+        initialPreview: urlfilearray,
+        //["/storage/archivos/2/aa.pdf","http://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Earth_Eastern_Hemisphere.jpg/600px-Earth_Eastern_Hemisphere.jpg"],
+        initialPreviewAsData: true,
+        initialPreviewConfig: objetoFiles,
+
+
+        /*[
+            {type: "pdf", url: url1, }, // disable download
+            {type: "pdf", url: url2, }
+        ],*/
+        /*[
+            
+            {type: "pdf", size: 8000, caption: "aa.pdf", url: url1, key: 1, downloadUrl: url1}, // disable download
+            {type: "pdf", size: 8000, caption: "bb.pdf", url: url2, key: 2, downloadUrl: url2}
+            
+        ],*/
+        
+        overwriteInitial: false,
+        maxFileCount: 10,
+        showUpload: false,
+        showClose: false,
+        initialPreviewAsData: true,
+        dropZoneEnabled: false,
+
+        
+        /*deleteUrl: "file/{{17}}",
+        deleteExtraData: {_token: $("[name='_token']").val()},*/
+        theme: "fas",
+    });
+
+   //alert('{{$data->id}}');
+
+
+
+   
+</script>
+
+
+
 @endsection
 
 @section('contenido')
@@ -37,6 +152,19 @@ Documento
              </div>
               <!-- /.card-header -->
               <!-- form start -->
+
+
+
+<div class="crearformdelete">
+
+</div>
+
+ <!--form action="{{route('eliminar_file', ['id' => 17])}}" class="d-inline form-eliminar" method="POST">
+        @csrf @method("delete")
+        <button type="submit" class="btn-accion-tabla eliminar tooltipsC" title="Eliminar este registro">
+            <i class="fa fa-fw fa-trash text-danger"></i>
+        </button>
+</form-->   
         <form action="{{route('actualizar_documento', ['id' => $data->id])}}" id="form-general" class="form-horizontal" method="POST" autocomplete="off" enctype="multipart/form-data">
             @php
             $eseditar = 1;

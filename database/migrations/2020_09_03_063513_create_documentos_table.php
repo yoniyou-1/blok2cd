@@ -25,7 +25,7 @@ class CreateDocumentosTable extends Migration
             ->nullable()->references('id')->on('tiposolicitudes')->onDelete(
                 'restrict')->onUpdate('restrict');
             $table->string('observation', 100)->nullable();
-            $table->tinyInteger('estado')->nullable();
+            //$table->tinyInteger('estado')->nullable();
             $table->string('foto', 100)->nullable();
             $table->timestamps();
             $table->charset = 'utf8mb4';
