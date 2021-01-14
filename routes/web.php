@@ -109,6 +109,17 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('tipoestado-tipodoc', 'TipoestadosTipodocsController@index')->name('tipoestado_tipodoc');
     Route::post('tipoestado-tipodoc', 'TipoestadosTipodocsController@store')->name('guardar_tipoestado_tipodoc');
 
+    /*RUTAS DE TIPO de Fecha para Los Documentos*/
+    Route::get('tipofecha', 'TipofechasController@index')->name('tipofecha');
+    Route::get('tipofecha/crear', 'TipofechasController@create')->name('crear_tipofecha');
+    Route::post('tipofecha', 'TipofechasController@store')->name('guardar_tipofecha');
+    Route::get('tipofecha/{id}/editar', 'TipofechasController@edit')->name('editar_tipofecha');
+    Route::put('tipofecha/{id}', 'TipofechasController@update')->name('actualizar_tipofecha');
+    Route::delete('tipofecha/{id}', 'TipofechasController@destroy')->name('eliminar_tipofecha');
+            /*RUTAS TIPO DE Fecha para los Documentos _ TIPO DE DOCUMENTO*/
+    Route::get('tipofecha-tipodoc', 'TipofechasTipodocsController@index')->name('tipofecha_tipodoc');
+    Route::post('tipofecha-tipodoc', 'TipofechasTipodocsController@store')->name('guardar_tipofecha_tipodoc');
+
 });
 
  /*RUTAS Documentos*/

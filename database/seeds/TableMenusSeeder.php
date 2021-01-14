@@ -30,7 +30,8 @@ class TableMenusSeeder extends Seeder
   array('id' => '12','name' => 'pregunta-tipodoc','url' => 'admin/pregunta-tipodoc','orden' => '8','icon' => 'fa-circle','menu_id' => '6','created_at' => $now,'updated_at' => $now),
   array('id' => '13','name' => 'tipo de solicitud','url' => 'admin/tiposolicitud','orden' => '4','icon' => 'fa-circle','menu_id' => '6','created_at' => $now,'updated_at' => $now),
   array('id' => '14','name' => 'tipo de estado','url' => 'admin/tipoestado','orden' => '7','icon' => 'fa-circle','menu_id' => '6','created_at' => $now,'updated_at' => $now),
-  array('id' => '15','name' => 'tipoestado-tipodoc','url' => 'admin/tipoestado-tipodoc','orden' => '11','icon' => 'fa-circle','menu_id' => '6','created_at' => $now,'updated_at' => $now)
+  array('id' => '15','name' => 'tipoestado-tipodoc','url' => 'admin/tipoestado-tipodoc','orden' => '11','icon' => 'fa-circle','menu_id' => '6','created_at' => $now,'updated_at' => $now),
+  array('id' => '16','name' => 'tipo de fecha','url' => 'admin/tipofecha','orden' => '11','icon' => 'fa-circle','menu_id' => '6','created_at' => $now,'updated_at' => $now)
         ];
         DB::table('menus')->insert($menu);
     }

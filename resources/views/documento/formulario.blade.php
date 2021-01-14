@@ -122,11 +122,11 @@
     <input type="text" name="estado" id="estado" class="form-control" value="{{old('estado', $data->estado ?? '')}}" required/>
     </div>
 </div-->
-<div class="form-group">
+<!--div class="form-group">
     <label for="foto" class="col-lg-3 control-label">Soporte imagen</label>
     <div class="col-lg-5">
         <input type="file" name="foto_up" id="foto" data-initial-preview="{{isset($data->foto) ? Storage::url("imagenes/caratulas/$data->foto") : "http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=Archivo+a+subir"}}" accept="*/*"/ >
-    </div>
+    </div-->
 </div>
 @isset($escrear)
 <div class="form-group">

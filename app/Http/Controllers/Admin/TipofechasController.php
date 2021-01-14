@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\ValidacionTipoestado;
-use App\Models\Admin\Tipoestado;
+use App\Http\Requests\ValidacionTipofecha;
+use App\Models\Admin\Tipofecha;
 
-class TipoestadosController extends Controller
+class TipofechasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class TipoestadosController extends Controller
      */
     public function index()
     {
-        $datas = Tipoestado::orderBy('id')->get();
-        return view('admin.tipoestado.index', compact('datas'));
+        $datas = Tipofecha::orderBy('id')->get();
+        return view('admin.tipofecha.index', compact('datas'));
     }
 
     /**
@@ -27,7 +27,7 @@ class TipoestadosController extends Controller
      */
     public function create()
     {
-        return view('admin.tipoestado.crear');
+        return view('admin.tipofecha.crear');
     }
 
     /**
@@ -36,10 +36,10 @@ class TipoestadosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ValidacionTipoestado $request)
+    public function store(ValidacionTipofecha $request)
     {
-        Tipoestado::create($request->all());
-        return redirect('admin/tipoestado')->with('mensaje', 'Tipo de solicitud creado con exito');
+        Tipofecha::create($request->all());
+        return redirect('admin/tipofecha')->with('mensaje', 'Tipo de fecha creado con exito');
     }
 
     /**
@@ -61,8 +61,8 @@ class TipoestadosController extends Controller
      */
     public function edit($id)
     {
-        $data = Tipoestado::findOrFail($id);
-        return view('admin.tipoestado.editar', compact('data'));
+        $data = Tipofecha::findOrFail($id);
+        return view('admin.tipofecha.editar', compact('data'));
     }
 
     /**
@@ -72,10 +72,10 @@ class TipoestadosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ValidacionTipoestado $request, $id)
+    public function update(ValidacionTipofecha $request, $id)
     {
-        Tipoestado::findOrFail($id)->update($request->all());
-        return redirect('admin/tipoestado')->with('mensaje', 'Tipo de estado actualizado con exito');
+        Tipofecha::findOrFail($id)->update($request->all());
+        return redirect('admin/tipofecha')->with('mensaje', 'Tipo de fecha actualizado con exito');
     }
 
     /**
@@ -87,7 +87,7 @@ class TipoestadosController extends Controller
     public function destroy(Request $request, $id)
     {
         if ($request->ajax()) {
-            if (Tipoestado::destroy($id)) {
+            if (Tipofecha::destroy($id)) {
                 return response()->json(['mensaje' => 'ok']);
             } else {
                 return response()->json(['mensaje' => 'ng']);
