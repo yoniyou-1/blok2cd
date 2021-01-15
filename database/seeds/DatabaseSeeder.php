@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
             'tipodocs',
             'questions',
             'tiposolicitudes',
-            'tipoestados'
+            'tipoestados',
+            'tipofechas'
         ]);
         // $this->call(UsersTableSeeder::class);
         $this->call(TableRolesSeeder::class);
@@ -36,6 +37,8 @@ class DatabaseSeeder extends Seeder
         $this->call(TableQuestionsSeeder::class);
         $this->call(TiposolicitudesSeeder::class);
         $this->call(TipoestadosSeeder::class);
+        $this->call(TableTipofechasSeeder::class);
+
         
 
     }

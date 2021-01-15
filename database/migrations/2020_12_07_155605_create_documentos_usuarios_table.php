@@ -21,8 +21,10 @@ class CreateDocumentosUsuariosTable extends Migration
 
             $table->foreignId('documento_id','fk_documentousuario_documentos')->nullable()->references('id')->on('documentos')->onDelete(
                 'restrict')->onUpdate('restrict');
-            /*$table->foreignId('tipofecha_id','fk_documentousuario_tipofechas')->nullable()->references('id')->on('tipofechas')->onDelete(
-                'restrict')->onUpdate('restrict');*/
+
+            $table->foreignId('tipofecha_id','fk_documentousuario_tipofechas')->nullable()->references('id')->on('tipofechas')->onDelete(
+                'restrict')->onUpdate('restrict');
+            
             $table->dateTime('fechaini')->nullable();
             $table->dateTime('fechafin')->nullable();
             $table->boolean('state')->default(0);
