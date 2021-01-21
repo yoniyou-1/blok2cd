@@ -14,6 +14,7 @@ use App\Models\Security\Usuario;
 use App\Models\Admin\Tiposolicitud;
 use App\Models\Admin\Tipoestado;
 use App\Models\File;
+use App\Models\Admin\Tipofecha;
 class DocumentosController extends Controller
 {
     /**
@@ -34,7 +35,7 @@ class DocumentosController extends Controller
         //quito este2
         //$datas = Documento::with('tipodocs')->orderBy('id')->get();
         //pongo este2
-        $datas = Documento::with('tipodocs','questions','usuarios','tiposolicitud','tipoestados','files')->orderBy('id')->get();
+        $datas = Documento::with('tipodocs','questions','usuarios','tiposolicitud','tipoestados','files','tipofechas')->orderBy('id')->get();
         //dd($datas);
         return view('documento.index', compact('datas'));
     }

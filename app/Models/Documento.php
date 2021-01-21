@@ -13,7 +13,8 @@ use App\Models\Admin\Question;
 use App\Models\Security\Usuario;
 use App\Models\Admin\Tiposolicitud;
 use App\Models\Admin\Tipoestado;
-
+/*App\Models\Admin\File  Aqui de ser nesesario*/
+use App\Models\Admin\Tipofecha;
 class Documento extends Model
 {
     protected $table = "documentos";
@@ -53,7 +54,7 @@ class Documento extends Model
     }
     public function usuarios()
     {
-        return $this->belongsToMany(Usuario::class, 'documentos_usuarios', 'documento_id', 'usuario_id')->withPivot('state','fechaini','fechafin');
+        return $this->belongsToMany(Usuario::class, 'documentos_usuarios', 'documento_id', 'usuario_id')->withPivot('state','fechaini','fechafin', 'tipofecha_id');
     }
 
     public function tiposolicitud()
@@ -72,5 +73,11 @@ class Documento extends Model
         //return $this->hasMany(Tiposolicitud::class,  'tiposolicitud_id');
         return $this->hasMany(File::class);
     }
+
+    public function tipofechas()
+    {
+        return $this->belongsToMany(Tipofecha::class, 'documentos_usuarios', 'documento_id', 'tipofecha_id')->withPivot('state','fechaini','fechafin', 'usuario_id');
+    }
+
 
 }

@@ -7,6 +7,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Admin\Rol;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
+/*para las vista*/
+use App\Models\Documento;
+use App\Models\Admin\Tipofecha;
 
 
 class Usuario extends Authenticatable
@@ -42,6 +45,17 @@ class Usuario extends Authenticatable
     public function setPasswordAttribute($pass)
     {
         $this->attributes['password'] = Hash::make($pass);
+    }
+
+    /*para las vistas*/
+    public function tipofechas()
+    {
+        return $this->belongsToMany(Tipofecha::class, 'documentos_usuarios', 'usuario_id', 'tipofecha_id')->withPivot('state','fechaini','fechafin', 'documento_id');
+    }
+
+    public function documentos()
+    {
+        return $this->belongsToMany(Documento::class, 'documentos_usuarios', 'usuario_id', 'documento_id')->withPivot('state','fechaini','fechafin', 'tipofecha_id');
     }
 
 }

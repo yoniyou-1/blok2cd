@@ -34,6 +34,7 @@ Documentos
                             <th>Preguntas</th>
                             <th>Fechas</th>
                             <th>Fechas</th>
+                            <th>Nombre Fecha</th>
                             <th>Estado</th>
                             <th>Identificador</th>
                             <th>N-Control</th>
@@ -62,6 +63,11 @@ Documentos
                             <td>
                                 @foreach ($data->usuarios as $usuario)
                                     {{$loop->last ? $usuario->pivot->state : $usuario->pivot->state . ', '}}
+                                @endforeach
+                            </td>
+                            <td>
+                                @foreach ($data->tipofechas as $tipofecha)
+                                    {{$loop->last ? $tipofecha->name : $tipofecha->name . ', '}}
                                 @endforeach
                             </td>
                             <td>
