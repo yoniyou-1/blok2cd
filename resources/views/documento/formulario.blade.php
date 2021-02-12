@@ -116,6 +116,26 @@
 </div>
 
 
+<!-- diferenciar los id de los selectores recien creados y hacer un array que los llene a cada uno-->
+<div class="form-group " id="origen">
+    <label for="    tipofecha_id" class="col-lg-3 control-label requerido">Tipo Fecha</label>
+    <div class="col-lg-8">
+        <select name="  tipofecha_id_origen" id = "tipofecha_id" class="form-control" required>
+        <option class="filaPregunta3" value="" >Seleccione el Tipo de Fecha . Nota:(Primero Seleccione el Tipo de Documento)</option>
+            
+        </select>
+    </div>
+</div>
+<!--div class="form-group " id="origenx">
+    <label for="    tipofecha_id" class="col-lg-3 control-label requerido">Tipo Fecha</label>
+    <div class="col-lg-8">
+        <select name="  tipofecha_id[]" id = "tipofecha_id" class="form-control" required>
+        <option class="filaPregunta3" value="" >Seleccione el Tipo de Fecha . Nota:(Primero Seleccione el Tipo de Documento)</option>
+            
+        </select>
+    </div>
+</div-->
+
 <!--div class="form-group">
     <label for="estado" class="col-lg-3 control-label requerido">Estado</label>
     <div class="col-lg-8">
@@ -295,6 +315,17 @@
                             </div>
                         </div> 
                     </div>
+
+                    <!--div class="form-group " id="origenXXZ">
+                        <label for="    tipofecha_id" class="col-lg-3 control-label requerido">Tipo Fecha</label>
+                        <div class="col-lg-8">
+                            <select name="  tipofecha_id[{{$i}}]" id = "tipofecha_id{{$id}}" class="form-control" required>
+                            <option class="filaPregunta3" value="" >Seleccione el Tipo de Fecha . Nota:(Primero Seleccione el Tipo de Documento)</option>
+                             
+                            </select>
+                        </div>
+                    </div-->
+
                     @isset($eseditar) 
                     @if( old('usuario_id.'.$i.''))
 

@@ -67,6 +67,7 @@ $(document).ready(function () {
         _token: $('input[name=_token]').val()
         };
 
+        ajaxRequest3('/documento/crear3', data);
         ajaxRequest2('/documento/crear2', data);
         ajaxRequest('/documento/crear', data);
         });
@@ -198,6 +199,84 @@ $(document).ready(function () {
     }
 
     //fin ajax 2<<
+
+
+
+        function ajaxRequest3 (url, data) {
+
+        $.ajax({
+            //async:false,
+            url: url,
+            type: 'POST',
+            data: data,
+            success: function (respuesta) {
+                //alert(respuesta);
+                var tipofecha = JSON.parse(respuesta);
+                //console.log(tipoestado);
+
+                 $(".filaPregunta3").remove();
+                 if(tipofecha.length>0){
+
+                  var count_tipofecha_id = $(".count_tipofecha_id").length;
+                  var divs = $(".count_tipofecha_id").toArray();
+            for (var i=0; i < tipofecha.length;i++){
+
+                    
+                    if(i==0){var a = '<option class="filaPregunta3" value="" >Seleccione el Tipo de fecha</option>'
+                      var todo = '<option class="filaPregunta3" value="'
+                    +tipofecha[i].tipofecha_id+'">'+tipofecha[i].name
+                    +'</option>'
+                    $('#tipofecha_id').append(a,todo);
+                    
+                    for (var j=0; j < count_tipofecha_id;j++){
+
+                      /*var muestra = divs[j];
+                      console.log(muestra);*/
+                      var nroClasse = $(divs[j]).attr('class').split(' ')[1].substr(23);
+
+                        $('#tipofecha_id'+nroClasse).append(a,todo);
+                      console.log(nroClasse);
+
+                    }
+
+                    }else{ var todo = '<option class="filaPregunta3" value="'
+                    +tipofecha[i].tipofecha_id+'">'+tipofecha[i].name
+                    +'</option>'
+                    $('#tipofecha_id').append(todo);
+
+                    for (var k=0; k < count_tipofecha_id;k++){
+
+                      /*var muestra = divs[k];
+                      console.log(muestra);*/
+                      var nroClasse = $(divs[k]).attr('class').split(' ')[1].substr(23);
+
+                        $('#tipofecha_id'+nroClasse).append(todo);
+                      //console.log(nroClasse);
+
+                    }
+
+
+
+
+
+                    } 
+                    
+                 }
+                  //console.log(divs);
+                }
+                else{
+                  var a = '<option class="filaPregunta3" value="" >Seleccione el Tipo de fecha. Nota:(Primero Seleccione el Tipo de Documento)</option>'
+                  $('#tipofecha_id').append(a);
+                }
+
+
+
+                Biblioteca.notificaciones(respuesta.respuesta, 'SAIR', 'success');
+            }
+        });
+    }
+
+    //fin ajax 3<<
     
 var countarrayviejo = $('input#countarrayviejo').val();
 if(typeof(countarrayviejo) != "undefined" && countarrayviejo !== null) {
@@ -243,6 +322,14 @@ if(typeof(countarrayviejo) != "undefined" && countarrayviejo !== null) {
               +
               '</div>'
               +
+              '<div class="row unique_div_tipofecha_id'+i+' removing'+i+' showName count_tipofecha_id" style="margin: 10px;">'
+              +
+              '<div id="destino'+i+'">'
+              +
+              '</div>'
+              +
+              '</div>'
+              +
               '<div class="row removing'+i+' showName" style="margin: 10px;">'
               +
               '<div class="col-4 offset-4">'
@@ -253,6 +340,11 @@ if(typeof(countarrayviejo) != "undefined" && countarrayviejo !== null) {
               '</div>'
               +
               '</div>');
+
+              $("#origen").clone().appendTo("#destino"+i);
+              $('div#destino'+i+' div#origen').attr("id","origen"+i);
+              //$('div#destino'+i+' div#origen'+i+' select#tipofecha_id').attr("id","tipofecha_id"+i);
+              $('div#destino'+i+' div#origen'+i+' select#tipofecha_id').attr({"id":"tipofecha_id"+i,"name":"tipofecha_id["+i+"]"});
             i++;
             });
         // Removing fields

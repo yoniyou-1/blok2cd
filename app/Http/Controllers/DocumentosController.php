@@ -83,6 +83,20 @@ class DocumentosController extends Controller
         return response(Json_encode($tipoestadostipodocs),200)->header('-Content-Type','text-plain');
     }
 
+    public function createtipofechaajax3(Request $request)
+    {
+        //$questions = Question::orderBy('id')->get(['id','name'])->where('id', $request->tipodoc_id)->first();
+
+        $tipodoc_id=$request->tipodoc_id;
+        $tipofechastipodocs = DB::table('tipofechas')
+                ->join('tipofechas_tipodocs', 'tipofechas_tipodocs.tipofecha_id', '=','tipofechas.id')
+                ->where('tipofechas_tipodocs.tipodoc_id', '=',  $tipodoc_id)
+                ->get();
+
+        return response(Json_encode($tipofechastipodocs),200)->header('-Content-Type','text-plain');
+    }
+
+
 
 
 

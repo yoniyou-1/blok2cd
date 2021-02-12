@@ -76,7 +76,7 @@ class Documento extends Model
 
     public function tipofechas()
     {
-        return $this->belongsToMany(Tipofecha::class, 'documentos_usuarios', 'documento_id', 'tipofecha_id')->withPivot('state','fechaini','fechafin', 'usuario_id');
+        return $this->belongsToMany(Tipofecha::class, 'documentos_usuarios', 'documento_id', 'tipofecha_id')->withPivot('state','fechaini','fechafin', 'usuario_id')->withTimestamps();
     }
 
 
