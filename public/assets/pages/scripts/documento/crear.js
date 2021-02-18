@@ -44,15 +44,65 @@ $(document).ready(function () {
     });*/
 
 
-
-
-
-
             //var vectorPersonas = ['aa1', 'bb2', 'cc3', 'dd4']; 
 
             // $.each(vectorPersonas, function (ind, elem) { 
             //   console.log('¡Hola :'+elem+'!'); 
             // }); 
+
+            $('#origen').hide();
+
+        $('#identificador').on('blur', function() {
+
+          var identificador2 = $('#identificador').val();
+          var tipodoc_id2 = $('select[id=tipodoc_id]').val();
+          var ncontrol2 = $('#ncontrol').val();
+          if(typeof(identificador2) != "undefined" && identificador2 !== null && identificador2 !== "" && tipodoc_id2 !== "") {
+          if(typeof(ncontrol2) != "undefined" && ncontrol2 !== null && ncontrol2 !== "" ) {
+          }else{ var ncontrol2 = "";}
+
+          var data = {
+          tipodoc_id: tipodoc_id2,
+          ncontrol: ncontrol2,
+          identificador: identificador2,
+          _token: $('input[name=_token]').val()
+          };
+
+          //existencia de identificador
+          ajaxRequest4('/documento/crear4', data);
+          //alert(identificador2);
+
+          }
+
+
+        });
+
+        $('#ncontrol').on('blur', function() {
+
+          var ncontrol2 = $('#ncontrol').val();
+          var identificador2 = $('#identificador').val();
+          var tipodoc_id2 = $('select[id=tipodoc_id]').val();
+          
+          if(typeof(ncontrol2) != "undefined" && ncontrol2 !== null && ncontrol2 !== "" && tipodoc_id2 !== "") {
+          if(typeof(identificador2) != "undefined" && identificador2 !== null && identificador2 !== "" ) {
+          }else{ var identificador2 = "";}
+
+          var data = {
+          tipodoc_id: tipodoc_id2,
+          ncontrol: ncontrol2,
+          identificador: identificador2,
+          _token: $('input[name=_token]').val()
+          };
+
+          //existencia de identificador
+          ajaxRequest4('/documento/crear4', data);
+          //alert(identificador2);
+
+          }
+
+
+        });
+            
         $("#tipodoc_id").change(function(){
                 //console.log("mensaje stándard por la consola");
                 var tipodoc_id2 = $('select[id=tipodoc_id]').val();
@@ -62,13 +112,40 @@ $(document).ready(function () {
         //$('#tipodoc_id2').val($(this).val());
         //$(".cc").html("<strong>Hola!!!!"+tipodoc_id2+"</strong>");
 
-        var data = {
+        
+
+        var identificador2 = $('#identificador').val();
+        var ncontrol2 = $('#ncontrol').val();
+        if(typeof(identificador2) != "undefined" && identificador2 !== null && identificador2 !== "" && tipodoc_id2 !== "") {
+        if(typeof(ncontrol2) != "undefined" && ncontrol2 !== null && ncontrol2 !== "" ) {
+        }else{ var ncontrol2 = "";}
+
+          var data = {
+        tipodoc_id: tipodoc_id2,
+        ncontrol: ncontrol2,
+        identificador: identificador2,
+        _token: $('input[name=_token]').val()
+        };
+
+        //existencia de identificador
+        ajaxRequest4('/documento/crear4', data);
+        //alert(identificador2);
+
+        }else{
+
+          var data = {
         tipodoc_id: tipodoc_id2,
         _token: $('input[name=_token]').val()
         };
 
+        }
+        
+        
+        //tipo de fecha
         ajaxRequest3('/documento/crear3', data);
+        //tipo de estado
         ajaxRequest2('/documento/crear2', data);
+        //preguntas
         ajaxRequest('/documento/crear', data);
         });
 
@@ -277,7 +354,34 @@ $(document).ready(function () {
     }
 
     //fin ajax 3<<
-    
+            function ajaxRequest4 (url, data) {
+
+        $.ajax({
+            //async:false,
+            url: url,
+            type: 'POST',
+            data: data,
+            success: function (respuesta) {
+
+                 var existencia = JSON.parse(respuesta);
+                console.log(existencia);
+                $("#store").prop('disabled', !existencia);
+
+                 $(".filaPregunta4").remove();
+                 if(!existencia){
+                 var existecomposicion = '<div class="alert col-lg-8 filaPregunta4 alert-danger"><strong>Oh no!</strong> Ya Existe una composicion similar entre: ( Tipo-documento_Identificador_y_N-control ).</div>'
+                    
+                  setTimeout(function(){
+                    $('#existecomposicion').slideUp( 300 ).fadeIn( 1000 ).append(existecomposicion);
+                  }, 1000);
+
+                    }
+                Biblioteca.notificaciones(respuesta.respuesta, 'SAIR', 'success');
+            }
+        });
+    }
+
+    //fin ajax 4<<
 var countarrayviejo = $('input#countarrayviejo').val();
 if(typeof(countarrayviejo) != "undefined" && countarrayviejo !== null) {
 
@@ -322,9 +426,9 @@ if(typeof(countarrayviejo) != "undefined" && countarrayviejo !== null) {
               +
               '</div>'
               +
-              '<div class="row unique_div_tipofecha_id'+i+' removing'+i+' showName count_tipofecha_id" style="margin: 10px;">'
+              '<div class="row unique_div_tipofecha_id'+i+' removing'+i+' showName count_tipofecha_id" style="margin-left: 160px;">'
               +
-              '<div id="destino'+i+'">'
+              '<div  id="destino'+i+'" class="col-lg-7">'
               +
               '</div>'
               +
@@ -342,9 +446,9 @@ if(typeof(countarrayviejo) != "undefined" && countarrayviejo !== null) {
               '</div>');
 
               $("#origen").clone().appendTo("#destino"+i);
-              $('div#destino'+i+' div#origen').attr("id","origen"+i);
+              $('div#destino'+i+' div#origen').attr("id","origen"+i).show();
               //$('div#destino'+i+' div#origen'+i+' select#tipofecha_id').attr("id","tipofecha_id"+i);
-              $('div#destino'+i+' div#origen'+i+' select#tipofecha_id').attr({"id":"tipofecha_id"+i,"name":"tipofecha_id["+i+"]"});
+              $('div#destino'+i+' div#origen'+i+' select#tipofecha_id').attr({"id":"tipofecha_id"+i,"name":"tipofecha_id["+i+"]", "required":true});
             i++;
             });
         // Removing fields

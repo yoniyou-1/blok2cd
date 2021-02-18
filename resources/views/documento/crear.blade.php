@@ -31,7 +31,7 @@ Documento
                 <h3 class="card-title"> Crear Documento</h3>
             </div>
             <div class="card-tools pull-right">
-                    <a href="{{route('documento')}}" class="btn btn-block btn-info btn-sm">
+                    <a href="{{route('documento')}}" class="btn btn-block btn-secondary btn-sm">
                         <i class="fa fa-fw fa-reply-all"></i> Volver al listado
                     </a>
              </div>

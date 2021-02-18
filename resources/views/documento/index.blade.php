@@ -13,7 +13,7 @@ Documentos
 	<div class="col-md-12">
         @csrf
 		@include('includes.mensaje')
-		<div class="card card-primary card-info">
+		<div class="card card-primary card-warning">
 			<div class="card-header with-border">
 				<h3 class="card-title">Documentos</h3>
 			</div>

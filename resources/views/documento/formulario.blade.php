@@ -56,6 +56,8 @@
     <input type="text" name="ncontrol" id="ncontrol" class="form-control" value="{{old('ncontrol', $data->ncontrol ?? '')}}" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))" required/>
     </div>
 </div>
+<div id="existecomposicion">
+</div>
 <div class="form-group">
     <label for="title" class="col-lg-3 control-label requerido">Título</label>
     <div class="col-lg-8">
@@ -120,7 +122,7 @@
 <div class="form-group " id="origen">
     <label for="    tipofecha_id" class="col-lg-3 control-label requerido">Tipo Fecha</label>
     <div class="col-lg-8">
-        <select name="  tipofecha_id_origen" id = "tipofecha_id" class="form-control" required>
+        <select  id = "tipofecha_id" class="form-control" >
         <option class="filaPregunta3" value="" >Seleccione el Tipo de Fecha . Nota:(Primero Seleccione el Tipo de Documento)</option>
             
         </select>

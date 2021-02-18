@@ -96,6 +96,31 @@ class DocumentosController extends Controller
         return response(Json_encode($tipofechastipodocs),200)->header('-Content-Type','text-plain');
     }
 
+    public function createexiteidentificadorajax4(Request $request)
+    {
+        //$questions = Question::orderBy('id')->get(['id','name'])->where('id', $request->tipodoc_id)->first();
+
+        $tablex = 'documentos';
+        /*$documento_id = Documento::orderBy('id')->get(['id'])->where('identificador', $request->identificador)->first();
+        $info = Documento::with('tipodocs')->findOrFail($documento_id);
+        $tipodoc_id = $info->tipodocs[0]->id;*/
+
+
+        
+        $result = \DB::table($tablex)
+                ->join('documentos_tipodocs', 'documentos_tipodocs.documento_id', '=', $tablex.'.id')
+                ->select( \DB::raw( 1 ))
+                //->select($tablex.'.*', 'documentos_tipodocs.tipodoc_id')
+                ->where('documentos.identificador', '=', $request->identificador)
+                ->where('documentos.ncontrol', '=', $request->ncontrol)
+                ->where('documentos_tipodocs.tipodoc_id', '=', $request->tipodoc_id)
+                //->where($tablex.'.id', '!=', $this->route('id'))
+                ->first();       
+       
+
+        return response(Json_encode(empty( $result )),200)->header('-Content-Type','text-plain');
+    }
+
 
 
 
@@ -108,6 +133,8 @@ class DocumentosController extends Controller
      */
     public function store(ValidacionDocumento $request)
     {   
+        
+        //dd($request->all());
         $max_size = (int)ini_get('upload_max_filesize') * 10240;
 
 
@@ -192,6 +219,8 @@ $user_id = $request->session()->get('user_id');
 $nrofechaini = count ($request->fechaini);
 $arrayfechaini = array_values($request->fechaini);
 $arrayfechafin = array_values($request->fechafin);
+$arraytipofecha_id = array_values($request->tipofecha_id);
+
 if($nrofechaini>1){
 //$arrayfechaini = array_values($request->fechaini);
     
@@ -224,7 +253,7 @@ if($nrofechaini>1){
     {
         if($fechamenor == $arrayfechaini[$i]){$state = 1;}else{
          if($fechamayor == $arrayfechafin[$i]){$state = 3; }else{$state =0;}}
-         $arrayconvocatorias[] = ['fechaini' => $arrayfechaini[$i] ,'fechafin' => $arrayfechafin[$i] ,'state' =>  $state,'usuario_id' =>  $user_id,];
+         $arrayconvocatorias[] = ['fechaini' => $arrayfechaini[$i] ,'fechafin' => $arrayfechafin[$i],'tipofecha_id' => $arraytipofecha_id[$i] ,'state' =>  $state,'usuario_id' =>  $user_id,];
         $i++;
     }
 }else{
@@ -232,7 +261,7 @@ if($nrofechaini>1){
     $i=0;
     while($i < $nrofechaini)
     {
-         $arrayconvocatorias[] = ['fechaini' => $arrayfechaini[$i] ,'fechafin' => $arrayfechafin[$i],'state' =>  1,'usuario_id' =>  $user_id,];
+         $arrayconvocatorias[] = ['fechaini' => $arrayfechaini[$i] ,'fechafin' => $arrayfechafin[$i],'tipofecha_id' => $arraytipofecha_id[$i] ,'state' =>  1,'usuario_id' =>  $user_id,];
         $i++;
     }
 
@@ -328,8 +357,13 @@ while($i < $nroquestion_id)
                 ->join('tipoestados_tipodocs', 'tipoestados_tipodocs.tipoestado_id', '=','tipoestados.id')
                 ->where('tipoestados_tipodocs.tipodoc_id', '=',  $tipodoc_id)
                 ->get()->pluck('name', 'tipoestado_id')->toArray();
+                
+        $tipofechass = DB::table('tipofechas')
+                ->join('tipofechas_tipodocs', 'tipofechas_tipodocs.tipofecha_id', '=','tipofechas.id')
+                ->where('tipofechas_tipodocs.tipodoc_id', '=',  $tipodoc_id)
+                ->get()->pluck('name', 'tipofecha_id')->toArray();
         $data = Documento::with('tipodocs','questions','usuarios','tiposolicitud','tipoestados','files')->findOrFail($id);
-        //dd($tiposolicituds, $tipodocs, $tipoestads, $data);
+        //dd($tiposolicituds, $tipodocs, $tipoestads, $tipofechass, $data);
         return view('documento.editar', compact('data', 'tipodocs','tiposolicituds','tipoestads'));
 
     }

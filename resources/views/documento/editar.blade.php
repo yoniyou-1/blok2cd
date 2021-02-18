@@ -141,12 +141,12 @@ var hh = [
     <div class="col-md-12">
         @include('includes.form-error')
         @include('includes.mensaje')
-        <div class="card card-primary card-info">
+        <div class="card card-primary card-danger">
             <div class="card-header">
                 <h3 class="card-title"> Editar Documento {{$data->title}}</h3>
             </div>
             <div class="card-tools pull-right">
-                    <a href="{{route('documento')}}" class="btn btn-block btn-info btn-sm">
+                    <a href="{{route('documento')}}" class="btn btn-block btn-secondary btn-sm">
                         <i class="fa fa-fw fa-reply-all"></i> Volver al listado
                     </a>
              </div>
