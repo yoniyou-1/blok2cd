@@ -330,7 +330,7 @@
                     <div class="form-group " id="origen{{$i}}">
                         <label for="    tipofecha_id" class="col-lg-3 control-label requerido">Tipo Fecha</label>
                         <div class="col-lg-8">
-                            <select   name="tipofecha_id[{{$i}}]" id = "tipofecha_id[{{$i}}]" class="form-control" >
+                            <select   name="tipofecha_id[{{$i}}]" id = "tipofecha_id[{{$i}}]" class="form-control" {{$readonly ?? ''}}>
                             <option class="filaPregunta3" value="" >Seleccione el Tipo de Fecha . Nota:(Primero Seleccione el Tipo de Documento)</option>
                                  @isset($eseditar) 
                                  @foreach($tipofechass as $id => $name)                
@@ -473,15 +473,16 @@
                     <div class="form-group " id="origen{{$i}}">
                         <label for="    tipofecha_id" class="col-lg-3 control-label requerido">Tipo Fecha</label>
                         <div class="col-lg-8">
-                            <select   name="tipofecha_id[{{$i}}]" id = "tipofecha_id[{{$i}}]" class="form-control" >
+                            <select   name="tipofecha_id[{{$i}}]" id = "tipofecha_id[{{$i}}]" class="form-control" {{$readonly ?? ''}}>
                             <option class="filaPregunta3" value="" >Seleccione el Tipo de Fecha . Nota:(Primero Seleccione el Tipo de Documento)</option>
                                  @isset($eseditar) 
                                  @foreach($tipofechass as $id => $name)                
                                         
                                             
-                                            
+                                            <!--if($id == $usuario->pivot->tipofecha_id )-->
                                             <option class="filaPregunta3" value="{{$id}}" {{old("tipofecha_id", $usuario->pivot->tipofecha_id ?? "") == $id ? "selected" : ""}}>{{$name}}</option>
-                                        
+                                            <!--endif-->
+
                                  @endforeach
                                 @endisset 
                             </select>
