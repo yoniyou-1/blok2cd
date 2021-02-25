@@ -364,7 +364,7 @@ while($i < $nroquestion_id)
                 ->get()->pluck('name', 'tipofecha_id')->toArray();
         $data = Documento::with('tipodocs','questions','usuarios','tiposolicitud','tipoestados','files')->findOrFail($id);
         //dd($tiposolicituds, $tipodocs, $tipoestads, $tipofechass, $data);
-        return view('documento.editar', compact('data', 'tipodocs','tiposolicituds','tipoestads'));
+        return view('documento.editar', compact('data', 'tipodocs','tiposolicituds','tipoestads','tipofechass'));
 
     }
 
@@ -377,7 +377,7 @@ while($i < $nroquestion_id)
      */
     public function update(ValidacionDocumento $request, $id)
     {
-
+        //dd($request->all());
         $max_size = (int)ini_get('upload_max_filesize') * 10240;
         //$files = $request->file('file_up');
          //dd($files);
@@ -435,6 +435,7 @@ if(isset($request->fechaini)){
         $nrofechaini = count ($request->fechaini);
         $arrayfechaini = array_values($request->fechaini);
         $arrayfechafin = array_values($request->fechafin);
+        $arraytipofecha_id = array_values($request->tipofecha_id);
         if(isset($request->usuario_id)){
         $arrayusuario_id = array_values($request->usuario_id);
         }
@@ -470,7 +471,7 @@ if(isset($request->fechaini)){
         {
             if($fechamenor == $arrayfechaini[$i]){$state = 1;}else{
              if($fechamayor == $arrayfechafin[$i]){$state = 3; }else{$state =0;}}
-             $arrayconvocatorias[] = ['fechaini' => $arrayfechaini[$i] ,'fechafin' => $arrayfechafin[$i] ,'state' =>  $state,'usuario_id' =>  $arrayusuario_id[$i] ?? $user_id ,];
+             $arrayconvocatorias[] = ['fechaini' => $arrayfechaini[$i] ,'fechafin' => $arrayfechafin[$i] ,'tipofecha_id' => $arraytipofecha_id[$i] ,'state' =>  $state,'usuario_id' =>  $arrayusuario_id[$i] ?? $user_id ,];
             $i++;
         }
     }else{
@@ -478,7 +479,7 @@ if(isset($request->fechaini)){
         $i=0;
         while($i < $nrofechaini)
         {
-             $arrayconvocatorias[] = ['fechaini' => $arrayfechaini[$i] ,'fechafin' => $arrayfechafin[$i] ,'state' =>  1,'usuario_id' =>  $arrayusuario_id[$i] ?? $user_id,];
+             $arrayconvocatorias[] = ['fechaini' => $arrayfechaini[$i] ,'fechafin' => $arrayfechafin[$i] ,'tipofecha_id' => $arraytipofecha_id[$i] ,'state' =>  1,'usuario_id' =>  $arrayusuario_id[$i] ?? $user_id,];
             $i++;
         }
 

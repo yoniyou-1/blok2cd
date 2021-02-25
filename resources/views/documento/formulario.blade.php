@@ -124,7 +124,14 @@
     <div class="col-lg-8">
         <select  id = "tipofecha_id" class="form-control" >
         <option class="filaPregunta3" value="" >Seleccione el Tipo de Fecha . Nota:(Primero Seleccione el Tipo de Documento)</option>
-            
+             @isset($eseditar) 
+             @foreach($tipofechass as $id => $name)                
+                    
+                        
+            <option class="filaPregunta3" value="{{$id}}">{{$name}}</option>
+                    
+             @endforeach
+            @endisset 
         </select>
     </div>
 </div>
@@ -318,6 +325,28 @@
                         </div> 
                     </div>
 
+                    <div class="row unique_div_tipofecha_id{{$i}} removing{{$i}} showName count_tipofecha_id" style="margin-left: 170px;">
+                    <div  id="destino{{$i}}" class="col-lg-7 col-sm-7">
+                    <div class="form-group " id="origen{{$i}}">
+                        <label for="    tipofecha_id" class="col-lg-3 control-label requerido">Tipo Fecha</label>
+                        <div class="col-lg-8">
+                            <select   name="tipofecha_id[{{$i}}]" id = "tipofecha_id[{{$i}}]" class="form-control" >
+                            <option class="filaPregunta3" value="" >Seleccione el Tipo de Fecha . Nota:(Primero Seleccione el Tipo de Documento)</option>
+                                 @isset($eseditar) 
+                                 @foreach($tipofechass as $id => $name)                
+                                        
+                                            
+                                            
+                                            <option class="filaPregunta3" value="{{$id}}" {{old("tipofecha_id.".$i) == $id ? "selected" : ""}}>{{$name}}</option>
+                                        
+                                 @endforeach
+                                @endisset 
+                            </select>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+
                     <!--div class="form-group " id="origenXXZ">
                         <label for="    tipofecha_id" class="col-lg-3 control-label requerido">Tipo Fecha</label>
                         <div class="col-lg-8">
@@ -438,6 +467,27 @@
                                {{$readonly ?? ''}} required>
                             </div>
                         </div> 
+                    </div>
+                    <div class="row unique_div_tipofecha_id{{$i}} removing{{$i}} showName count_tipofecha_id" style="margin-left: 170px;">
+                    <div  id="destino{{$i}}" class="col-lg-7 col-sm-7">
+                    <div class="form-group " id="origen{{$i}}">
+                        <label for="    tipofecha_id" class="col-lg-3 control-label requerido">Tipo Fecha</label>
+                        <div class="col-lg-8">
+                            <select   name="tipofecha_id[{{$i}}]" id = "tipofecha_id[{{$i}}]" class="form-control" >
+                            <option class="filaPregunta3" value="" >Seleccione el Tipo de Fecha . Nota:(Primero Seleccione el Tipo de Documento)</option>
+                                 @isset($eseditar) 
+                                 @foreach($tipofechass as $id => $name)                
+                                        
+                                            
+                                            
+                                            <option class="filaPregunta3" value="{{$id}}" {{old("tipofecha_id", $usuario->pivot->tipofecha_id ?? "") == $id ? "selected" : ""}}>{{$name}}</option>
+                                        
+                                 @endforeach
+                                @endisset 
+                            </select>
+                        </div>
+                    </div>
+                    </div>
                     </div>
                     @unset($readonly)
                     <div class="col-2"> 

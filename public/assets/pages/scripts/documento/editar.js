@@ -22,6 +22,7 @@ $(".aaa").each(function() {
 });
 
 alert(map.state0); // "red"*/
+$('#origen').hide();
 
 $(function() {
     var map = {};
@@ -114,6 +115,14 @@ i++;
               +
               '</div>'
               +
+              '<div class="row unique_div_tipofecha_id'+i+' removing'+i+' showName count_tipofecha_id" style="margin-left: 160px;">'
+              +
+              '<div  id="destino'+i+'" class="col-lg-7">'
+              +
+              '</div>'
+              +
+              '</div>'
+              +
               '<div class="row removing'+i+' showName" style="margin: 10px;">'
               +
               '<div class="col-4 offset-4">'
@@ -124,6 +133,10 @@ i++;
               '</div>'
               +
               '</div>');
+              $("#origen").clone().appendTo("#destino"+i);
+              $('div#destino'+i+' div#origen').attr("id","origen"+i).show();
+              //$('div#destino'+i+' div#origen'+i+' select#tipofecha_id').attr("id","tipofecha_id"+i);
+              $('div#destino'+i+' div#origen'+i+' select#tipofecha_id').attr({"id":"tipofecha_id"+i,"name":"tipofecha_id["+i+"]", "required":true});
             //i++;
 
             });
