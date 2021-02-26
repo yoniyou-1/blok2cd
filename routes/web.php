@@ -120,6 +120,17 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('tipofecha-tipodoc', 'TipofechasTipodocsController@index')->name('tipofecha_tipodoc');
     Route::post('tipofecha-tipodoc', 'TipofechasTipodocsController@store')->name('guardar_tipofecha_tipodoc');
 
+    /*RUTAS TIPO DE Estado para los Documentos*/
+    Route::get('refexterna', 'RefexternasController@index')->name('refexterna');
+    Route::get('refexterna/crear', 'RefexternasController@create')->name('crear_refexterna');
+    Route::post('refexterna', 'RefexternasController@store')->name('guardar_refexterna');
+    Route::get('refexterna/{id}/editar', 'RefexternasController@edit')->name('editar_refexterna');
+    Route::put('refexterna/{id}', 'RefexternasController@update')->name('actualizar_refexterna');
+    Route::delete('refexterna/{id}', 'RefexternasController@destroy')->name('eliminar_refexterna');
+            /*RUTAS TIPO DE Estado para los Documentos _ TIPO DE DOCUMENTO*/
+    Route::get('refexterna-tipodoc', 'RefexternasTipodocsController@index')->name('refexterna_tipodoc');
+    Route::post('refexterna-tipodoc', 'RefexternasTipodocsController@store')->name('guardar_refexterna_tipodoc');
+
 });
 
  /*RUTAS Documentos*/
