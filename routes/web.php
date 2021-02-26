@@ -146,6 +146,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 
     /*AJAX4 identificador-tipo de documentos en: el documento verificar existencia*/
     Route::post('documento/crear4', 'DocumentosController@createexiteidentificadorajax4')->middleware('auth')->name('exiteidentificador_documento4');
+    
+    /*AJAX2 tipoestados-tipo de documentos en: el documento*/
+    Route::post('documento/crear5', 'DocumentosController@createrefexternadocajax5')->middleware('auth')->name('refexterna_documento5');
 
     Route::post('documento', 'DocumentosController@store')->middleware('auth')->name('guardar_documento');
     Route::post('documento/{documento}', 'DocumentosController@show')->middleware('auth')->name('ver_documento');

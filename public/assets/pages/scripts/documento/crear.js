@@ -141,6 +141,8 @@ $(document).ready(function () {
         }
         
         
+        //referencia externa
+        ajaxRequest5('/documento/crear5', data);
         //tipo de fecha
         ajaxRequest3('/documento/crear3', data);
         //tipo de estado
@@ -277,6 +279,51 @@ $(document).ready(function () {
 
     //fin ajax 2<<
 
+             
+
+        function ajaxRequest5 (url, data) {
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: data,
+            success: function (respuesta) {
+                //alert(respuesta);
+                var refexterna = JSON.parse(respuesta);
+                //console.log(refexterna);
+
+                 $(".filaPregunta5").remove();
+                 if(refexterna.length>0){
+            for (var i=0; i < refexterna.length;i++){
+
+                    
+                    if(i==0){var a = '<option class="filaPregunta5" value="" >Seleccione Referencia Externa</option>'
+                      var todo = '<option class="filaPregunta5" value="'
+                    +refexterna[i].refexterna_id+'">'+refexterna[i].name
+                    +'</option>'
+                    $('#refexterna_id').append(a,todo);
+                    }else{ var todo = '<option class="filaPregunta5" value="'
+                    +refexterna[i].refexterna_id+'">'+refexterna[i].name
+                    +'</option>'
+                    $('#refexterna_id').append(todo);
+                    } 
+                    
+                 }
+
+                }
+                else{
+                  var a = '<option class="filaPregunta5" value="" >Seleccione el Tipo de Estado. Nota:(Primero Seleccione el Tipo de Documento)</option>'
+                  $('#refexterna_id').append(a);
+                }
+
+
+
+                Biblioteca.notificaciones(respuesta.respuesta, 'SAIR', 'success');
+            }
+        });
+    }
+
+    //fin ajax 5<<
 
 
         function ajaxRequest3 (url, data) {

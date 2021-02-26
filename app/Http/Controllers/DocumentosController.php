@@ -15,6 +15,7 @@ use App\Models\Admin\Tiposolicitud;
 use App\Models\Admin\Tipoestado;
 use App\Models\File;
 use App\Models\Admin\Tipofecha;
+use App\Models\Admin\Refexterna;
 class DocumentosController extends Controller
 {
     /**
@@ -121,7 +122,18 @@ class DocumentosController extends Controller
         return response(Json_encode(empty( $result )),200)->header('-Content-Type','text-plain');
     }
 
+    public function createrefexternadocajax5(Request $request)
+    {
+        //$questions = Question::orderBy('id')->get(['id','name'])->where('id', $request->tipodoc_id)->first();
 
+        $tipodoc_id=$request->tipodoc_id;
+        $refexternastipodocs = DB::table('refexternas')
+                ->join('refexternas_tipodocs', 'refexternas_tipodocs.refexterna_id', '=','refexternas.id')
+                ->where('refexternas_tipodocs.tipodoc_id', '=',  $tipodoc_id)
+                ->get();
+
+        return response(Json_encode($refexternastipodocs),200)->header('-Content-Type','text-plain');
+    }
 
 
 

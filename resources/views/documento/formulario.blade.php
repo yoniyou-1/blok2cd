@@ -117,6 +117,23 @@
     </div>
 </div>
 
+<div class="form-group ">
+    <label for="    refexterna_id" class="col-lg-3 control-label requerido">Referencia Externa</label>
+    <div class="col-lg-8">
+        <select name="  refexterna_id" id = "refexterna_id" class="form-control" required>
+        <option class="filaPregunta2" value="" >Seleccione la Referencia Externa . Nota:(Primero Seleccione el Tipo de Documento)</option>
+            @isset($eseditar) 
+             @foreach($tipoestads as $id => $name)                
+                    
+                        
+                        <option value="{{$id}}" {{old("refexterna_id", $data->refexternas[0]->id ?? "") == $id ? "selected" : ""}}>{{$name}}</option>
+                    
+             @endforeach
+            @endisset 
+        </select>
+    </div>
+</div>
+
 
 <!-- diferenciar los id de los selectores recien creados y hacer un array que los llene a cada uno-->
 <div class="form-group " id="origen">
