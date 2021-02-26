@@ -127,7 +127,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('refexterna/{id}/editar', 'RefexternasController@edit')->name('editar_refexterna');
     Route::put('refexterna/{id}', 'RefexternasController@update')->name('actualizar_refexterna');
     Route::delete('refexterna/{id}', 'RefexternasController@destroy')->name('eliminar_refexterna');
-            /*RUTAS TIPO DE Estado para los Documentos _ TIPO DE DOCUMENTO*/
+            /*RUTAS TIPO DE Estado para los Documentos _ TIPO DE DOCUMENTO.*/
     Route::get('refexterna-tipodoc', 'RefexternasTipodocsController@index')->name('refexterna_tipodoc');
     Route::post('refexterna-tipodoc', 'RefexternasTipodocsController@store')->name('guardar_refexterna_tipodoc');
 

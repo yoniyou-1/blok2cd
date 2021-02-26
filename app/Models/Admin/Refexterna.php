@@ -10,8 +10,8 @@ class Refexterna extends Model
     protected $fillable = ['name'];
     protected $guarded = ['id'];
 
-   /* public function tipodocs()
+   	public function tipodocs()
     {
         return $this->belongsToMany(Tipodoc::class, 'refexternas_tipodocs', 'refexterna_id', 'tipodoc_id');
-    }*/
+    }
 }
