@@ -123,7 +123,7 @@
         <select name="  refexterna_id" id = "refexterna_id" class="form-control" required>
         <option class="filaPregunta2" value="" >Seleccione la Referencia Externa . Nota:(Primero Seleccione el Tipo de Documento)</option>
             @isset($eseditar) 
-             @foreach($tipoestads as $id => $name)                
+             @foreach($refexterns as $id => $name)                
                     
                         
                         <option value="{{$id}}" {{old("refexterna_id", $data->refexternas[0]->id ?? "") == $id ? "selected" : ""}}>{{$name}}</option>

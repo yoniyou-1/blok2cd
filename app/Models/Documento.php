@@ -15,6 +15,8 @@ use App\Models\Admin\Tiposolicitud;
 use App\Models\Admin\Tipoestado;
 /*App\Models\Admin\File  Aqui de ser nesesario*/
 use App\Models\Admin\Tipofecha;
+use App\Models\Admin\Refexterna;
+
 class Documento extends Model
 {
     protected $table = "documentos";
@@ -77,6 +79,11 @@ class Documento extends Model
     public function tipofechas()
     {
         return $this->belongsToMany(Tipofecha::class, 'documentos_usuarios', 'documento_id', 'tipofecha_id')->withPivot('state','fechaini','fechafin', 'usuario_id')->withTimestamps();
+    }
+
+    public function refexternas()
+    {
+        return $this->belongsToMany(Refexterna::class, 'documentos_refexternas', 'documento_id', 'refexterna_id')->withTimestamps();
     }
 
 

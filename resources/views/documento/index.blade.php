@@ -36,6 +36,7 @@ Documentos
                             <th>Fechas</th>
                             <th>Nombre Fecha</th>
                             <th>Estado</th>
+                            <th>Ref Ext</th>
                             <th>Identificador</th>
                             <th>N-Control</th>
                             <th class="width70"></th>
@@ -73,6 +74,11 @@ Documentos
                             <td>
                                 @foreach ($data->tipoestados as $tipoestado)
                                     {{$loop->last ? $tipoestado->name : $tipoestado->name . ', '}}
+                                @endforeach
+                            </td>
+                            <td>
+                                @foreach ($data->refexternas as $refexterna)
+                                    {{$loop->last ? $refexterna->name : $refexterna->name . ', '}}
                                 @endforeach
                             </td>
                             <td>{{$data->identificador}}</td>

@@ -36,7 +36,7 @@ class DocumentosController extends Controller
         //quito este2
         //$datas = Documento::with('tipodocs')->orderBy('id')->get();
         //pongo este2
-        $datas = Documento::with('tipodocs','questions','usuarios','tiposolicitud','tipoestados','files','tipofechas')->orderBy('id')->get();
+        $datas = Documento::with('tipodocs','questions','usuarios','tiposolicitud','tipoestados','files','tipofechas','refexternas')->orderBy('id')->get();
         //dd($datas);
         return view('documento.index', compact('datas'));
     }
@@ -207,6 +207,7 @@ class DocumentosController extends Controller
 
 
          $documento->tipoestados()->attach($request->tipoestado_id);
+         $documento->refexternas()->attach($request->refexterna_id);
          //$documento->tipoestados()->attach($request->tipodoc_id);
          //dd($documento->tipoestados('tipoestado_id'));
          //$documento->questions()->attach(1);
@@ -374,9 +375,15 @@ while($i < $nroquestion_id)
                 ->join('tipofechas_tipodocs', 'tipofechas_tipodocs.tipofecha_id', '=','tipofechas.id')
                 ->where('tipofechas_tipodocs.tipodoc_id', '=',  $tipodoc_id)
                 ->get()->pluck('name', 'tipofecha_id')->toArray();
+
+        $refexterns = DB::table('refexternas')
+                ->join('refexternas_tipodocs', 'refexternas_tipodocs.refexterna_id', '=','refexternas.id')
+                ->where('refexternas_tipodocs.tipodoc_id', '=',  $tipodoc_id)
+                ->get()->pluck('name', 'refexterna_id')->toArray();
+                
         $data = Documento::with('tipodocs','questions','usuarios','tiposolicitud','tipoestados','files')->findOrFail($id);
-        //dd($tiposolicituds, $tipodocs, $tipoestads, $tipofechass, $data);
-        return view('documento.editar', compact('data', 'tipodocs','tiposolicituds','tipoestads','tipofechass'));
+        //dd($tiposolicituds, $tipodocs, $tipoestads, $tipofechass, $refexterns, $data);
+        return view('documento.editar', compact('data', 'tipodocs','tiposolicituds','tipoestads','tipofechass','refexterns'));
 
     }
 
@@ -437,6 +444,7 @@ while($i < $nroquestion_id)
         //$usuario->roles()->sync($request->rol_id);x
         $documento->tipodocs()->sync($request->tipodoc_id);
         $documento->tipoestados()->sync($request->tipoestado_id);
+        $documento->refexternas()->sync($request->refexterna_id);
 
 
 
@@ -599,6 +607,7 @@ if ($request->ajax()) {
             $documento->usuarios()->detach();
             $documento->questions()->detach();
             $documento->tipoestados()->detach();
+            $documento->refexternas()->detach();
             //$documento->files()->detach(); esta en cascada la eliminacion de files
             //unlink(public_path('storage'.'/archivos/2/bb.pdf'));
             //Storage::disk('public')->delete("imagenes/caratulas/$documento->foto");
