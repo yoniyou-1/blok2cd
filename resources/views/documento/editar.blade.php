@@ -112,7 +112,7 @@ var hh = [
         ],*/
         
         overwriteInitial: false,
-        maxFileCount: 10,
+        maxFileCount: 20,
         showUpload: false,
         showClose: false,
         initialPreviewAsData: true,

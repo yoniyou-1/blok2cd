@@ -7,6 +7,8 @@
 <div>{{$documento->id}}</div>
 <div>{{$documento->title}}</div>
 <div>{{$documento->observation}}</div>
+
+<!-- Documento
 <div><img style="width: 100%; height: auto; " src="{{Storage::url("imagenes/caratulas/$documento->foto")}}" alt="una Imagen del documento"></div>
 
 <!--div><img style="width: 100%; height: auto;" src="{{Storage::url("imagenes/caratulas/aa.jpg")}}" alt="una Imagen del documentox"></div-->
