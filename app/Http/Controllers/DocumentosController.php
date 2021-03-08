@@ -16,6 +16,10 @@ use App\Models\Admin\Tipoestado;
 use App\Models\File;
 use App\Models\Admin\Tipofecha;
 use App\Models\Admin\Refexterna;
+//exporte en excel
+use App\Exports\DocumentosExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class DocumentosController extends Controller
 {
     /**
@@ -40,6 +44,21 @@ class DocumentosController extends Controller
         //dd($datas);
         return view('documento.index', compact('datas'));
     }
+
+    /**
+     * eportar en excel 
+     * @use App\Exports\DocumentosExport;
+     * @use Maatwebsite\Excel\Facades\Excel;
+     */
+    public function DocumentosExportListExcel(){
+        return Excel::download(new DocumentosExport, 'documentos.xlsx');
+    }
+
+    public function DocumentosExportListExcel2(){
+        return Excel::download(new DocumentosExport, 'documentos2.xlsx');
+    }
+
+
 
     /**
      * Show the form for creating a new resource.

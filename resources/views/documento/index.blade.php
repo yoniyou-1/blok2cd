@@ -22,6 +22,17 @@ Documentos
                         <i class="fa fa-fw fa-plus-circle"></i> Nuevo registro
                     </a>
               </div>
+
+              <div class="card-tools pull-right">
+                    <a href="{{route('excel_documento')}}" class="btn btn-outline-info btn-block btn-sm">
+                        <i class="fa fa-fw fa-book"></i> Exportar del modelo
+                    </a>
+              </div>
+              <!--div class="card-tools pull-right">
+                    <a href="{{route('excel_index_documento')}}" class="btn btn-outline-info btn-block btn-sm">
+                        <i class="fa fa-fw fa-book"></i> Exportar de la vista
+                    </a>
+              </div-->
 			<!-- /.card-header -->
 			
 			<div class="card-body table-responsive no-padding">
