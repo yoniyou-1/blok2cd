@@ -18,6 +18,7 @@ use App\Models\Admin\Tipofecha;
 use App\Models\Admin\Refexterna;
 //exporte en excel
 use App\Exports\DocumentosExport;
+use App\Exports\DocumentosExportIndex;
 use Maatwebsite\Excel\Facades\Excel;
 
 class DocumentosController extends Controller
@@ -54,11 +55,10 @@ class DocumentosController extends Controller
         return Excel::download(new DocumentosExport, 'documentos.xlsx');
     }
 
-    public function DocumentosExportListExcel2(){
-        return Excel::download(new DocumentosExport, 'documentos2.xlsx');
+    public function DocumentosExportIndex(){
+
+        return Excel::download(new DocumentosExportIndex, 'documentoslist.xlsx');
     }
-
-
 
     /**
      * Show the form for creating a new resource.

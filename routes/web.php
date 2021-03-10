@@ -138,7 +138,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('documento/crear', 'DocumentosController@create')->middleware('auth')->name('crear_documento');
     /*exporte en excel de Documentos index*/
     Route::get('documento/documento-excel', 'DocumentosController@DocumentosExportListExcel')->middleware('auth')->name('excel_documento');
-    Route::get('documento/documento-excel-lista', 'DocumentosController@DocumentosExportListExcel2')->middleware('auth')->name('excel_index_documento');
+    Route::get('documento/documento-index-excel', 'DocumentosController@DocumentosExportIndex')->middleware('auth')->name('documento_index_excel');
     /*AJAX preguntas-tipo de documentos en: el documento*/
     Route::post('documento/crear', 'DocumentosController@createpreguntadocajax')->middleware('auth')->name('pregunta_documento');
     /*AJAX2 tipoestados-tipo de documentos en: el documento*/

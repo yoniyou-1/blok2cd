@@ -18,7 +18,7 @@ class DocumentosExport implements FromCollection,WithHeadings
         return [
             'Id',
             'Identificador',
-            'Titulo',
+            'Titulo1',
             'Tipo de Solicitud',
         ];
     }
