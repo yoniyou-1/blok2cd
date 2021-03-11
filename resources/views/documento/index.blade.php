@@ -37,14 +37,15 @@ Documentos
                         <tr>
                             <th>Titulo</th>
                             <th>Tipo</th>
-                            <th>Preguntas</th>
-                            <th>Fechas</th>
-                            <th>Fechas</th>
-                            <th>Nombre Fecha</th>
-                            <th>Estado</th>
-                            <th>Ref Ext</th>
                             <th>Identificador</th>
                             <th>N-Control</th>
+                            <!--th>Preguntas</th>
+                            <th>Fechas</th>
+                            <th>Fechas</th>
+                            <th>Nombre Fecha</th-->
+                            <th>Estado</th>
+                            <th>Ref Ext</th>
+                            
                             <th class="width70"></th>
                         </tr>
                     </thead>
@@ -57,7 +58,9 @@ Documentos
                                     {{$loop->last ? $tipodoc->name : $tipodoc->name . ', '}}
                                 @endforeach
                             </td>
-                            <td>
+                            <td>{{$data->identificador}}</td>
+                            <td>{{$data->ncontrol}}</td>
+                            <!--td>
                                 @foreach ($data->questions as $question)
                                     {{$loop->last ? $question->pivot->state : $question->pivot->state . ', '}}
                                 @endforeach
@@ -76,7 +79,7 @@ Documentos
                                 @foreach ($data->tipofechas as $tipofecha)
                                     {{$loop->last ? $tipofecha->name : $tipofecha->name . ', '}}
                                 @endforeach
-                            </td>
+                            </td-->
                             <td>
                                 @foreach ($data->tipoestados as $tipoestado)
                                     {{$loop->last ? $tipoestado->name : $tipoestado->name . ', '}}
@@ -87,8 +90,7 @@ Documentos
                                     {{$loop->last ? $refexterna->name : $refexterna->name . ', '}}
                                 @endforeach
                             </td>
-                            <td>{{$data->identificador}}</td>
-                            <td>{{$data->ncontrol}}</td>
+                            
                             <td>
                                 <a href="{{route('editar_documento', ['id' => $data->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
                                     <i class="fa fa-fw fa-circle"></i>
