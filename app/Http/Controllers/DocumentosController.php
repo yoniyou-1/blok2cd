@@ -19,6 +19,7 @@ use App\Models\Admin\Refexterna;
 //exporte en excel
 use App\Exports\DocumentosExport;
 use App\Exports\DocumentosExportIndex;
+use App\Exports\DocumentosExportVer;
 use Maatwebsite\Excel\Facades\Excel;
 
 class DocumentosController extends Controller
@@ -58,6 +59,11 @@ class DocumentosController extends Controller
     public function DocumentosExportIndex(){
 
         return Excel::download(new DocumentosExportIndex, 'documentoslist.xlsx');
+    }
+
+    public function DocumentosExportVer($id){
+
+        return Excel::download(new DocumentosExportVer($id), 'documentover.xlsx');
     }
 
     /**

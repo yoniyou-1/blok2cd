@@ -1,4 +1,13 @@
 <!--div>{{$documento->id}}</div-->
+
+            <div class=" row card-header">
+                
+                      <a href="{{route('documento_ver_excel', ['id' => $documento->id])}}" class="btn btn-success">
+                        <i class="fa fa-fw fa-book"></i> Exportar en Excel
+                    </a>
+                
+            </div>
+            
             <div class="card-body table-responsive no-padding">
                             <!-- /.card-body -->
                 <table class="table table-striped table-bordered table-hover" id="tabla-data">
@@ -10,6 +19,7 @@
                             <th>N-Control</th>
                             <th>Estado</th>
                             <th>Ref Ext</th>
+                            <th>Tipo solicitud</th>
                             
                             
                         </tr>
@@ -38,7 +48,11 @@
                                     {{$loop->last ? $refexterna->name : $refexterna->name . ', '}}
                                 @endforeach
                             </td>
-                            
+                            <td>
+
+                             {{$documento->tiposolicitud->name}}
+
+                            </td>
                             
                         </tr>
                     </tbody>
