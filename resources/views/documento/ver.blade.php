@@ -2,8 +2,12 @@
 <!--div>{{$documento->id}}</div-->
 
             <div class=" row card-header">
-                
-                      <a href="{{route('documento_ver_excel0', ['id' => $documento->id])}}" class="btn btn-success">
+                    
+                     <a href="{{route('documento_ver_excel', ['id' => $documento->id])}}" class="btn btn-success">
+                        <i class="fa fa-fw fa-book"></i> Exportar en Excel
+                    </a>
+
+                    <a href="{{route('documento_ver_excel0', ['id' => $documento->id])}}" class="btn btn-success">
                         <i class="fa fa-fw fa-book"></i> Exportar en Excel 0
                     </a>
 

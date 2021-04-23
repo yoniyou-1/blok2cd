@@ -19,6 +19,7 @@ use App\Models\Admin\Refexterna;
 //exporte en excel
 use App\Exports\DocumentosExport;
 use App\Exports\DocumentosExportIndex;
+use App\Exports\DocumentosExportVer;
 use App\Exports\DocumentosExportVer0;
 use App\Exports\DocumentosExportVer2;
 use Maatwebsite\Excel\Facades\Excel;
@@ -64,6 +65,13 @@ class DocumentosController extends Controller
         return Excel::download(new DocumentosExportIndex, 'documentoslist.xlsx');
     }
 
+    public function DocumentosExportVer($id){
+
+
+        return Excel::download(new DocumentosExportVer($id), 'documentover.xlsx');
+   
+    }
+    
     public function DocumentosExportVer0($id){
 
         return Excel::download(new DocumentosExportVer0($id), 'documentover.xlsx');
@@ -90,6 +98,7 @@ class DocumentosController extends Controller
           
             
     }
+
 
     /**
      * Show the form for creating a new resource.

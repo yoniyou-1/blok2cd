@@ -141,6 +141,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('documento/documento-index-excel', 'DocumentosController@DocumentosExportIndex')->middleware('auth')->name('documento_index_excel');
     Route::get('documento/{id}/documento-ver-excel0', 'DocumentosController@DocumentosExportVer0')->middleware('auth')->name('documento_ver_excel0');
     Route::get('documento/{id}/documento-ver-excel2', 'DocumentosController@DocumentosExportVer2')->middleware('auth')->name('documento_ver_excel2');
+    Route::get('documento/{id}/documento-ver-excel', 'DocumentosController@DocumentosExportVer')->middleware('auth')->name('documento_ver_excel');
     /*exporte en pdf de Documentos ver*/
     /*Route::get('documento/{id}/documento-ver-pdf', 'DocumentosController@DocumentosExportVerpdf')->middleware('auth')->name('documento_ver_pdf');*/
 
