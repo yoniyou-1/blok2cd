@@ -19,7 +19,7 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 
-class DocumentosExportVer implements FromView
+class DocumentosExportVer0 implements FromView
 {   
 
     public function __construct(int $id)
@@ -31,7 +31,7 @@ class DocumentosExportVer implements FromView
 
         //dd($this->id);
         
-        return view('exports.documento.ver', [
+        return view('exports.documento.ver0', [
             'datas' =>  $datas = Documento::with('tipodocs','questions','usuarios','tiposolicitud','tipoestados','files','tipofechas','refexternas')->where('documentos.id', $this->id)->orderBy('id')->get(),
            'tiposolicituds' => $tiposolicituds = Tiposolicitud::orderBy('id')->get()
         ]);
