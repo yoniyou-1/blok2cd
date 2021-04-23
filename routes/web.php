@@ -140,8 +140,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('documento/documento-excel', 'DocumentosController@DocumentosExportListExcel')->middleware('auth')->name('excel_documento');
     Route::get('documento/documento-index-excel', 'DocumentosController@DocumentosExportIndex')->middleware('auth')->name('documento_index_excel');
     Route::get('documento/{id}/documento-ver-excel', 'DocumentosController@DocumentosExportVer')->middleware('auth')->name('documento_ver_excel');
+    Route::get('documento/{id}/documento-ver-excel2', 'DocumentosController@DocumentosExportVer2')->middleware('auth')->name('documento_ver_excel2');
+    /*exporte en pdf de Documentos ver*/
+    /*Route::get('documento/{id}/documento-ver-pdf', 'DocumentosController@DocumentosExportVerpdf')->middleware('auth')->name('documento_ver_pdf');*/
 
-    //Route::get('documento/{id}/editar', 'DocumentosController@edit')->middleware('auth')->name('editar_documento');
+    //viejo Route::get('documento/{id}/editar', 'DocumentosController@edit')->middleware('auth')->name('editar_documento');
     /*AJAX preguntas-tipo de documentos en: el documento*/
     Route::post('documento/crear', 'DocumentosController@createpreguntadocajax')->middleware('auth')->name('pregunta_documento');
     /*AJAX2 tipoestados-tipo de documentos en: el documento*/

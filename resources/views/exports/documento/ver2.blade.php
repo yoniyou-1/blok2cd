@@ -1,3 +1,4 @@
+
 <table>
     <thead>
     <tr>
@@ -14,6 +15,7 @@
         <th>Fecha Inicial</th>
         <th>Fecha Final</th>
         <th>asiento</th>
+
     </tr>
     </thead>
     <tbody>
@@ -88,6 +90,7 @@
                                         <td>
                                         {{$count}}
                                         </td>
+
 	                                 </tr>
 
 	                                 @endif 
@@ -96,6 +99,71 @@
             
     
     @endforeach
+
+
+
+    </tbody>
+</table>
+
+
+<table>
+    <thead>
+        <tr>
+            <th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+            <th>Pregunta</th>
+            <th>Respuesta</th>
+        </tr>
+    </thead>
+    <tbody>
+          
+        @foreach ($data->questions as $question)
+        <tr>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  
+            <td>
+                {{ $question->name }}
+            </td>
+             <td>
+                @if( $question->pivot->state == 1)
+                    Cumple
+                    @elseif ( $question->pivot->state == 2)
+                    No Cumple
+                    @elseif ( $question->pivot->state == 0)
+                    No Aplica
+                @endif
+            </td>
+        </tr>   
+        @endforeach
+       
+    </tbody>
+</table>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>imagenes de Anexos</th>
+        </tr>
+    </thead>
+    <tbody>
+
+@foreach ($data->files as $file)
+    @if(  $file->extension == 'jpg' || $file->extension == 'png'|| $file->extension == 'jpeg' )
+      <tr><td></td></tr>
+      
+      <tr><td>
+        <div>
+            {{$loop->last ? $file->name : $file->name . ', '}}
+        </div>
+      </td></tr>
+
+      <tr><td>
+          <img width="100%" height="400" src="{{public_path('storage/archivos/'.$data->id.'/'.$file->name)}}" alt="" style="width: 10px; height: 10px;">  
+          <br>
+
+      </td></tr>
+    @endif 
+@endforeach
+
 
 
     </tbody>

@@ -20,7 +20,9 @@ use App\Models\Admin\Refexterna;
 use App\Exports\DocumentosExport;
 use App\Exports\DocumentosExportIndex;
 use App\Exports\DocumentosExportVer;
+use App\Exports\DocumentosExportVer2;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class DocumentosController extends Controller
 {
@@ -45,6 +47,7 @@ class DocumentosController extends Controller
         $datas = Documento::with('tipodocs','questions','usuarios','tiposolicitud','tipoestados','files','tipofechas','refexternas')->orderBy('id')->get();
         //dd($datas);
         return view('documento.index', compact('datas'));
+
     }
 
     /**
@@ -64,6 +67,28 @@ class DocumentosController extends Controller
     public function DocumentosExportVer($id){
 
         return Excel::download(new DocumentosExportVer($id), 'documentover.xlsx');
+    }
+
+    /*public function DocumentosExportVerpdf($id){
+
+        return Excel::download(new DocumentosExportVer($id), 'documentover.xlsx');
+    }*/
+
+
+    public function DocumentosExportVer2($id){
+
+        //retun Excel::download(new DocumentosExportVer($id), 'documentover.xlsx');
+        return Excel::download(new DocumentosExportVer2($id), 'documentover.xlsx');
+        //
+        //return (new DocumentosExportVer($id))->export('documentover.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
+            //$pdf = \PDF::loadView('documento.ver', compact('documento'));
+            //return $pdf->download('ver.pdf');
+            // $dompdf = new DOMPDF(, $dompdf->load_html(
+            // 
+           //$pdf = \PDF::loadView(new DocumentosExportVer($id));
+           //return $pdf->download('ver.pdf');
+          
+            
     }
 
     /**
@@ -358,12 +383,24 @@ while($i < $nroquestion_id)
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Documento $documento)
+    /*public function show(Documento $documento)
     {
         //dd($documento);
         return view('documento.ver', compact('documento'));
-    }
 
+
+    }*/
+    public function show(Documento $documento)
+    {
+
+            //dd($documento);
+            return view('documento.ver', compact('documento'));
+            /*$pdf = \PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('documento.ver', compact('documento'));
+            return $pdf->download('ver.pdf');*/
+             //$pdf = \PDF::loadView('documento.ver2', compact('documento'));
+           // return $pdf->download('ver.pdf');
+
+    }
     /**
      * Show the form for editing the specified resource.
      *

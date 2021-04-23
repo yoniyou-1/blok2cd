@@ -1,3 +1,8 @@
+
+
+<!--img src="{{ public_path("storage\imagenes\caratulas\BuIyjx3QQgql2NjyiEZQ.jpg") }}" alt="" style="width: 150px; height: 150px;">
+<img src="{{ public_path("storage\imagenes\caratulas\Jellyfish.jpg") }}" alt="" style="width: 150px; height: 150px;">
+<img src="{{ public_path("storage\imagenes\caratulas\Koala.jpg") }}" alt="" style="width: 150px; height: 150px;"-->
 <table>
     <thead>
     <tr>
@@ -13,7 +18,7 @@
         <th>Tipo de Registro</th>
         <th>Fecha Inicial</th>
         <th>Fecha Final</th>
-        <th>orden</th>
+        <th>asiento</th>
 
     </tr>
     </thead>
