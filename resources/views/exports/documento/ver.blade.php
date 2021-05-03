@@ -2,19 +2,36 @@
 <table>
     <thead>
     <tr>
-        <th>Tipo de Ducumento</th>
-        <th>Identificador</th>
-        <th>Nro. Control</th>
-        <th>Titulo</th>
+        <th></th>
+    </tr>
+    <tr>
+        
+        <th style="text-align: center;">GERENCIA DE EVALUACIONES PREVENTIVAS DE SEGURIDAD LÓGICA</th>
+    </tr>
+     <tr>
+        
+        <th>MATRIZ DE EVALUACIÓN INTEGRAL DE SEGURIDAD</th>
+    </tr>
+     <tr>
+        
+        <th>Archivo de {{ $datas[0]->tipodocs[0]->name }} </th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>    
+            <td>
+                
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+<table>
+    <thead>
+    <tr>
+        <th>Tipo de Documento</th>
         <th>Tipo de Solicitud</th>
-        <th>Responsable Externo</th>
-        <th>Estatus</th>
-        <th>Observacion</th>
-        <th>Usuario en el rango de Fecha</th>
-        <th>Tipo de Registro</th>
-        <th>Fecha Inicial</th>
-        <th>Fecha Final</th>
-        <th>asiento</th>
 
     </tr>
     </thead>
@@ -22,94 +39,107 @@
     @foreach ($datas as $data)
     @php($count = $loop->iteration)
     @php($usuario = $data->usuarios)
-
-
     <tr>	
     		<td>
                                 @foreach ($data->tipodocs as $tipodoc)
                                     {{$loop->last ? $tipodoc->name : $tipodoc->name . ', '}}
                                 @endforeach
             </td>
-            <td>{{ $data->identificador }}</td>
-            <td>{{ $data->ncontrol }}</td>
-            <td>{{ $data->title }}</td>            
-		    @foreach ($tiposolicituds  as $tiposolicitud)
+
+            @foreach ($tiposolicituds  as $tiposolicitud)
 		        
 	         @if( $tiposolicitud->id == $data->tiposolicitud_id)
 	          <td>{{ $tiposolicitud->name }}</td>
 	         @endif 
 		    @endforeach
-            <td>
-                                @foreach ($data->refexternas as $refexterna)
-                                    {{$loop->last ? $refexterna->name : $refexterna->name . ', '}}
-                                @endforeach
-            </td>
-            <td>
-                                @foreach ($data->tipoestados as $tipoestado)
-                                    {{$loop->last ? $tipoestado->name : $tipoestado->name . ', '}}
-                                @endforeach
-            </td>
-            <td>{{ $data->observation }}</td>  
-                                @foreach ($data->tipofechas as $tipofecha)
-                                @php($i = $loop->iteration -1)
-                                	 @if( $tipofecha->name)
-                                	 @if( $i == 0)
-                                     <td>
-                                        {{$usuario[$i]->name}} {{$usuario[$i]->lastname}}
-                                     </td>
-                                	 <td>
-	                                    {{$tipofecha->name}}
-	                                 </td>
-                                     <td>
-                                        {{$usuario[$i]->pivot->fechaini}}
-                                     </td>
-                                     <td>
-                                        {{$usuario[$i]->pivot->fechafin}}
-                                     </td>
-                                     <td>
-                                        {{$count}}
-                                     </td>
-
 	</tr>
-                                	 @else
-                                	 <tr>
-                                	 	<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-                                        <td>
-                                        {{$usuario[$i]->name}} {{$usuario[$i]->lastname}}
-                                        </td>
-	                                	<td>
-	                                    {{$tipofecha->name}}
-	                                    </td>
-                                        <td>
-                                        {{$usuario[$i]->pivot->fechaini}}
-                                        </td>
-                                        <td>
-                                        {{$usuario[$i]->pivot->fechafin}}
-                                        </td>
-                                        <td>
-                                        {{$count}}
-                                        </td>
-
-	                                 </tr>
-
-	                                 @endif 
-	                                 @endif 
-                                @endforeach
-            
-    
     @endforeach
+    </tbody>
+</table>
+<!-- tabl2-->
+<table>
+    <thead>
+    <tr>
+            <th>Identificador</th>
 
+    </tr>
+    </thead>
+    <tbody>
+    @foreach ($datas as $data)
+    <tr>    
+            <td>{{ $data->identificador }}</td>
 
+    </tr>
+ 
+    @endforeach
 
     </tbody>
 </table>
+<table>
+    <thead>
+    <tr>
+            <th>Nro. Control</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach ($datas as $data)
+    <tr>    
+            <td>{{ $data->ncontrol }}</td>
+    </tr>
+ 
+    @endforeach
 
+    </tbody>
+</table>
+<!-- fin tabl2-->
+
+<!--dos tablas-->
+<table>
+    <thead>
+    <tr>
+        <th>Titulo</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{ $datas[0]->title }} </td>            
+    </tr>   
+    </tbody>
+</table>
 
 <table>
     <thead>
+    <tr>
+        <th>Responsable Externo</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{ $datas[0]->refexternas[0]->name }} </td>            
+    </tr>   
+    </tbody>
+</table>
+
+<table>
+    <thead>
+    <tr>
+        <th>Fecha</th><th>Region</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Edite fecha xxx</td><td>Edite region xxx</td>            
+    </tr>   
+    </tbody>
+</table>
+
+<!--fin dos tablas -->
+
+<!--tercera tabla-->
+<table>
+    <thead>
         <tr>
-            <th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+            
             <th>Pregunta</th>
             <th>Respuesta</th>
         </tr>
@@ -118,10 +148,11 @@
           
         @foreach ($data->questions as $question)
         <tr>
-            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>  
+            
             <td>
                 {{ $question->name }}
             </td>
+
              <td>
                 @if( $question->pivot->state == 1)
                     Cumple
@@ -136,7 +167,22 @@
        
     </tbody>
 </table>
+<!--fin tercera tabla -->
 
+<!--cuarta tabla-->
+<table>
+    <thead>
+    <tr>
+        <th>Observacion</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{ $datas[0]->observation }} </td>            
+    </tr>   
+    </tbody>
+</table>
+<!--fin cuarta tabla -->
 
 <table>
     <thead>
@@ -150,17 +196,23 @@
     @if(  $file->extension == 'jpg' || $file->extension == 'png'|| $file->extension == 'jpeg' )
       <tr><td></td></tr>
       
-      <tr><td>
-        <div>
-            {{$loop->last ? $file->name : $file->name . ', '}}
-        </div>
-      </td></tr>
+      <tr>
+        
+        <td>
+            <div>
+                {{$loop->last ? $file->name : $file->name . ', '}}
+            </div>
+        </td>
 
-      <tr><td>
+      </tr>
+
+      <tr>
+        
+        <td>
           <img width="100%" height="400" src="{{public_path('storage/archivos/'.$data->id.'/'.$file->name)}}" alt="" style="width: 10px; height: 10px;">  
           <br>
-
-      </td></tr>
+        </td>
+    </tr>
     @endif 
 @endforeach
 

@@ -12,8 +12,8 @@ use App\Models\Admin\Tipodoc;
 
 /*
 use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\WithHeadings;
-*/
+use Maatwebsite\Excel\Concerns\WithHeadings;*/
+
 
 
 use Illuminate\Contracts\View\View;
@@ -23,13 +23,10 @@ class DocumentosExportVer implements FromView
 {   
 
     public function __construct(int $id)
-    {
+    {   
+
         $this->id = $id;
     }
-
-
-
-
 
     
     public function view(): View

@@ -71,7 +71,7 @@ class DocumentosController extends Controller
         return Excel::download(new DocumentosExportVer($id), 'documentover.xlsx');
    
     }
-    
+
     public function DocumentosExportVer0($id){
 
         return Excel::download(new DocumentosExportVer0($id), 'documentover.xlsx');
