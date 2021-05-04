@@ -14,6 +14,10 @@
                     <a href="{{route('documento_ver_excel2', ['id' => $documento->id])}}" class="btn btn-success">
                         <i class="fa fa-fw fa-book"></i> Exportar en Excel 2
                     </a>
+
+                    <a href="{{route('documento_ver_pdf', ['id' => $documento->id])}}" class="btn btn-success">
+                        <i class="fa fa-fw fa-book"></i> Exportar en PDF
+                    </a>
                 
             </div>
             

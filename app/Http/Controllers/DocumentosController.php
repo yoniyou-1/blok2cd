@@ -82,6 +82,20 @@ class DocumentosController extends Controller
         return Excel::download(new DocumentosExportVer($id), 'documentover.xlsx');
     }*/
 
+    public function DocumentosExportVerpdf($id){
+        
+         
+
+        $datas = Documento::with('tipodocs','questions','usuarios','tiposolicitud','tipoestados','files','tipofechas','refexternas')->where('documentos.id', $id)->orderBy('id')->get();
+        $tiposolicituds = Tiposolicitud::orderBy('id')->get();
+
+        //return view('exportspdf.documento.ver', compact('datas','tiposolicituds'));
+        
+        $pdf = PDF::loadView('exportspdf.documento.ver', compact('datas','tiposolicituds'));
+        return $pdf->download('verpdf.pdf');
+    }
+
+
 
     public function DocumentosExportVer2($id){
 

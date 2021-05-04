@@ -144,6 +144,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('documento/{id}/documento-ver-excel', 'DocumentosController@DocumentosExportVer')->middleware('auth')->name('documento_ver_excel');
     /*exporte en pdf de Documentos ver*/
     /*Route::get('documento/{id}/documento-ver-pdf', 'DocumentosController@DocumentosExportVerpdf')->middleware('auth')->name('documento_ver_pdf');*/
+    /*exportespdf en pdf de Documentos ver pdf*/
+    /*Route::get('documento/{id}/documento-ver-pdf', 'DocumentosController@DocumentosExportVerpdf')->middleware('auth')->name('documento_ver_pdf');*/
+    Route::get('documento/{id}/documento-ver-pdf', 'DocumentosController@DocumentosExportVerpdf')->middleware('auth')->name('documento_ver_pdf');
+
+
 
     //viejo Route::get('documento/{id}/editar', 'DocumentosController@edit')->middleware('auth')->name('editar_documento');
     /*AJAX preguntas-tipo de documentos en: el documento*/
