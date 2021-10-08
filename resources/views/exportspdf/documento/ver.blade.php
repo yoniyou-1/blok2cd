@@ -4,17 +4,17 @@
     <tr>
         <th></th>
     </tr>
-    <tr>
+    <tr style=" text-align: right;">
         
-        <th style="text-align: center;">GERENCIA DE EVALUACIONES PREVENTIVAS DE SEGURIDAD LÓGICA</th>
+        <th >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GERENCIA DE EVALUACIONES PREVENTIVAS DE SEGURIDAD LÓGICA</th>
     </tr>
      <tr>
         
-        <th>MATRIZ DE EVALUACIÓN INTEGRAL DE SEGURIDAD</th>
+        <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MATRIZ DE EVALUACIÓN INTEGRAL DE SEGURIDAD</th>
     </tr>
      <tr>
         
-        <th>Archivo de {{ $datas[0]->tipodocs[0]->name }} </th>
+        <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Archivo de {{ $datas[0]->tipodocs[0]->name }} </th>
     </tr>
     </thead>
     <tbody>

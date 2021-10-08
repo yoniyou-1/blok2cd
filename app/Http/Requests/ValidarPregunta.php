@@ -24,7 +24,7 @@ class ValidarPregunta extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|max:50|unique:questions,name,'.$this->route('id'),
+            'name'=>'required|max:1000|unique:questions,name,'.$this->route('id'),
         ];
     }
 

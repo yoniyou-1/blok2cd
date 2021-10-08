@@ -99,7 +99,7 @@ class ValidacionDocumento extends FormRequest
             'tipodoc_id' => 'required|max:30|composite_unique:documentos,identificador,ncontrol,' . $this->route('id'),
 
 
-
+              'observation' => 'required|max:2000',
              // 'identificador' => 'required',
              // 'ncontrol' => 'required',
             // 'editorial' => 'nullable|max:50',

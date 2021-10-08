@@ -24,7 +24,7 @@ class CreateDocumentosTable extends Migration
             $table->foreignId('tiposolicitud_id','fk_documentotiposolicitud_tiposolicitudes') // UNSIGNED BIG INT
             ->nullable()->references('id')->on('tiposolicitudes')->onDelete(
                 'restrict')->onUpdate('restrict');
-            $table->string('observation', 100)->nullable();
+            $table->text('observation')->nullable();
             //$table->tinyInteger('estado')->nullable();
             $table->string('foto', 100)->nullable();
             $table->timestamps();
