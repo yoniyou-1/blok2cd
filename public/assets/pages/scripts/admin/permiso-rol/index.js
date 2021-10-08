@@ -9,7 +9,7 @@ $('.permissions_roles').on('change', function () {
     } else {
         data.estado = 0
     }
-    ajaxRequest('/admin/permiso-rol', data);
+    ajaxRequest('../admin/permiso-rol', data);
 });
 
 function ajaxRequest (url, data) {

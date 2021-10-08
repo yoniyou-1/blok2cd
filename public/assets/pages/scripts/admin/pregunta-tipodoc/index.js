@@ -9,7 +9,7 @@ $('.questions_tipodocs').on('change', function () {
     } else {
         data.estado = 0
     }
-    ajaxRequest('/admin/pregunta-tipodoc', data);
+    ajaxRequest('../admin/pregunta-tipodoc', data);
 });
 
 function ajaxRequest (url, data) {

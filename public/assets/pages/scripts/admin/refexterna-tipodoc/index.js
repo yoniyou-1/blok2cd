@@ -11,7 +11,7 @@ $('.refexternas_tipodocs').on('change', function () {
     } else {
         data.estado = 0
     }
-    ajaxRequest('/admin/refexterna-tipodoc', data);
+    ajaxRequest('../admin/refexterna-tipodoc', data);
 });
 
 function ajaxRequest (url, data) {

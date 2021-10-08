@@ -69,7 +69,7 @@ $(document).ready(function () {
           };
 
           //existencia de identificador
-          ajaxRequest4('/documento/crear4', data);
+          ajaxRequest4('../documento/crear4', data);
           //alert(identificador2);
 
           }
@@ -95,7 +95,7 @@ $(document).ready(function () {
           };
 
           //existencia de identificador
-          ajaxRequest4('/documento/crear4', data);
+          ajaxRequest4('../documento/crear4', data);
           //alert(identificador2);
 
           }
@@ -128,7 +128,7 @@ $(document).ready(function () {
         };
 
         //existencia de identificador
-        ajaxRequest4('/documento/crear4', data);
+        ajaxRequest4('../documento/crear4', data);
         //alert(identificador2);
 
         }else{
@@ -142,13 +142,13 @@ $(document).ready(function () {
         
         
         //referencia externa
-        ajaxRequest5('/documento/crear5', data);
+        ajaxRequest5('../documento/crear5', data);
         //tipo de fecha
-        ajaxRequest3('/documento/crear3', data);
+        ajaxRequest3('../documento/crear3', data);
         //tipo de estado
-        ajaxRequest2('/documento/crear2', data);
+        ajaxRequest2('../documento/crear2', data);
         //preguntas
-        ajaxRequest('/documento/crear', data);
+        ajaxRequest('../documento/crear', data);
         });
 
 

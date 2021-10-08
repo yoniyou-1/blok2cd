@@ -9,7 +9,7 @@ $('.menus_roles').on('change', function () {
     } else {
         data.estado = 0
     }
-    ajaxRequest('/admin/menu-rol', data);
+    ajaxRequest('../admin/menu-rol', data);
 });
 
 function ajaxRequest (url, data) {

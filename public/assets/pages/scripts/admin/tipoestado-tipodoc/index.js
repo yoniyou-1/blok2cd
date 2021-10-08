@@ -11,7 +11,7 @@ $('.tipoestados_tipodocs').on('change', function () {
     } else {
         data.estado = 0
     }
-    ajaxRequest('/admin/tipoestado-tipodoc', data);
+    ajaxRequest('../admin/tipoestado-tipodoc', data);
 });
 
 function ajaxRequest (url, data) {
