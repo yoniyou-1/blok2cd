@@ -3,8 +3,93 @@
 Usuarios
 @endsection
 
+
+@section('styles')
+<link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css"/>
+<style type="text/css"> 
+
+tfoot {
+    display: table-header-group;
+}
+</style>
+@endsection
+
 @section("scripts")
 <script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+
+<script> 
+
+$(document).ready(function() {
+
+// Setup - add a text input to each footer cell
+    $('#tabla-data tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" class="form-control form-control-sm" placeholder="'+title+'" aria-controls="tabla-data"  />');
+    } );
+
+    var table = $('#tabla-data').DataTable({
+        "scrollX": true,
+        "serverSide": true,
+        "responsive": true,
+        "fixedHeader": true,
+
+        "order": [[ 0, "desc" ]],
+        "bProcessing": true,
+        "ajax": "{{route('usuario')}}",
+        
+        "columns": [
+            
+            {data: 'id', name: 'id'},
+            {data: 'user', name: 'user'},
+            {data: 'name', name: 'name'},
+            {data:  'roles.name', name: 'roles.name'},
+            {data: 'created_at', name: 'created_at'},
+            {data: 'action', name: 'action'},
+        ],
+        language: {
+                    "decimal": ",",
+                    "thousands": ".",
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "zeroRecords": "No se encontraron resultados",
+                    "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sSearch": "Buscar:",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast":"Último",
+                        "sNext":"Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "sProcessing":"Cargando..."
+                },
+
+        initComplete: function () {
+            // Apply the search
+            this.api().columns().every( function () {
+                var that = this;
+ 
+                $( 'input', this.footer() ).on( 'keyup change clear', function () {
+                    if ( that.search() !== this.value ) {
+                        that
+                            .search( this.value )
+                            .draw();
+                    }
+                } );
+            } );
+        }
+    });
+
+
+
+});
+
+
+
+
+</script>
 @endsection
 
 @section('contenido')
@@ -26,40 +111,32 @@ Usuarios
 			<div class="card-body table-responsive no-padding">
 				<!-- /.card-body -->
 				<table class="table table-striped table-bordered table-hover" id="tabla-data">
+
                     <thead>
                         <tr>
+                            <th>Id</th>
                             <th>Usuario</th>
                             <th>Nombre</th>
                             <th>Rol</th>
-                            <th>CI</th>
+                            <th>fech_creacion</th>
+                           
                             <th class="width70"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($datas as $data)
-                        <tr>
-                            <td>{{$data->user}}</td>
-                            <td>{{$data->name}}</td>
-                            <td>
-                                @foreach ($data->roles as $rol)
-                                    {{$loop->last ? $rol->name : $rol->name . ', '}}
-                                @endforeach</td>
-                            <td>{{$data->dni}}</td>
-                            <td>
-                                <a href="{{route('editar_usuario', ['id' => $data->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
-                                    <i class="fa fa-fw fa-circle"></i>
-                                </a>
-                                <form action="{{route('eliminar_usuario', ['id' => $data->id])}}" class="d-inline form-eliminar" method="POST">
-                                    @csrf @method("delete")
-                                    <button type="submit" class="btn-accion-tabla eliminar tooltipsC" title="Eliminar este registro">
-                                        <i class="fa fa-fw fa-trash text-danger"></i>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
 
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Id</th>
+                            <th>Usuario</th>
+                            <th>Nombre</th>
+                            <th>Rol</th>
+                            <th>fech_creacion</th>
+                           
+                            <td class="width70"></td>
+                        </tr>
+                    </tfoot>
                 </table>
 			</div>
 				<!-- /.card-footer -->
