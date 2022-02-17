@@ -6,6 +6,8 @@ Usuarios
 
 @section('styles')
 <link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css"/>
+<link href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css" rel="stylesheet"/>
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet"/>
 <style type="text/css"> 
 
 tfoot {
@@ -19,6 +21,14 @@ tfoot {
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
 
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.4/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.4/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+<script src="{{asset("assets/pages/scripts/admin/usuario/usuariotabladata.js")}}" type="text/javascript"></script>
 <script> 
 
 $(document).ready(function() {
@@ -34,7 +44,7 @@ $(document).ready(function() {
         "serverSide": true,
         "responsive": true,
         "fixedHeader": true,
-
+"lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "Mostrar Todo"] ],
         "order": [[ 0, "desc" ]],
         "bProcessing": true,
         "ajax": "{{route('usuario')}}",
@@ -47,6 +57,10 @@ $(document).ready(function() {
             {data:  'roles.name', name: 'roles.name'},
             {data: 'created_at', name: 'created_at'},
             {data: 'action', name: 'action'},
+        ],
+        "dom": 'lfrtipB',
+        "buttons": [
+            'copy', 'csv', 'excel', 'pdf', 'print'
         ],
         language: {
                     "decimal": ",",
