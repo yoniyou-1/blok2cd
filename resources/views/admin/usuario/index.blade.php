@@ -29,9 +29,9 @@ $(document).ready(function() {
     } );
 
     var table = $('#tabla-data').DataTable({
-        "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
-        $('td:eq(0)', nRow).html(iDisplayIndexFull +1);
-    },
+
+        "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {$('td:eq(0)', nRow).html(iDisplayIndexFull +1);},
+
         "scrollX": true,
         "serverSide": true,
         "responsive": true,
@@ -40,7 +40,7 @@ $(document).ready(function() {
         "order": [[ 0, "desc" ]],
         "bProcessing": true,
         "ajax": "{{route('usuario')}}",
-        
+        //, "searchable": false
         "columns": [
             
             {data: 'id', name: 'id'},
@@ -120,7 +120,7 @@ $(document).ready(function() {
 
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th>Nro</th>
                             <th>Usuario</th>
                             <th>Nombre</th>
                             <th>Rol</th>
@@ -134,7 +134,7 @@ $(document).ready(function() {
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Id</th>
+                            <td>Nro</td>
                             <th>Usuario</th>
                             <th>Nombre</th>
                             <th>Rol</th>
