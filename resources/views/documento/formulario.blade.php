@@ -45,13 +45,13 @@
 @endisset
 <!-- Termina isset es Crear selector -->
 <div class="form-group">
-    <label for="identificador" class="col-lg-3 control-label requerido">Identificador</label>
+    <label for="identificador" class="col-lg-3 control-label requerido">Identificador A</label>
     <div class="col-lg-8">
     <input type="text" name="identificador" id="identificador" class="form-control" value="{{old('identificador', $data->identificador ?? '')}}" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))" required/>
     </div>
 </div>
 <div class="form-group">
-    <label for="ncontrol" class="col-lg-3 control-label requerido">Nro, Control de Cambio</label>
+    <label for="ncontrol" class="col-lg-3 control-label requerido">Identificador B</label>
     <div class="col-lg-8">
     <input type="text" name="ncontrol" id="ncontrol" class="form-control" value="{{old('ncontrol', $data->ncontrol ?? '')}}" onkeypress="return ((event.charCode >= 48 && event.charCode <= 57) || (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))" required/>
     </div>

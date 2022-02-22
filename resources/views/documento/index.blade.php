@@ -5,13 +5,13 @@ Documentos
 
 
 @section('styles')
-<link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css"/>
+<!--link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css"/-->
 @endsection
 
 @section("scripts")
 <script src="{{asset("assets/pages/scripts/documento/index.js")}}" type="text/javascript"></script>
-<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+<!--script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script-->
+<!--script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script-->
 <script> 
 
 $(document).ready(function() {
@@ -50,8 +50,8 @@ $(document).ready(function() {
                         <tr>
                             <th>Titulo</th>
                             <th>Tipo</th>
-                            <th>Identificador</th>
-                            <th>N-Control</th>
+                            <th>Identificador A</th>
+                            <th>Identificador B</th>
                             <!--th>Preguntas</th>
                             <th>Fechas</th>
                             <th>Fechas</th>
