@@ -29,6 +29,9 @@ $(document).ready(function() {
     } );
 
     var table = $('#tabla-data').DataTable({
+        "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+        $('td:eq(0)', nRow).html(iDisplayIndexFull +1);
+    },
         "scrollX": true,
         "serverSide": true,
         "responsive": true,
