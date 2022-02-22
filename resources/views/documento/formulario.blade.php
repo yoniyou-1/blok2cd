@@ -34,7 +34,7 @@
 <div class="form-group ">
     <label for="tipodoc_id" class="col-lg-3 control-label requerido">Tipo</label>
     <div class="col-lg-8">
-        <select name="tipodoc_id" id="tipodoc_id" class="form-control" required>
+        <select name="tipodoc_id" id="tipodoc_id" class="form-control miselect2" required/>
             <option value="">Seleccione el tipo de documento</option>
             @foreach($tipodocs as $id => $name)
                 <option value="{{$id}}" {{"tipodoc_id", $data->tipodocs[0]->id ?? "" == $id ? "selected" : ""}}>{{$name}}</option>
@@ -120,7 +120,7 @@
 <div class="form-group ">
     <label for="    refexterna_id" class="col-lg-3 control-label requerido">Referencia Externa</label>
     <div class="col-lg-8">
-        <select name="  refexterna_id" id = "refexterna_id" class="form-control" required>
+        <select name="  refexterna_id" id = "refexterna_id" class="form-control miselect2" required>
         <option class="filaPregunta2" value="" >Seleccione la Referencia Externa . Nota:(Primero Seleccione el Tipo de Documento)</option>
             @isset($eseditar) 
              @foreach($refexterns as $id => $name)                

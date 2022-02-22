@@ -49,7 +49,9 @@ $(document).ready(function () {
             // $.each(vectorPersonas, function (ind, elem) { 
             //   console.log('¡Hola :'+elem+'!'); 
             // }); 
-
+            // aplica el buscador al selector con clase select 
+            $('.miselect2').select2();
+            
             $('#origen').hide();
 
         $('#identificador').on('blur', function() {

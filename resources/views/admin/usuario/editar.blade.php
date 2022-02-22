@@ -14,7 +14,7 @@ Usuarios
     <div class="col-md-12">
         @include('includes.form-error')
         @include('includes.mensaje')
-        <div class="card card-primary card-info">
+        <div class="card card-danger card-info">
             <div class="card-header">
                 <h3 class="card-title"> Editar Usuario {{$data->name}}</h3>
             </div>

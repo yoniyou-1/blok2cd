@@ -29,6 +29,12 @@
 <!--descartado bueno para minizar el tamano de las celdas-->
 <!--link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet"/-->
 <!--fin datatables plugin-->
+<!--inicio select2 buscador en selectores-->
+<!--link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/-->
+<link rel="stylesheet" href="{{asset("assets/$theme/plugins/select2/css/select2.min.css")}}">
+<!--select2-bootstrap4.min.css-->
+<link rel="stylesheet" href="{{asset("assets/$theme/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css")}}">
+<!--fin select2 buscador en selectores-->
     <!-- My Theme style -->
       @yield('styles')
   <link rel="stylesheet" href="{{asset("assets/css/custom.css")}}">
@@ -113,6 +119,10 @@
 <!--buttons.print.min.js-->
 <script src="{{asset("assets/$theme/plugins/datatables-buttons/js/buttons.print.min.js")}}"></script>
 <!--fin datatables plugin-->
+<!--inicio select2 buscador en selectores-->
+<!--script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script-->
+<script src='{{asset("assets/$theme/plugins/select2/js/select2.full.min.js")}}' type='text/javascript'></script>
+<!--fin select2 buscador en selectores-->
   <!-- Jquery Plugins -->
   @yield('scriptsPlugins')
   <!-- Jquery validation -->
