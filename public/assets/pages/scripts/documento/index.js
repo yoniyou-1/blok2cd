@@ -16,7 +16,9 @@ $(document).ready(function () {
             }
         });
     });
-
+function myFunction() {
+  window.alert("Hello world!");
+}
     $('.ver-documento').on('click', function (event) {
         event.preventDefault();
         const url = $(this).attr('href');

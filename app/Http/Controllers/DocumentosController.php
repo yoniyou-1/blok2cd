@@ -24,6 +24,7 @@ use App\Exports\DocumentosExportVer0;
 use App\Exports\DocumentosExportVer2;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
+use DataTables;
 
 class DocumentosController extends Controller
 {
@@ -32,7 +33,7 @@ class DocumentosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //dd(cache()->tags('Permiso')->get('Permiso.rolid.2'));
         //cache::tags(['Permiso'])->flush();
@@ -45,9 +46,49 @@ class DocumentosController extends Controller
         //quito este2
         //$datas = Documento::with('tipodocs')->orderBy('id')->get();
         //pongo este2
-        $datas = Documento::with('tipodocs','questions','usuarios','tiposolicitud','tipoestados','files','tipofechas','refexternas')->orderBy('id')->get();
+        //inicio original
+        //$datas = Documento::with('tipodocs','questions','usuarios','tiposolicitud','tipoestados','files','tipofechas','refexternas')->orderBy('id')->get();
         //dd($datas);
-        return view('documento.index', compact('datas'));
+        //return view('documento.index', compact('datas'));
+        //fin original
+        //
+        //inicio ajax datatble
+        
+        if ($request->ajax()) {
+
+            $datas = Documento::with('tipodocs','questions','usuarios','tiposolicitud','tipoestados','files','tipofechas','refexternas')->orderBy('id')->get();
+
+            return Datatables::of($datas)
+            ->addIndexColumn()
+            ->editColumn('created_at', function ($request) {
+            return $request->created_at->format('Y-m-d\ H:i'); // human readable format
+            })
+            ->addColumn('action', function($row){
+            $btn = '<a href="'.route('editar_documento', $row->id).'" class="btn-accion-tabla tooltipsC" title="Editar este registro"> <i class="fa fa-fw fa-circle"></i> </a>
+
+            <a href="'.route('ver_documento', $data=$row).'" class="ver-documento"> <i class="fa fa-fw fa-book"></i> </a>
+
+            <form action="'.route('eliminar_documento', $row->id).'" class="d-inline form-eliminar" method="POST">
+                                                <input type="hidden" name="_method" value="delete">
+                                                <input type="hidden" name="_token" value="'.csrf_token().'">
+                                                <button type="submit" class="btn-accion-tabla eliminar tooltipsC" title="Eliminar este registro">
+                                                    <i class="fa fa-fw fa-trash text-danger"></i>
+                                                </button>
+                                                 
+                                            </form>'
+
+            ;
+    
+                            return $btn;
+                    })
+            ->rawColumns(['action'])
+                    
+                    ->toJson();
+                    //->make(true);
+        
+        }
+       
+        return view('documento.index');
 
     }
 

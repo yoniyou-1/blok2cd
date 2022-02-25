@@ -16,8 +16,6 @@ tfoot {
 
 @section("scripts")
 <script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
-
-<script src="{{asset("assets/pages/scripts/admin/usuario/usuariotabladata.js")}}" type="text/javascript"></script>
 <script> 
 
 $(document).ready(function() {
@@ -36,7 +34,7 @@ $(document).ready(function() {
         "serverSide": true,
         "responsive": true,
         "fixedHeader": true,
-"lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "Mostrar Todo"] ],
+        "lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "Mostrar Todo"] ],
         "order": [[ 0, "desc" ]],
         "bProcessing": true,
         "ajax": "{{route('usuario')}}",
@@ -72,28 +70,23 @@ $(document).ready(function() {
                     "sProcessing":"Cargando..."
                 },
 
-        initComplete: function () {
-            // Apply the search
-            this.api().columns().every( function () {
-                var that = this;
- 
-                $( 'input', this.footer() ).on( 'keyup change clear', function () {
-                    if ( that.search() !== this.value ) {
-                        that
-                            .search( this.value )
-                            .draw();
-                    }
+            initComplete: function () {
+                // Apply the search
+                this.api().columns().every( function () {
+                    var that = this;
+     
+                    $( 'input', this.footer() ).on( 'keyup change clear', function () {
+                        if ( that.search() !== this.value ) {
+                            that
+                                .search( this.value )
+                                .draw();
+                        }
+                    } );
                 } );
-            } );
-        }
+            }
+        });
+
     });
-
-
-
-});
-
-
-
 
 </script>
 @endsection
@@ -120,7 +113,7 @@ $(document).ready(function() {
 
                     <thead>
                         <tr>
-                            <th>Nro</th>
+                            <td>Nro</td>
                             <th>Usuario</th>
                             <th>Nombre</th>
                             <th>Rol</th>

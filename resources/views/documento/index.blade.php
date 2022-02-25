@@ -14,9 +14,79 @@ Documentos
 <!--script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script-->
 <script> 
 
+
+
 $(document).ready(function() {
-    $('#tabla-data').DataTable();
-} );
+
+// Setup - add a text input to each footer cell
+    $('#tabla-data tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" class="form-control form-control-sm" placeholder="'+title+'" aria-controls="tabla-data"  />');
+    } );
+
+    var table = $('#tabla-data').DataTable({
+
+        "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {$('td:eq(0)', nRow).html(iDisplayIndexFull +1);},
+
+        "scrollX": true,
+        "serverSide": true,
+        "responsive": true,
+        "fixedHeader": true,
+        "lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "Mostrar Todo"] ],
+        "order": [[ 0, "desc" ]],
+        "bProcessing": true,
+        "ajax": "{{route('documento')}}",
+        //, "searchable": false
+        "columns": [
+            
+            {data: 'id', name: 'id'},
+            {data: 'title', name: 'title'},
+            {data: 'identificador', name: 'identificador'},
+            {data: 'ncontrol', name: 'ncontrol'},
+            //{data:  'roles.name', name: 'roles.name'},
+            {data: 'created_at', name: 'created_at'},
+            {data: 'action', name: 'action'},
+        ],
+        "dom": 'lfrtipB',
+        "buttons": [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+        language: {
+                    "decimal": ",",
+                    "thousands": ".",
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "zeroRecords": "No se encontraron resultados",
+                    "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sSearch": "Buscar:",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast":"Último",
+                        "sNext":"Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "sProcessing":"Cargando..."
+                },
+
+            initComplete: function () {
+                // Apply the search
+                this.api().columns().every( function () {
+                    var that = this;
+     
+                    $( 'input', this.footer() ).on( 'keyup change clear', function () {
+                        if ( that.search() !== this.value ) {
+                            that
+                                .search( this.value )
+                                .draw();
+                        }
+                    } );
+                } );
+            }
+        });
+
+    });
+
 </script>
 @endsection
 
@@ -48,77 +118,43 @@ $(document).ready(function() {
 				<table class="table table-striped table-bordered table-hover" id="tabla-data">
                     <thead>
                         <tr>
+                            <td>Nro</td>
                             <th>Titulo</th>
-                            <th>Tipo</th>
                             <th>Identificador A</th>
                             <th>Identificador B</th>
+                            <th>fec</th>
                             <!--th>Preguntas</th>
                             <th>Fechas</th>
                             <th>Fechas</th>
-                            <th>Nombre Fecha</th-->
+                            <th>Nombre Fecha</th
                             <th>Estado</th>
-                            <th>Ref Ext</th>
+                            <th>Ref Ext</th>-->
+                            
+
                             
                             <th class="width70"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($datas as $data)
-                        <tr>
-                            <td><a href="{{route('ver_documento', $data)}}" class="ver-documento">{{$data->title}}</a></td>
-                            <td>
-                                @foreach ($data->tipodocs as $tipodoc)
-                                    {{$loop->last ? $tipodoc->name : $tipodoc->name . ', '}}
-                                @endforeach
-                            </td>
-                            <td>{{$data->identificador}}</td>
-                            <td>{{$data->ncontrol}}</td>
-                            <!--td>
-                                @foreach ($data->questions as $question)
-                                    {{$loop->last ? $question->pivot->state : $question->pivot->state . ', '}}
-                                @endforeach
-                            </td>
-                             <td>
-                                @foreach ($data->usuarios as $usuario)
-                                    {{$loop->last ? $usuario->pivot->state : $usuario->pivot->state . ', '}}
-                                @endforeach
-                            </td>
-                            <td>
-                                @foreach ($data->usuarios as $usuario)
-                                    {{$loop->last ? $usuario->pivot->state : $usuario->pivot->state . ', '}}
-                                @endforeach
-                            </td>
-                            <td>
-                                @foreach ($data->tipofechas as $tipofecha)
-                                    {{$loop->last ? $tipofecha->name : $tipofecha->name . ', '}}
-                                @endforeach
-                            </td-->
-                            <td>
-                                @foreach ($data->tipoestados as $tipoestado)
-                                    {{$loop->last ? $tipoestado->name : $tipoestado->name . ', '}}
-                                @endforeach
-                            </td>
-                            <td>
-                                @foreach ($data->refexternas as $refexterna)
-                                    {{$loop->last ? $refexterna->name : $refexterna->name . ', '}}
-                                @endforeach
-                            </td>
-                            
-                            <td>
-                                <a href="{{route('editar_documento', ['id' => $data->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
-                                    <i class="fa fa-fw fa-circle"></i>
-                                </a>
-                                <form action="{{route('eliminar_documento', ['id' => $data->id])}}" class="d-inline form-eliminar" method="POST">
-                                    @csrf @method("delete")
-                                    <button type="submit" class="btn-accion-tabla eliminar tooltipsC" title="Eliminar este registro">
-                                        <i class="fa fa-fw fa-trash text-danger"></i>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
 
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>Nro</td>
+                            <th>Titulo</th>
+                            <th>Identificador A</th>
+                            <th>Identificador B</th>
+                            <th>fec</th>
+                            <!--th>Preguntas</th>
+                            <th>Fechas</th>
+                            <th>Fechas</th>
+                            <th>Nombre Fecha</th
+                            <th>Estado</th>
+                            <th>Ref Ext</th>-->
+
+                            <td class="width70"></td>
+                        </tr>
+                    </tfoot>
                 </table>
 			</div>
 				<!-- /.card-footer -->
