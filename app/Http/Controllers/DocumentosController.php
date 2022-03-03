@@ -55,32 +55,15 @@ class DocumentosController extends Controller
         //inicio ajax datatble
         
         if ($request->ajax()) {
-
-            $datas = Documento::with('tipodocs','questions','usuarios','tiposolicitud','tipoestados','files','tipofechas','refexternas')->orderBy('id')->get();
+//with('tipodocs','questions','usuarios','tiposolicitud','tipoestados','files','tipofechas','refexternas')->orderBy('id')->
+            $datas = Documento::get();
 
             return Datatables::of($datas)
             ->addIndexColumn()
             ->editColumn('created_at', function ($request) {
             return $request->created_at->format('Y-m-d\ H:i'); // human readable format
             })
-            ->addColumn('action', function($row){
-            $btn = '<a href="'.route('editar_documento', $row->id).'" class="btn-accion-tabla tooltipsC" title="Editar este registro"> <i class="fa fa-fw fa-circle"></i> </a>
-
-            <a href="'.route('ver_documento', $data=$row).'" class="ver-documento"> <i class="fa fa-fw fa-book"></i> </a>
-
-            <form action="'.route('eliminar_documento', $row->id).'" class="d-inline form-eliminar" method="POST">
-                                                <input type="hidden" name="_method" value="delete">
-                                                <input type="hidden" name="_token" value="'.csrf_token().'">
-                                                <button type="submit" class="btn-accion-tabla eliminar tooltipsC" title="Eliminar este registro">
-                                                    <i class="fa fa-fw fa-trash text-danger"></i>
-                                                </button>
-                                                 
-                                            </form>'
-
-            ;
-    
-                            return $btn;
-                    })
+            ->addColumn('action','documento.datatable.action')
             ->rawColumns(['action'])
                     
                     ->toJson();
@@ -455,10 +438,15 @@ while($i < $nroquestion_id)
 
     }*/
     public function show(Documento $documento)
-    {
+    {         
+
+            $datosdocumento = Documento::with('tipodocs','questions','usuarios','tiposolicitud','tipoestados','files','tipofechas','refexternas')->where('id', $documento->id)->get();
+            
+
+            
 
             //dd($documento);
-            return view('documento.ver', compact('documento'));
+            return view('documento.ver', compact('datosdocumento'));
             /*$pdf = \PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('documento.ver', compact('documento'));
             return $pdf->download('ver.pdf');*/
              //$pdf = \PDF::loadView('documento.ver2', compact('documento'));

@@ -1,7 +1,56 @@
+<html>
+    <head>
+        <style>
+            /** 
+            * Establecer los márgenes del PDF en 0
+            * por lo que la imagen de fondo cubrirá toda la página.
+            **/
+            @page {
+                margin: 1cm 0cm;
+            }
 
+            /**
+            * Define los márgenes reales del contenido de tu PDF
+            * Aquí arreglarás los márgenes del encabezado y pie de página
+            * De tu imagen de fondo.
+            **/
+            body {
+                margin-top:    1.5cm;
+                margin-bottom: 1cm;
+                margin-left:   1cm;
+                margin-right:  1cm;
+            }
+
+            /** 
+            * Defina el ancho, alto, márgenes y posición de la marca de agua.
+            **/
+            #watermark {
+                position: fixed;
+                bottom:   0px;
+                left:     0px;
+                /** El ancho y la altura pueden cambiar
+                    según las dimensiones de su membrete
+                **/
+                width:    21.8cm;
+                height:   28cm;
+
+                /** Tu marca de agua debe estar detrás de cada contenido **/
+                z-index:  -1000;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="watermark">
+            
+              <img  src="{{public_path('storage/imagenes/marcaagua/marcajpg/matrizcp.jpg')}}" height="100%" width="100%"> 
+        </div>
+
+        <main> 
+            <!-- El contenido de tu PDF aquí -->
+ 
 <table>
     <thead>
-    <tr>
+    <!--tr>
         <th></th>
     </tr>
     <tr style=" text-align: right;">
@@ -11,10 +60,11 @@
      <tr>
         
         <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MATRIZ DE EVALUACIÓN INTEGRAL DE SEGURIDAD</th>
-    </tr>
+    </tr-->
      <tr>
         
-        <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Archivo de {{ $datas[0]->tipodocs[0]->name }} </th>
+        <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Archivo de {{ $datas[0]->tipodocs[0]->name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $ldate = date('d-m-Y') }}</th>
+        <!--H:i:s-->
     </tr>
     </thead>
     <tbody>
@@ -26,7 +76,7 @@
 
     </tbody>
 </table>
-
+<br>
 <table>
     <thead>
     <tr>
@@ -106,7 +156,19 @@
     </tr>   
     </tbody>
 </table>
-
+<table>
+    <thead>
+    <tr>
+        <th>Responsable Interno</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{session()->get('usuario_name') ?? 'Invitado'}}</td>            
+    </tr>   
+    </tbody>
+</table>
+<br>
 <table>
     <thead>
     <tr>
@@ -120,7 +182,7 @@
     </tbody>
 </table>
 <br>
-<table >
+<!--table >
     <thead>
     <tr>
         <th>Fecha</th><th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
@@ -132,7 +194,7 @@
         <td></td>            
     </tr>   
     </tbody>
-</table>
+</table-->
 
 <!--fin dos tablas -->
 <br>
@@ -185,7 +247,7 @@
 </table>
 <!--fin cuarta tabla -->
 
-<table>
+<table align="center">
     <thead>
         <tr>
             <th>imagenes de Anexos</th>
@@ -221,3 +283,8 @@
 
     </tbody>
 </table>
+
+
+</main>
+    </body>
+</html>
