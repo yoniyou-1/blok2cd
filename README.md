@@ -6,6 +6,8 @@ https://drive.google.com/file/d/1QTJLpy8a_LGh_GJfb3gw_2-QN7nHYITb/view?usp=shari
 2) Cache:
 Require app Redis-cli
 
+.env  : change BROADCAST_DRIVER=log to BROADCAST_DRIVER=redis
+
 3) ejecute php artisan storage:link
 
 ---------------------------------------------------------------------------------------------------------------------
